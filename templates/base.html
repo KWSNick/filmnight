@@ -19,7 +19,7 @@
     <!--Bootstrap 5-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <!--Base CSS File-->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' }">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
     {% endblock %}
 
     {% block add_css %}
@@ -40,23 +40,28 @@
     <title>Film Night {% block add_title %}{% endblock %}</title>
 </head>
 <body>
-    <header class="container-fluid">
-        <nav>
+    <div class="container-fluid grad_bk max_height">
+        <div class="row">
+            <div class="col">
+                <header class="row">
+                    <nav>
 
-        </nav>
-    </header>
-    {% if messages %}
-    <aside>
-        <h4>System Message</h4>
-        <div class="message-content"></div>
-    </aside>
-    {% endif %}
+                    </nav>
+                </header>
+                {% if messages %}
+                <aside>
+                    <h4>System Message</h4>
+                    <div class="message-content"></div>
+                </aside>
+                {% endif %}
 
-    <h1>Test</h1>
-    <p>Test Para</p>
+                <h1 class="header_font sec_text_clr">Test</h1>
+                <p class="pri_text_clr">Test Para</p>
 
-    {% block content %}
-    {% endblock %}
-    
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>
