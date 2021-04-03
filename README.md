@@ -114,7 +114,7 @@ An opportunities vs feasibility assessment was conducted in order to identify th
 project will initially focus upon to inform the scope phase of the design process and ensure a minimum 
 viable product can be developed initially which fulfils the core requirements of the app in order to function. 
 
-[Opportunity Assessment Analysis](#)
+[Opportunity Assessment Analysis](static/docs/opportunityAssessment.pdf)
 
 #### Minimum Viable Product
 - A Django project consisting of several apps:
@@ -212,7 +212,7 @@ Common device sizes are:
 - Laptops and Desktops
 - TVs, projectors and high definition monitors
 
-[Wireframes](#) were constructed in Pencil Wireframes in order to provide a design brief for the project and map out key
+[Wireframes](static/docs/Wireframes.pdf) were constructed in Pencil Wireframes in order to provide a design brief for the project and map out key
 design features prior to app production, maximise coding productivity and minimise mission creep. The final product is 
 compared to the wireframes within this document.
 
@@ -334,10 +334,10 @@ Was used for version control in the IDE via the terminal.
 #### License
 Git is released under the [GNU General Public License](https://opensource.org/licenses/GPL-2.0)
 
-### [GitHub](#)
+### [GitHub](https://github.com/)
 The projects' code is stored on GitHub.
 
-### [Heroku](#)
+### [Heroku](https://www.heroku.com/)
 The live site is hosted on Heroku, which is connected to the GitHub repository.
 
 ### [PostgresSQL](https://www.postgresql.org/)
@@ -354,7 +354,7 @@ Is an open source C based relational database engine and was utilised as the dat
 #### License
 SqLite is [public domain](https://www.sqlite.org/copyright.html)
 
-### [Pencil](#)
+### [Pencil](https://pencil.evolus.vn/)
 Was used to create the wireframes during the planning phase. 
 
 # Testing
