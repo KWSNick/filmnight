@@ -410,10 +410,30 @@ To make a copy of the forked repository within your github account:
 9. Press enter and your local clone will be created. 
 
 ## Python Package Requirements
-*Requires Content*
+The site utilises server-side python script and relies on a number of pre-built packages to function. On its host environment 
+these packages will be installed in advance, however should you wish to duplicate the site the following will be required:
+
+- asgiref==3.3.1
+- Django==3.1.7
+- django-allauth==0.44.0
+- oauthlib==3.1.0
+- PyJWT==2.0.1
+- python3-openid==3.2.0
+- pytz==2021.1
+- requests-oauthlib==1.3.0
+- sqlparse==0.4.1
+
+The majority of these packages are installed as standard when Django is installed using pip. Freeze the requirements into a requirements.txt 
+file if a new instance of the project is create using the terminal command pip3 freeze > requirements.txt.
 
 ## Environment Variables
-*Requires Content*
+The site also depends upon a range of environment variables (also known as "config vars" in Heroku) to correctly function. 
+The environment variables were stored in the OS of both the development environment (gitpod) and the host environment (heroku). 
+
+|Variable |Value |
+|---------|------|
+|DEVELOPMENT| True (Development Environment Only)/ False |
+|SECRET_KEY | <YOUR_KEY> |
 
 ## Database
 *Requires Content*
