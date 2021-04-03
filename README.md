@@ -266,6 +266,8 @@ through its slightly condensed nature.
 
 # Features
 ## Existing Features
+*Requires Content*
+
 ## Future Features
 - User can leave reviews
 - User can rate films
@@ -320,6 +322,12 @@ this project.
 #### License
 Bootstrap is used under the [MIT License](https://github.com/twbs/bootstrap/blob/main/LICENSE)
 
+### [LogoMakr](https://logomakr.com/)
+LogoMakr is an online logo creating environment and was utilised to create the logo for the project. 
+
+#### License
+[LogoMakr is approved for both personal and commercial use.](https://logomakr.com/getstarted/terms-conditions/)
+
 ### [Git](https://git-scm.com/)
 Was used for version control in the IDE via the terminal. 
 
@@ -350,32 +358,118 @@ SqLite is [public domain](https://www.sqlite.org/copyright.html)
 Was used to create the wireframes during the planning phase. 
 
 # Testing
+*Requires Content*
+
 ## W3C Validation
+*Requires Content*
+
 ## Chrome Lighthouse
+*Requires Content*
+
 ## Browser Compatability
+*Requires Content*
+
 ## Responsiveness
+*Requires Content*
+
 ## User Stories
+*Requires Content*
+
 ## Known Bugs
+*Requires Content*
 
 # Deployment
-## Live Hosted Site 
+The Site is stored on GitHub pages and hosted on Heroku. These are linked by connecting the github repository to the 
+Heroku app workspace.
+
+It consists of 1 Master branch and no other branches. 
+
+## Live Hosted Site
+*Requires Content*
+
 ## GitHub Pages
+The GitHub Repository for containing the source code for this project can be found here: https://github.com/KWSNick/filmnight
+
 ### Fork the Repository
+To make a copy of this repository form the master GitHub pages to your own GitHub account:
+1. Log in to GitHub using your credentials. 
+2. Navigate to the repository given above. 
+3. Locate the "Fork" button in the top right of the repository page, on the same line as the repository name. 
+4. Click the "Fork" button and the project will be copied into a new repository in your account.
+
 ### Clone the Repository
+To make a copy of the forked repository within your github account:
+1. Log in to GitHub using your credentials.
+2. Go to your repositories.
+3. Open the repository you wish to clone. 
+4. Locate the button above the repository table labelled "Code" with a download icon. 
+5. Copy the HTTPS link provided. 
+6. Open your chosen IDE on your machine and navigate to a terminal.
+7. change your working directory to where you would like your clone to be created.
+8. Type 'git clone' and paste the HTTPS link you copied.
+9. Press enter and your local clone will be created. 
+
 ## Python Package Requirements
+*Requires Content*
+
 ## Environment Variables
+*Requires Content*
+
 ## Database
+*Requires Content*
 
 # User Guide
+*Requires Content*
 
 # Credits
 ## Code
+*Requires Content*
+
 ## Content
+### [Kaggle IMDB Movies Dataset](https://www.kaggle.com/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows)
+The data used to create the movie database for this project came from a [Kaggle](https://www.kaggle.com/) Dataset 
+collated by **Harshit Shankhdhar** who initially harvested it from [IMDB](https://www.imdb.com/) via webscraping methods.
+
+Kaggle allows users to publish and find datasets for use in projects such as machine learning and web development. 
+
+#### License
+The IMDB Movies Dataset is provided under the [Creative Commons Public Domain](https://creativecommons.org/publicdomain/zero/1.0/)
+License. 
+
 ## Media
+### Database Images
+The poster images were provided via URL link contained within the Kaggle dataset. These are hosted on Amazon Web Services.
+
+*Requires Content*
+
 ## Acknowledgements
+*Requires Content*
 
 # Contributing
+This project is a closed example for educational and ability demonstration purposes. Contribution is not permitted at 
+this time.
 
 # Support
+For queries or support contact nicholasbowley@googlemail.com.
 
 # License
+This site is licensed under the 2-Clause BSD License
+
+Copyright 2021 Nicholas Bowley
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the 
+following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following 
+disclaimer.
+
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following 
+disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE 
+USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
