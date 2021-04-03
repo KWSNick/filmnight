@@ -1,4 +1,4 @@
-![Film Night Logo](#)
+![Film Night Logo](static/media/filmNightLogo.png)
 
 # Site Purpose
 A demonstration website for a fictional online film store which would allow
@@ -169,7 +169,7 @@ section) were identified and mapped out.
 A relational database was used consisting of four data tables to hold data on the films in the store,
 user profile information, order histories and a pricelist.
 
-![Planned Database Structure](#)
+![Planned Database Structure](static/media/plannedDatabaseStructure.jpg)
 
 SQlite will provide the relational database during production and Postgres will be used to provide the 
 relational database in final deployment. 
@@ -190,7 +190,7 @@ and focus on mobile media sizes.
 
 JQuery will be utilised for any Javascript functionality to speed up development. 
 
-![Planned Site Structure](#)
+![Planned Site Structure](static/media/plannedSiteStructure.jpg)
 
 ### Skeleton
 The site will be responsive across all device sizes and utilise Bootstrap 5 breakpoints to achieve this. The site 
@@ -233,7 +233,7 @@ brainstormed along with potential logo icons.
 - Motion Picture Store
 - What to Watch
 
-![Logo Icon Ideas](#)
+![Logo Icon Ideas](static/media/logoIconIdeas.jpg)
 
 #### Colours
 Many existing streaming services use dark background colour schemes with contrasting light text. This site will conform 
@@ -243,7 +243,7 @@ to provide the user with the expected feel of a movie streaming and purchase sit
 Buttons will utilise expected colour conventions, Green for positive call to actions such as sign in, sign up and add to 
 basket, grey for less favourable options such as return to browsing and red for delete and remove functions. 
 
-![Planned Colour Pallette](#)
+![Planned Colour Pallette](static/media/plannedColorPallette.jpg)
 Colour palettes were collated using material designs colour tool https://material.io/resources/color 
 
 Where icons are used they will be suitable to describe the function, heading or label they are associated with.
@@ -256,13 +256,13 @@ area available for individual items on the pages which utilise cards.
 A short list of handwriting style fonts was identified from Google fonts for the header. Of this shortlist Zilla Slab 
 Highlight was selected to provide header font sparingly. 
 
-![Header Font Shortlist](#)
+![Header Font Shortlist](static/media/fontHeaderShortlist.jpg)
 
 A short list of handwriting style fonts was identified from Google fonts for the main body text. Of this shortlist 
 Barlow Semi Condensed was selected as it clear legible text which was not highly weighty, whilst being space efficient 
 through its slightly condensed nature. 
 
-![Body Font Shortlist](#)
+![Body Font Shortlist](static/media/fontBodyShortlist.jpg)
 
 # Features
 ## Existing Features
