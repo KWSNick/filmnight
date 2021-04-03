@@ -151,21 +151,203 @@ viable product can be developed initially which fulfils the core requirements of
 - User interactions (direct tags/suggestions to others, view other wish lists)
 - Promoted content/product
 
-
 ### Scope
+- Multiple pages
+    - Use a full stack framework to build a template page structure to speed up development and reduce 
+    code duplication.
+    - Use a modified HTML/CSS/JS Library Navbar component.
+        - Various navbar items only visible depending on login state/user authorisation
+    - A Visually appealing logo that clearly informs the user of the brands purpose.
+    - Use of card-components to display individual items within databases i.e. movies. 
+    - Use database item fields to sort, filter and search for items i.e. rating, genre and name. 
+
+At the scope stage of the planning process the user stories (presented at the top of the User Experience 
+section) were identified and mapped out.
+
 ### Structure
+#### Database
+A relational database was used consisting of four data tables to hold data on the films in the store,
+user profile information, order histories and a pricelist.
+
+![Planned Database Structure](#)
+
+SQlite will provide the relational database during production and Postgres will be used to provide the 
+relational database in final deployment. 
+
+#### Site Pages
+The site will be based around a framework template design, offering a common navbar and footer throughout, 
+however content within the navbar and footer may alter depending upon the user-login state, current page etc. 
+
+All authorised pages will be accessible from all other pages. 
+
+Forms will utilise a common styling and restrict user input to defined options where possible to aid document 
+grouping and linking. Forms will offer validation where possible. 
+
+Django will be used to provide the framework using its built in templating language.
+
+Bootstrap 5 will provide the library for styling of the site as it is designed to be responsive across devices 
+and focus on mobile media sizes. 
+
+JQuery will be utilised for any Javascript functionality to speed up development. 
+
+![Planned Site Structure](#)
+
 ### Skeleton
+The site will be responsive across all device sizes and utilise Bootstrap 5 breakpoints to achieve this. The site 
+will be equally user friendly on any device size. 
+
+|Breakpoint	|Class infix |Dimensions |
+|-----------|------------|-----------|
+|X-Small| None| <576px |
+|Small| sm| ≥576px |
+|Medium| md| ≥768px |
+|Large| lg| ≥992px |
+|Extra large| xl| ≥1200px |
+|Extra extra large| xxl| ≥1400px |
+
+Common device sizes are:
+- Mobile Phones
+- Recreational Tablets 
+- Professional Tablets 
+- Laptops and Desktops
+- TVs, projectors and high definition monitors
+
+[Wireframes](#) were constructed in Pencil Wireframes in order to provide a design brief for the project and map out key
+design features prior to app production, maximise coding productivity and minimise mission creep. The final product is 
+compared to the wireframes within this document.
+
 ### Surface
+The site is designed for general consumers so needs to appeal to this potential customer base with a recognisable, 
+memorable brand. It should clearly convey as much of the purpose of the site as is practicable within its title, 
+supported by short succinct content immediately displayed to users upon their initial visit. Brand name ideas were 
+brainstormed along with potential logo icons.
+
+#### Name Ideas
+- Film House
+- Projector Room
+- Projectionist
+- Film Can
+- Magic Lantern
+- Film Shack
+- Film Night
+- Motion Picture Store
+- What to Watch
+
+![Logo Icon Ideas](#)
+
+#### Colours
+Many existing streaming services use dark background colour schemes with contrasting light text. This site will conform 
+to this convention, using grey to black gradients and solid black backgrounds with, white, off-white/grey and red text 
+to provide the user with the expected feel of a movie streaming and purchase site. 
+
+Buttons will utilise expected colour conventions, Green for positive call to actions such as sign in, sign up and add to 
+basket, grey for less favourable options such as return to browsing and red for delete and remove functions. 
+
+![Planned Colour Pallette](#)
+Colour palettes were collated using material designs colour tool https://material.io/resources/color 
+
+Where icons are used they will be suitable to describe the function, heading or label they are associated with.
+
+#### Fonts
+As a site which aims to appeal to the consumer some display stylisation is desirable for some headers and key links, 
+however the main body of content should be plain, easily readable, but also be space efficient due to the small card 
+area available for individual items on the pages which utilise cards. 
+
+A short list of handwriting style fonts was identified from Google fonts for the header. Of this shortlist Zilla Slab 
+Highlight was selected to provide header font sparingly. 
+
+![Header Font Shortlist](#)
+
+A short list of handwriting style fonts was identified from Google fonts for the main body text. Of this shortlist 
+Barlow Semi Condensed was selected as it clear legible text which was not highly weighty, whilst being space efficient 
+through its slightly condensed nature. 
+
+![Body Font Shortlist](#)
 
 # Features
 ## Existing Features
 ## Future Features
+- User can leave reviews
+- User can rate films
+- User can provide interactions (direct tags/suggestions to others, view other wish lists)
+- Promoted content/product from third party partners
 
 # Technologies Used
 ## Languages
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
+- [CSS3](https://en.wikipedia.org/wiki/CSS)
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+- [Python](https://www.python.org/), [Python BSD 0-clause License](https://docs.python.org/3/license.html#bsd0)
+
 ## Frameworks, Libraries & Programs
-### Technology
+### [Django](https://www.djangoproject.com/)
+Django is a full stack framework based on python, designed to allow developers to quickly create apps.
+It was used as the foundation for this project, providing the templating, and functionality such as URLs.
+
 #### License
+Django is an open source project and can be utilised under the 
+[BSD 3-clause](https://github.com/django/django/blob/main/LICENSE) license.
+
+### [JQuery](https://jquery.com/)
+jQuery is a JavaScript library designed to make html traversal and manipulation much simpler than raw JavaScript, 
+by presenting the author with a wealth of simple code and commands which call on much more complex functions.
+
+jQuery was utilised to improve the targeting of elements and provide some support for animation and user interaction 
+where possible.
+
+#### License
+jQuery is provided under the [MIT License](https://tldrlegal.com/license/mit-license)
+
+### [Google Fonts](https://fonts.google.com/)
+Google Fonts offers open source font styling options for personal and commercial use. 2 fonts were used within this project.
+
+### [Font Awesome 5.15.3](https://fontawesome.com/)
+Font Awesome provided various icons for the project through its free service. 
+
+#### License 
+[Font Awesome License Page](https://fontawesome.com/license)
+[Icons are licensed under the CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+[Fonts are licensed under SIL OFL 1.1](https://scripts.sil.org/OFL)
+[Code is licensed under MIT](https://opensource.org/licenses/MIT)
+
+#### License
+The use of this product was inline with Google API's terms of service [Google Fonts Terms](https://developers.google.com/terms)
+
+### [Bootstrap 5](https://getbootstrap.com/)
+Bootstrap is a mobile-first HTML, CSS and JavaScript Library which provides responsive design tools that were applied to
+this project. 
+
+#### License
+Bootstrap is used under the [MIT License](https://github.com/twbs/bootstrap/blob/main/LICENSE)
+
+### [Git](https://git-scm.com/)
+Was used for version control in the IDE via the terminal. 
+
+#### License
+Git is released under the [GNU General Public License](https://opensource.org/licenses/GPL-2.0)
+
+### [GitHub](#)
+The projects' code is stored on GitHub.
+
+### [Heroku](#)
+The live site is hosted on Heroku, which is connected to the GitHub repository.
+
+### [PostgresSQL](https://www.postgresql.org/)
+Is an open source object relational database system. This project utilises Postgres as an add-on within Heroku to store the
+data required for the live project. 
+
+#### License
+Postgres is open source and released under a bespoke [PostgresSQL license](https://www.postgresql.org/about/licence/) 
+similar to the BSD or MIT licenses.
+
+### [SQLite](https://www.sqlite.org/index.html)
+Is an open source C based relational database engine and was utilised as the data store within the development area.
+
+#### License
+SqLite is [public domain](https://www.sqlite.org/copyright.html)
+
+### [Pencil](#)
+Was used to create the wireframes during the planning phase. 
 
 # Testing
 ## W3C Validation
