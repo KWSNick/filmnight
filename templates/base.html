@@ -40,28 +40,27 @@
     <title>Film Night {% block add_title %}{% endblock %}</title>
 </head>
 <body>
-    <div class="container-fluid grad_bk max_height">
+    <div class="container-fluid gx-0">
+        <header class="row pri_bg_clr">
+            {% include 'includes/nav.html' %}
+        </header>
         <div class="row">
+            {% if messages %}
+            <aside class="col">
+                <h4>System Message</h4>
+                <div class="message-content"></div>
+            </aside>
+            {% endif %}
+        </div>
+        <div class="row grad_bg full_height fixed_bg">
             <div class="col">
-                <header class="row">
-                    <nav>
-
-                    </nav>
-                </header>
-                {% if messages %}
-                <aside>
-                    <h4>System Message</h4>
-                    <div class="message-content"></div>
-                </aside>
-                {% endif %}
-
                 <h1 class="header_font sec_text_clr">Test</h1>
                 <p class="pri_text_clr">Test Para</p>
-
-                {% block content %}
-                {% endblock %}
+            {% block content %}
+            {% endblock %}
             </div>
         </div>
     </div>
+    
 </body>
 </html>
