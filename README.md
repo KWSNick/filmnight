@@ -416,6 +416,7 @@ these packages will be installed in advance, however should you wish to duplicat
 - asgiref==3.3.1
 - Django==3.1.7
 - django-allauth==0.44.0
+- django-crispy-forms==1.11.2
 - oauthlib==3.1.0
 - PyJWT==2.0.1
 - python3-openid==3.2.0
@@ -446,6 +447,9 @@ The environment variables were stored in the OS of both the development environm
 *Requires Content*
 
 The parallax background code was inspired by W3Schools tutorial https://www.w3schools.com/howto/howto_css_parallax.asp
+
+The manipulation of the json data file within fixtures was aided with tutorials found [Kite](https://www.kite.com/python/answers/how-to-append-to-a-json-file-in-python)
+and also [Real Python](https://realpython.com/python-json/)
 
 ## Content
 ### [Kaggle IMDB Movies Dataset](https://www.kaggle.com/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows)
