@@ -61,6 +61,17 @@ body {
     margin-bottom: 30vh;
 }
 
+/* Horizontal scroll for films with no scrollbar */
+.horzScroll {
+    overflow-x: scroll;
+    -ms-overflow-style: none;  /* IE and Edge scrollbar removal */
+    scrollbar-width: none; /* Firefox scrollbar removal */
+}
+
+.horzScroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera scrollbar removal */
+}
+
 /* Crispy Forms Bootstrap4 Overrides */
 
 .form-control {
