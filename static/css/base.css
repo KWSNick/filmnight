@@ -56,6 +56,10 @@ body {
     width: 80%;
 }
 
+.mb-spacer {
+    margin-bottom: 30vh;
+}
+
 /* Crispy Forms Bootstrap4 Overrides */
 
 .form-control {
