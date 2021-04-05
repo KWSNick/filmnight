@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 
 
 def index(request):
     """ A view which returns the main films page """
-    return render(request, 'films/index.html')
+    if request.user.is_authenticated:
+        return render(request, 'films/index.html')
+    else:
+        return redirect('accounts/login/')
