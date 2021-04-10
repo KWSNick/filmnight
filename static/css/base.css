@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&family=Zilla+Slab+Highlight&display=swap');
 
+body, html {
+    height: 100%;
+}
+
 body {
     font-family: 'Barlow Semi Condensed', sans-serif;
 }
@@ -37,7 +41,7 @@ body {
 }
 
 .full_height {
-    height: 100vh;
+    height: 100%;
 }
 
 .fixed_bg {
