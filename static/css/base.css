@@ -140,12 +140,6 @@ body {
 
 }
 
-@media (max-width: 991px) {
-    .card-body {
-        padding: 0.25rem 0.25rem;
-    }
-}
-
 @media (min-width: 992px) { 
     
     .navbar-nav {
@@ -157,6 +151,12 @@ body {
         width: 50%;
     }
 
+}
+
+@media (max-width: 1199px) {
+    .card-body {
+        padding: 0.25rem 0.25rem;
+    }
 }
 
 @media (min-width: 1200px) {
