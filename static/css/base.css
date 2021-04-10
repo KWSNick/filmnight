@@ -62,14 +62,19 @@ body {
 }
 
 /* Horizontal scroll for films with no scrollbar */
-.horzScroll {
+.horz_scroll {
     overflow-x: scroll;
     -ms-overflow-style: none;  /* IE and Edge scrollbar removal */
     scrollbar-width: none; /* Firefox scrollbar removal */
 }
 
-.horzScroll::-webkit-scrollbar {
+.horz_scroll::-webkit-scrollbar {
   display: none; /* Chrome, Safari and Opera scrollbar removal */
+}
+
+/* Film card body overflow control */
+.vert_flow {
+    overflow-y: hidden;
 }
 
 /* Crispy Forms Bootstrap4 Overrides */
@@ -133,6 +138,12 @@ body {
         width: 60%;
     }
 
+}
+
+@media (max-width: 991px) {
+    .card-body {
+        padding: 0.25rem 0.25rem;
+    }
 }
 
 @media (min-width: 992px) { 

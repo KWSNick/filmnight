@@ -4,7 +4,7 @@
 {% block content %}
 <h2 class="header_font sec_text_clr">The main film page test</h2>
 <p class="pri_text_clr">A paragraph from film page</p>
-<div class="row flex-row flex-nowrap horzScroll gx-0">
+<div class="row flex-row flex-nowrap horz_scroll gx-0">
     {% for film in films %}
     <div class="col-10 col-md-4 col-lg-3 m-2">
         <div class="card card-block grad_bg_invert">
@@ -12,7 +12,7 @@
                 <div class="col-5 gx-0">
                     <img src="{{ film.Poster_Link }}" class="card-img-top" alt="...">
                 </div>
-                <div class="col-7 gx-0">
+                <div class="col-7 gx-0 card-info vert_flow">
                     <div class="card-body">
                         <h5>{{ film.Series_Title }}</h5>
                         <p class="card-text">
@@ -24,7 +24,7 @@
                         <p class="card-text">
                             <span>{{ film.Star1 }}</span>, <span>{{ film.Star2 }}</span>
                         </p>
-                        <p class="card-text">
+                        <p class="card-text d-none d-lg-block">
                             Year:<span>{{ film.Released_Year }}</span> Runtime:<span>{{ film.Runtime }}</span>
                         </p>
                     </div>
