@@ -4,34 +4,477 @@
 {% block content %}
 <h2 class="header_font sec_text_clr">The main film page test</h2>
 <p class="pri_text_clr">A paragraph from film page</p>
-<div class="row flex-row flex-nowrap horz_scroll gx-0">
-    {% for film in films %}
-    <div class="col-10 col-md-5 col-lg-4 col-xl-3 m-2">
-        <div class="card card-block grad_bg_invert">
-            <div class="row gx-0">
-                <div class="col-5 gx-0">
-                    <img src="{{ film.Poster_Link }}" class="card-img-top" alt="...">
-                </div>
-                <div class="col-7 gx-0 card-info vert_flow">
-                    <div class="card-body">
-                        <h5>{{ film.Series_Title }}</h5>
-                        <p class="card-text">
-                            IMDB Rating: {{ film.IMDB_Rating }}
-                        </p>
-                        <p class="card-text">
-                            {{ film.Genre }}
-                        </p>
-                        <p class="card-text">
-                            <span>{{ film.Star1 }}</span>, <span>{{ film.Star2 }}</span>
-                        </p>
-                        <p class="card-text d-none d-lg-block">
-                            Year:<span>{{ film.Released_Year }}</span> Runtime:<span>{{ film.Runtime }}</span>
-                        </p>
+<!--Action-->
+<div class="row gx-0">
+    <div class="col">
+        <h3 class="header_font sec_text_clr text-start">Action</h3>
+    </div>
+    <div class="row flex-row flex-nowrap horz_scroll gx-0">
+        {% for film in films %}
+        {% if "Action" in film.Genre %}
+        <div class="col-10 col-md-5 col-lg-4 col-xl-3 m-2">
+            <div class="card card-block grad_bg_invert">
+                <div class="row gx-0">
+                    <div class="col-5 gx-0">
+                        <img src="{{ film.Poster_Link }}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="col-7 gx-0 card-info vert_flow">
+                        <div class="card-body">
+                            <h5>{{ film.Series_Title }}</h5>
+                            <p class="card-text">
+                                IMDB Rating: {{ film.IMDB_Rating }}
+                            </p>
+                            <p class="card-text">
+                                {{ film.Genre }}
+                            </p>
+                            <p class="card-text">
+                                <span>{{ film.Star1 }}</span>, <span>{{ film.Star2 }}</span>
+                            </p>
+                            <p class="card-text d-none d-lg-block">
+                                Year:<span>{{ film.Released_Year }}</span> Runtime:<span>{{ film.Runtime }}</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        {% endif %}
+        {% endfor %}
     </div>
-    {% endfor %}
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <hr>
+        </div>
+    </div>
+</div>
+<!--Adventure-->
+<div class="row gx-0">
+    <div class="col">
+        <h3 class="header_font sec_text_clr text-start">Adventure</h3>
+    </div>
+    <div class="row flex-row flex-nowrap horz_scroll gx-0">
+        {% for film in films %}
+        {% if "Adventure" in film.Genre %}
+        <div class="col-10 col-md-5 col-lg-4 col-xl-3 m-2">
+            <div class="card card-block grad_bg_invert">
+                <div class="row gx-0">
+                    <div class="col-5 gx-0">
+                        <img src="{{ film.Poster_Link }}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="col-7 gx-0 card-info vert_flow">
+                        <div class="card-body">
+                            <h5>{{ film.Series_Title }}</h5>
+                            <p class="card-text">
+                                IMDB Rating: {{ film.IMDB_Rating }}
+                            </p>
+                            <p class="card-text">
+                                {{ film.Genre }}
+                            </p>
+                            <p class="card-text">
+                                <span>{{ film.Star1 }}</span>, <span>{{ film.Star2 }}</span>
+                            </p>
+                            <p class="card-text d-none d-lg-block">
+                                Year:<span>{{ film.Released_Year }}</span> Runtime:<span>{{ film.Runtime }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <hr>
+        </div>
+    </div>
+</div>
+<!--Comedy-->
+<div class="row gx-0">
+    <div class="col">
+        <h3 class="header_font sec_text_clr text-start">Comedy</h3>
+    </div>
+    <div class="row flex-row flex-nowrap horz_scroll gx-0">
+        {% for film in films %}
+        {% if "Comedy" in film.Genre %}
+        <div class="col-10 col-md-5 col-lg-4 col-xl-3 m-2">
+            <div class="card card-block grad_bg_invert">
+                <div class="row gx-0">
+                    <div class="col-5 gx-0">
+                        <img src="{{ film.Poster_Link }}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="col-7 gx-0 card-info vert_flow">
+                        <div class="card-body">
+                            <h5>{{ film.Series_Title }}</h5>
+                            <p class="card-text">
+                                IMDB Rating: {{ film.IMDB_Rating }}
+                            </p>
+                            <p class="card-text">
+                                {{ film.Genre }}
+                            </p>
+                            <p class="card-text">
+                                <span>{{ film.Star1 }}</span>, <span>{{ film.Star2 }}</span>
+                            </p>
+                            <p class="card-text d-none d-lg-block">
+                                Year:<span>{{ film.Released_Year }}</span> Runtime:<span>{{ film.Runtime }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <hr>
+        </div>
+    </div>
+</div>
+<!--Crime-->
+<div class="row gx-0">
+    <div class="col">
+        <h3 class="header_font sec_text_clr text-start">Crime</h3>
+    </div>
+    <div class="row flex-row flex-nowrap horz_scroll gx-0">
+        {% for film in films %}
+        {% if "Crime" in film.Genre %}
+        <div class="col-10 col-md-5 col-lg-4 col-xl-3 m-2">
+            <div class="card card-block grad_bg_invert">
+                <div class="row gx-0">
+                    <div class="col-5 gx-0">
+                        <img src="{{ film.Poster_Link }}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="col-7 gx-0 card-info vert_flow">
+                        <div class="card-body">
+                            <h5>{{ film.Series_Title }}</h5>
+                            <p class="card-text">
+                                IMDB Rating: {{ film.IMDB_Rating }}
+                            </p>
+                            <p class="card-text">
+                                {{ film.Genre }}
+                            </p>
+                            <p class="card-text">
+                                <span>{{ film.Star1 }}</span>, <span>{{ film.Star2 }}</span>
+                            </p>
+                            <p class="card-text d-none d-lg-block">
+                                Year:<span>{{ film.Released_Year }}</span> Runtime:<span>{{ film.Runtime }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <hr>
+        </div>
+    </div>
+</div>
+<!--Drama-->
+<div class="row gx-0">
+    <div class="col">
+        <h3 class="header_font sec_text_clr text-start">Drama</h3>
+    </div>
+    <div class="row flex-row flex-nowrap horz_scroll gx-0">
+        {% for film in films %}
+        {% if "Drama" in film.Genre %}
+        <div class="col-10 col-md-5 col-lg-4 col-xl-3 m-2">
+            <div class="card card-block grad_bg_invert">
+                <div class="row gx-0">
+                    <div class="col-5 gx-0">
+                        <img src="{{ film.Poster_Link }}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="col-7 gx-0 card-info vert_flow">
+                        <div class="card-body">
+                            <h5>{{ film.Series_Title }}</h5>
+                            <p class="card-text">
+                                IMDB Rating: {{ film.IMDB_Rating }}
+                            </p>
+                            <p class="card-text">
+                                {{ film.Genre }}
+                            </p>
+                            <p class="card-text">
+                                <span>{{ film.Star1 }}</span>, <span>{{ film.Star2 }}</span>
+                            </p>
+                            <p class="card-text d-none d-lg-block">
+                                Year:<span>{{ film.Released_Year }}</span> Runtime:<span>{{ film.Runtime }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <hr>
+        </div>
+    </div>
+</div>
+<!--Family-->
+<div class="row gx-0">
+    <div class="col">
+        <h3 class="header_font sec_text_clr text-start">Family</h3>
+    </div>
+    <div class="row flex-row flex-nowrap horz_scroll gx-0">
+        {% for film in films %}
+        {% if "Family" in film.Genre %}
+        <div class="col-10 col-md-5 col-lg-4 col-xl-3 m-2">
+            <div class="card card-block grad_bg_invert">
+                <div class="row gx-0">
+                    <div class="col-5 gx-0">
+                        <img src="{{ film.Poster_Link }}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="col-7 gx-0 card-info vert_flow">
+                        <div class="card-body">
+                            <h5>{{ film.Series_Title }}</h5>
+                            <p class="card-text">
+                                IMDB Rating: {{ film.IMDB_Rating }}
+                            </p>
+                            <p class="card-text">
+                                {{ film.Genre }}
+                            </p>
+                            <p class="card-text">
+                                <span>{{ film.Star1 }}</span>, <span>{{ film.Star2 }}</span>
+                            </p>
+                            <p class="card-text d-none d-lg-block">
+                                Year:<span>{{ film.Released_Year }}</span> Runtime:<span>{{ film.Runtime }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <hr>
+        </div>
+    </div>
+</div>
+<!--Fantasy-->
+<div class="row gx-0">
+    <div class="col">
+        <h3 class="header_font sec_text_clr text-start">Fantasy</h3>
+    </div>
+    <div class="row flex-row flex-nowrap horz_scroll gx-0">
+        {% for film in films %}
+        {% if "Fantasy" in film.Genre %}
+        <div class="col-10 col-md-5 col-lg-4 col-xl-3 m-2">
+            <div class="card card-block grad_bg_invert">
+                <div class="row gx-0">
+                    <div class="col-5 gx-0">
+                        <img src="{{ film.Poster_Link }}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="col-7 gx-0 card-info vert_flow">
+                        <div class="card-body">
+                            <h5>{{ film.Series_Title }}</h5>
+                            <p class="card-text">
+                                IMDB Rating: {{ film.IMDB_Rating }}
+                            </p>
+                            <p class="card-text">
+                                {{ film.Genre }}
+                            </p>
+                            <p class="card-text">
+                                <span>{{ film.Star1 }}</span>, <span>{{ film.Star2 }}</span>
+                            </p>
+                            <p class="card-text d-none d-lg-block">
+                                Year:<span>{{ film.Released_Year }}</span> Runtime:<span>{{ film.Runtime }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <hr>
+        </div>
+    </div>
+</div>
+<!--Horror-->
+<div class="row gx-0">
+    <div class="col">
+        <h3 class="header_font sec_text_clr text-start">Horror</h3>
+    </div>
+    <div class="row flex-row flex-nowrap horz_scroll gx-0">
+        {% for film in films %}
+        {% if "Horror" in film.Genre %}
+        <div class="col-10 col-md-5 col-lg-4 col-xl-3 m-2">
+            <div class="card card-block grad_bg_invert">
+                <div class="row gx-0">
+                    <div class="col-5 gx-0">
+                        <img src="{{ film.Poster_Link }}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="col-7 gx-0 card-info vert_flow">
+                        <div class="card-body">
+                            <h5>{{ film.Series_Title }}</h5>
+                            <p class="card-text">
+                                IMDB Rating: {{ film.IMDB_Rating }}
+                            </p>
+                            <p class="card-text">
+                                {{ film.Genre }}
+                            </p>
+                            <p class="card-text">
+                                <span>{{ film.Star1 }}</span>, <span>{{ film.Star2 }}</span>
+                            </p>
+                            <p class="card-text d-none d-lg-block">
+                                Year:<span>{{ film.Released_Year }}</span> Runtime:<span>{{ film.Runtime }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <hr>
+        </div>
+    </div>
+</div>
+<!--Romance-->
+<div class="row gx-0">
+    <div class="col">
+        <h3 class="header_font sec_text_clr text-start">Romance</h3>
+    </div>
+    <div class="row flex-row flex-nowrap horz_scroll gx-0">
+        {% for film in films %}
+        {% if "Romance" in film.Genre %}
+        <div class="col-10 col-md-5 col-lg-4 col-xl-3 m-2">
+            <div class="card card-block grad_bg_invert">
+                <div class="row gx-0">
+                    <div class="col-5 gx-0">
+                        <img src="{{ film.Poster_Link }}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="col-7 gx-0 card-info vert_flow">
+                        <div class="card-body">
+                            <h5>{{ film.Series_Title }}</h5>
+                            <p class="card-text">
+                                IMDB Rating: {{ film.IMDB_Rating }}
+                            </p>
+                            <p class="card-text">
+                                {{ film.Genre }}
+                            </p>
+                            <p class="card-text">
+                                <span>{{ film.Star1 }}</span>, <span>{{ film.Star2 }}</span>
+                            </p>
+                            <p class="card-text d-none d-lg-block">
+                                Year:<span>{{ film.Released_Year }}</span> Runtime:<span>{{ film.Runtime }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <hr>
+        </div>
+    </div>
+</div>
+<!--Sci-Fi-->
+<div class="row gx-0">
+    <div class="col">
+        <h3 class="header_font sec_text_clr text-start">Sci-Fi</h3>
+    </div>
+    <div class="row flex-row flex-nowrap horz_scroll gx-0">
+        {% for film in films %}
+        {% if "Sci-Fi" in film.Genre %}
+        <div class="col-10 col-md-5 col-lg-4 col-xl-3 m-2">
+            <div class="card card-block grad_bg_invert">
+                <div class="row gx-0">
+                    <div class="col-5 gx-0">
+                        <img src="{{ film.Poster_Link }}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="col-7 gx-0 card-info vert_flow">
+                        <div class="card-body">
+                            <h5>{{ film.Series_Title }}</h5>
+                            <p class="card-text">
+                                IMDB Rating: {{ film.IMDB_Rating }}
+                            </p>
+                            <p class="card-text">
+                                {{ film.Genre }}
+                            </p>
+                            <p class="card-text">
+                                <span>{{ film.Star1 }}</span>, <span>{{ film.Star2 }}</span>
+                            </p>
+                            <p class="card-text d-none d-lg-block">
+                                Year:<span>{{ film.Released_Year }}</span> Runtime:<span>{{ film.Runtime }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <hr>
+        </div>
+    </div>
+</div>
+<!--Western-->
+<div class="row gx-0">
+    <div class="col">
+        <h3 class="header_font sec_text_clr text-start">Western</h3>
+    </div>
+    <div class="row flex-row flex-nowrap horz_scroll gx-0">
+        {% for film in films %}
+        {% if "Western" in film.Genre %}  
+        <div class="col-10 col-md-5 col-lg-4 col-xl-3 m-2">
+            <div class="card card-block grad_bg_invert">
+                <div class="row gx-0">
+                    <div class="col-5 gx-0">
+                        <img src="{{ film.Poster_Link }}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="col-7 gx-0 card-info vert_flow">
+                        <div class="card-body">
+                            <h5>{{ film.Series_Title }}</h5>
+                            <p class="card-text">
+                                IMDB Rating: {{ film.IMDB_Rating }}
+                            </p>
+                            <p class="card-text">
+                                {{ film.Genre }}
+                            </p>
+                            <p class="card-text">
+                                <span>{{ film.Star1 }}</span>, <span>{{ film.Star2 }}</span>
+                            </p>
+                            <p class="card-text d-none d-lg-block">
+                                Year:<span>{{ film.Released_Year }}</span> Runtime:<span>{{ film.Runtime }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <hr>
+        </div>
+    </div>
 </div>
 {% endblock %}
