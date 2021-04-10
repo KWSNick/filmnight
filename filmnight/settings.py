@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'films',
+    'basket',
 
     # additional
     'crispy_forms',
@@ -76,6 +77,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request',  # Allauth Req.
+                'basket.contexts.basket_contents',  # Basket
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
