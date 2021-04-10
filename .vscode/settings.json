@@ -14,11 +14,13 @@
       "**/.hg": true,
       "**/CVS": true,
       "**/.DS_Store": true,
-      "**/.theia": true,
+      "**/.vscode": true,
       "**/core.Microsoft*": true,
       "**/core.mongo*": true,
       "**/core.python*": true
    },
-"emmet.extensionsPath": ".theia",
-"python.pythonPath": "/home/gitpod/.pyenv/versions/3.8.8/bin/python"
+   "files.autoSave": "off",
+   "workbench.colorTheme": "Visual Studio Dark",
+   "editor.defaultFormatter": "HookyQR.beautify",
+   "editor.formatOnSave": true
 }
