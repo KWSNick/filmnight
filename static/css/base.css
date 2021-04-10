@@ -150,6 +150,15 @@ a .card {
 @media (min-width: 576px) { 
 
 }
+
+@media (max-width: 767px) {
+
+    .width100 {
+        width: 100%;
+    }
+
+}
+
 @media (min-width: 768px) { 
 
     .navbar-toggler {
@@ -158,6 +167,10 @@ a .card {
 
     .form-control {
         width: 60%;
+    }
+
+    .height100 {
+        height: 100%;
     }
 
 }
@@ -176,9 +189,11 @@ a .card {
 }
 
 @media (max-width: 1199px) {
+    
     .card-body {
         padding: 0.25rem 0.25rem;
     }
+
 }
 
 @media (min-width: 1200px) {

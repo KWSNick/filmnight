@@ -2,8 +2,93 @@
 {% load static %}
 
 {% block content %}
-<h1>Filmpage</h1>
-
-{{ film.Series_Title }}
-
+<h2 class="header_font sec_text_clr">{{ film.Series_Title }}</h2>
+<div class="row gx-0 mt-5">
+    <div class="col-5 col-md-6 text-end">
+        <img src="{{ film.Poster_Link }}" class="height100 width100 me-md-5" alt="{{ film.Series_Title }} Poster">
+    </div>
+    <div class="col-7 col-md-6 text-start">
+        <p class="ms-3 me-md-3">
+            IMDB Rating: {{ film.IMDB_Rating }}
+        </p>
+        <p class="ms-3 me-md-3">
+            {{ film.Genre }}
+        </p>
+        <p class="ms-3 me-md-3">
+            Year:<span>{{ film.Released_Year }}</span>
+        </p>
+        <p class="ms-3 me-md-3">
+            Runtime:<span>{{ film.Runtime }}</span>
+        </p>
+        <p class="ms-3 me-md-3">
+            <span>{{ film.Star1 }}</span>, <span>{{ film.Star2 }}</span>, <span>{{ film.Star3 }}</span>, <span>{{ film.Star4 }}</span>
+        </p>
+        <p class="ms-3 me-md-3">
+            Director: <span>{{ film.Director }}</span>
+        </p>
+    </div>
+</div>
+<div class="row gx-0 mt-5">
+    <div class="col mx-3">
+        <p>{{ film.Overview }}</p>
+    </div>
+</div>
+<div class="row gx-0">
+    <form action="#" method="POST">
+        {% csrf_token %}
+        <div class="row gx-0">
+            <!--Digital Form Row-->
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-3">
+                        <label for="">Digital</label>
+                    </div>
+                    <div class="col-3">
+                        <span>Price Each</span>
+                    </div>
+                    <div class="col-3">
+                        <input name="dig_quantity" id="dig_quantity" value="1" min="1" max="1" type="number" disabled>
+                    </div>
+                    <div class="col-3">
+                        <span>Cost</span>
+                    </div>
+                </div>
+            </div>
+            <!--DVD Form Row-->
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-3">
+                        <label for="">DVD</label>
+                    </div>
+                    <div class="col-3">
+                        <span>Price Each</span>
+                    </div>
+                    <div class="col-3">
+                        <input name="dvd_quantity" id="dvd_quantity" value="0" min="0" max="10" type="number">
+                    </div>
+                    <div class="col-3">
+                        <span>Cost</span>
+                    </div>
+                </div>
+            </div>
+            <!--Bluray Form Row-->
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-3">
+                        <label for="">Bluray</label>
+                    </div>
+                    <div class="col-3">
+                        <span>Price Each</span>
+                    </div>
+                    <div class="col-3">
+                        <input name="br_quantity" id="br_quantity" value="0" min="0" max="10" type="number">
+                    </div>
+                    <div class="col-3">
+                        <span>Cost</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 {% endblock %}
