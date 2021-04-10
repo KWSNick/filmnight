@@ -8,6 +8,14 @@ body {
     font-family: 'Barlow Semi Condensed', sans-serif;
 }
 
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+}
+
 .header_font {
     font-family: 'Zilla Slab Highlight', cursive;
 }
@@ -79,6 +87,15 @@ body {
 /* Film card body overflow control */
 .vert_flow {
     overflow-y: hidden;
+}
+
+/* Film card body link style control */
+a .card {
+    color: #CCCCCC;
+}
+
+.no_underline {
+    text-decoration: none;
 }
 
 /* Crispy Forms Bootstrap4 Overrides */
