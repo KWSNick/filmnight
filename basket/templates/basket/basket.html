@@ -4,9 +4,13 @@
 {% block content %}
 <h2 class="header_font sec_text_clr">Shopping Basket</h2>
 {% if basket_items %}
+{{ delivery_test }}
 <div class="row gx-0">
     <div class="col text-end mt-auto">
         {% include 'basket/checkout_btns.html' %}
+        {% for price in prices %}
+        {{ price.cost_name }}
+        {% endfor %}
     </div>
     <div class="col-5 col-md-2 col-lg-1 text-end me-3 me-md-5">
         <h4 class="sec_text_clr">Subtotals</h4>

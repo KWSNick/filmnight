@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from films.models import film
+from .models import price_list
 
 # Create your views here.
 
@@ -8,9 +9,11 @@ def view_basket(request):
     """A view to see all items in the basket"""
 
     films = film.objects.all()
+    prices = price_list.objects.all()
 
     context = {
         'films': films,
+        'prices': prices,
     }
 
     return render(request, 'basket/basket.html', context)

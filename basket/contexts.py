@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
 from films.models import film
+from .models import price_list
 from decimal import Decimal, ROUND_DOWN
 
 
@@ -7,15 +8,21 @@ def basket_contents(request):
 
     basket_items = []
     basket = request.session.get('basket', {})
+    digital_cost_obj = get_object_or_404(price_list, cost_name='digital')
+    dvd_cost_obj = get_object_or_404(price_list, cost_name='dvd')
+    bluray_cost_obj = get_object_or_404(price_list, cost_name='bluray')
 
     for film_id in basket.items():
         film_id[1]['digital_total'] = 0
         film_id[1]['dvd_total'] = 0
         film_id[1]['br_total'] = 0
         Film = get_object_or_404(film, pk=film_id[0])
-        film_id[1]['digital_total'] += film_id[1]['digital'] * 3.99
-        film_id[1]['dvd_total'] += film_id[1]['dvd'] * 5.99
-        film_id[1]['br_total'] += film_id[1]['bluray'] * 7.99
+        film_id[1]['digital_total'] += film_id[1]['digital'] * float(
+                                                digital_cost_obj.cost_price)
+        film_id[1]['dvd_total'] += film_id[1]['dvd'] * float(
+                                                dvd_cost_obj.cost_price)
+        film_id[1]['br_total'] += film_id[1]['bluray'] * float(
+                                                bluray_cost_obj.cost_price)
         basket_items.append({
             'film_id': film_id[0],
             'film': Film,
@@ -33,8 +40,10 @@ def basket_contents(request):
         dvd_quantity += int(item['format_quantity']['dvd'])
         br_quantity += int(item['format_quantity']['bluray'])
 
+    delivery_object = get_object_or_404(price_list, cost_name='delivery')
+
     if dvd_quantity > 0 or br_quantity > 0:
-        delivery = 2.99
+        delivery = float(delivery_object.cost_price)
     else:
         delivery = 0.00
 
