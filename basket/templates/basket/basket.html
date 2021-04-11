@@ -5,7 +5,10 @@
 <h2 class="header_font sec_text_clr">Shopping Basket</h2>
 {% if basket_items %}
 <div class="row gx-0">
-    <div class="col text-end me-5">
+    <div class="col text-end mt-auto">
+        {% include 'basket/checkout_btns.html' %}
+    </div>
+    <div class="col-5 col-md-2 col-lg-1 text-end me-3 me-md-5">
         <h4 class="sec_text_clr">Subtotals</h4>
         <h5 class="d-inline sec_text_clr">Digtial:</h5> <span>£{{ digital_subtotal }}</span><br>
         <h5 class="d-inline sec_text_clr">DVD:</h5> <span>£{{ dvd_subtotal }}</span><br>
@@ -14,11 +17,11 @@
         <h3 class="d-inline sec_text_clr">Total:</h3> <span>£{{ grand_total }}</span><br>
     </div>
 </div>
-<div class="row gx-0">
+<div class="row gx-0 justify-content-center">
     {% for film in films %}
     {% for item in basket_items %}
     {% if film.id|add:"0" == item.film_id|add:"0" %}
-    <div class="col-12 col-md-5 col-lg-4 col-xl-3 m-2">
+    <div class="col-11 col-md-5 col-lg-4 col-xl-3 m-2">
         <a href="{% url 'filmpage' film.id %}" class="no_underline">
             <div class="card card-block grad_bg_invert">
                 <div class="row gx-0">
@@ -32,9 +35,9 @@
                                 <table>
                                     <thead>
                                         <th>Format</th>
-                                        <th>Price Each</th>
-                                        <th>Quantity</th>
-                                        <th>Subtotal</th>
+                                        <th>Unit</th>
+                                        <th>Qty.</th>
+                                        <th>ST.</th>
                                     </thead>
                                     <tr>
                                         <td>

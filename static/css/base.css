@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&family=Zilla+Slab+Highlight&display=swap');
 
-body, html {
+body,
+html {
     height: 100%;
 }
 
@@ -77,12 +78,15 @@ header {
 /* Horizontal scroll for films with no scrollbar */
 .horz_scroll {
     overflow-x: scroll;
-    -ms-overflow-style: none;  /* IE and Edge scrollbar removal */
-    scrollbar-width: none; /* Firefox scrollbar removal */
+    -ms-overflow-style: none;
+    /* IE and Edge scrollbar removal */
+    scrollbar-width: none;
+    /* Firefox scrollbar removal */
 }
 
 .horz_scroll::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera scrollbar removal */
+    display: none;
+    /* Chrome, Safari and Opera scrollbar removal */
 }
 
 /* Film card body overflow control */
@@ -97,6 +101,12 @@ a .card {
 
 .no_underline {
     text-decoration: none;
+}
+
+/* Card body table styling */
+
+.card-body table {
+    width: 100%;
 }
 
 /* Crispy Forms Bootstrap4 Overrides */
@@ -123,7 +133,7 @@ a .card {
     color: #ff1919;
     border: 0px;
     margin-bottom: 0.75rem;
-    float: none!important;
+    float: none !important;
 }
 
 /* Bootstrap Overrides */
@@ -147,9 +157,7 @@ a .card {
 
 /* Bootstrap Breakpoints */
 
-@media (min-width: 576px) { 
-
-}
+@media (min-width: 576px) {}
 
 @media (max-width: 767px) {
 
@@ -159,7 +167,7 @@ a .card {
 
 }
 
-@media (min-width: 768px) { 
+@media (min-width: 768px) {
 
     .navbar-toggler {
         margin-right: 2rem;
@@ -175,11 +183,11 @@ a .card {
 
 }
 
-@media (min-width: 992px) { 
-    
+@media (min-width: 992px) {
+
     .navbar-nav {
-        margin-right: 0!important;
-        margin-left: auto!important;
+        margin-right: 0 !important;
+        margin-left: auto !important;
     }
 
     .form-control {
@@ -189,7 +197,7 @@ a .card {
 }
 
 @media (max-width: 1199px) {
-    
+
     .card-body {
         padding: 0.25rem 0.25rem;
     }
@@ -197,13 +205,11 @@ a .card {
 }
 
 @media (min-width: 1200px) {
-    
+
     .form-control {
         width: 30%;
     }
 
 }
 
-@media (min-width: 1400px) { 
-
-}
+@media (min-width: 1400px) {}

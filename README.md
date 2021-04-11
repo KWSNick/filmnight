@@ -451,6 +451,8 @@ The parallax background code was inspired by W3Schools tutorial https://www.w3sc
 The manipulation of the json data file within fixtures was aided with tutorials found [Kite](https://www.kite.com/python/answers/how-to-append-to-a-json-file-in-python)
 and also [Real Python](https://realpython.com/python-json/)
 
+The use of python decimal was aided by Jackie Kazil's [GistHub Readme]https://gist.github.com/jackiekazil/6201722
+
 ## Content
 ### [Kaggle IMDB Movies Dataset](https://www.kaggle.com/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows)
 The data used to create the movie database for this project came from a [Kaggle](https://www.kaggle.com/) Dataset 
