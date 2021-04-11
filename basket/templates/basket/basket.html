@@ -4,7 +4,6 @@
 {% block content %}
 <h2 class="header_font sec_text_clr">Shopping Basket</h2>
 {% if basket_items %}
-{{ delivery_test }}
 <div class="row gx-0">
     <div class="col text-end mt-auto">
         {% include 'basket/checkout_btns.html' %}
@@ -44,37 +43,37 @@
                                         <td>
                                             <h6>Digital</h6>
                                         </td>
-                                        <td>{% for price in prices %}
-                                            {% if price.cost_name == 'digital' %}
-                                            {{ price.cost_price }}
-                                            {% endif %}
-                                            {% endfor %}</td>
+                                        <td>£<span>{% for price in prices %}
+                                                {% if price.cost_name == 'digital' %}
+                                                {{ price.cost_price }}
+                                                {% endif %}
+                                                {% endfor %}</span></td>
                                         <td>{{ item.format_quantity.digital }}</td>
-                                        <td>{{ item.format_total_cost.digital_total }}</td>
+                                        <td>£<span>{{ item.format_total_cost.digital_total }}</span></td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <h6>DVD</h6>
                                         </td>
-                                        <td>{% for price in prices %}
-                                            {% if price.cost_name == 'dvd' %}
-                                            {{ price.cost_price }}
-                                            {% endif %}
-                                            {% endfor %}</td>
+                                        <td>£<span>{% for price in prices %}
+                                                {% if price.cost_name == 'dvd' %}
+                                                {{ price.cost_price }}
+                                                {% endif %}
+                                                {% endfor %}</span></td>
                                         <td>{{ item.format_quantity.dvd }}</td>
-                                        <td>{{ item.format_total_cost.dvd_total }}</td>
+                                        <td>£<span>{{ item.format_total_cost.dvd_total }}</span></td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <h6>Bluray</h6>
                                         </td>
-                                        <td>{% for price in prices %}
-                                            {% if price.cost_name == 'bluray' %}
-                                            {{ price.cost_price }}
-                                            {% endif %}
-                                            {% endfor %}</td>
+                                        <td>£<span>{% for price in prices %}
+                                                {% if price.cost_name == 'bluray' %}
+                                                {{ price.cost_price }}
+                                                {% endif %}
+                                                {% endfor %}</span></td>
                                         <td>{{ item.format_quantity.bluray }}</td>
-                                        <td>{{ item.format_total_cost.br_total }}</td>
+                                        <td>£<span>{{ item.format_total_cost.br_total }}</span></td>
                                     </tr>
                                 </table>
                             </p>

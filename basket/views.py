@@ -30,8 +30,8 @@ def add_to_basket(request, film_id):
 
     if film_id in list(basket.keys()):
         basket[film_id]['digital'] = 1
-        basket[film_id]['dvd'] += dig_quantity
-        basket[film_id]['bluray'] += br_quantity
+        basket[film_id]['dvd'] = dvd_quantity
+        basket[film_id]['bluray'] = br_quantity
     else:
         basket[film_id] = {'digital': dig_quantity,
                            'dvd': dvd_quantity,

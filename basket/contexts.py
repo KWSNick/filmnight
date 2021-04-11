@@ -29,9 +29,15 @@ def basket_contents(request):
             'format_quantity': {'digital': film_id[1]['digital'],
                                 'dvd': film_id[1]['dvd'],
                                 'bluray': film_id[1]['bluray']},
-            'format_total_cost': {'digital_total': film_id[1]['digital_total'],
-                                  'dvd_total': film_id[1]['dvd_total'],
-                                  'br_total': film_id[1]['br_total']}
+            'format_total_cost': {'digital_total': Decimal(
+                                        film_id[1]['digital_total']).quantize(
+                                        Decimal('1.00'), rounding=ROUND_DOWN),
+                                  'dvd_total': Decimal(
+                                        film_id[1]['dvd_total']).quantize(
+                                        Decimal('1.00'), rounding=ROUND_DOWN),
+                                  'br_total': Decimal(
+                                        film_id[1]['br_total']).quantize(
+                                        Decimal('1.00'), rounding=ROUND_DOWN)}
         })
 
     dvd_quantity = 0
@@ -63,10 +69,14 @@ def basket_contents(request):
 
     context = {
         'basket_items': basket_items,
-        'digital_subtotal': digital_subtotal,
-        'dvd_subtotal': dvd_subtotal,
-        'br_subtotal': br_subtotal,
-        'total': total,
+        'digital_subtotal': Decimal(digital_subtotal).quantize(
+                                        Decimal('1.00'), rounding=ROUND_DOWN),
+        'dvd_subtotal': Decimal(dvd_subtotal).quantize(
+                                        Decimal('1.00'), rounding=ROUND_DOWN),
+        'br_subtotal': Decimal(br_subtotal).quantize(
+                                        Decimal('1.00'), rounding=ROUND_DOWN),
+        'total': Decimal(total).quantize(
+                                        Decimal('1.00'), rounding=ROUND_DOWN),
         'delivery': delivery,
         'grand_total': grand_total,
     }
