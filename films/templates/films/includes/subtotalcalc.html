@@ -1,0 +1,18 @@
+<script type="text/javascript">
+    let digital_subtotal = parseFloat($('#digital_unit_price').html());
+    $('#digital_subtotal').html(digital_subtotal.toFixed(2));
+
+    function brSubtotalCalc() {
+        let price_each = parseFloat($('#br_unit_price').html());
+        let quantity = parseInt($('#br_quantity').val());
+        let br_subtotal = price_each * quantity;
+        $('#br_subtotal').html(br_subtotal.toFixed(2));
+    }
+
+    function dvdSubtotalCalc() {
+        let price_each = parseFloat($('#dvd_unit_price').html());
+        let quantity = parseInt($('#dvd_quantity').val());
+        let dvd_subtotal = price_each * quantity;
+        $('#dvd_subtotal').html(dvd_subtotal.toFixed(2));
+    }
+</script>
