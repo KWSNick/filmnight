@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
 from films.models import film
+from decimal import Decimal, ROUND_DOWN
 
 
 def basket_contents(request):
@@ -48,7 +49,8 @@ def basket_contents(request):
 
     total = digital_subtotal + dvd_subtotal + br_subtotal
 
-    grand_total = delivery + total
+    grand_total = Decimal(delivery + total).quantize(
+                                        Decimal('1.00'), rounding=ROUND_DOWN)
 
     context = {
         'basket_items': basket_items,

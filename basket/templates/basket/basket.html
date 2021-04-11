@@ -15,56 +15,61 @@
     </div>
 </div>
 <div class="row gx-0">
-    {{ basket_items }}
     {% for film in films %}
-        {% for item in basket_items %}
-            {% if film.id|add:"0" == item.film_id|add:"0" %}
-            <div class="col-10 col-md-5 col-lg-4 col-xl-3 m-2">
-                <a href="{% url 'filmpage' film.id %}" class="no_underline">
-                    <div class="card card-block grad_bg_invert">
-                        <div class="row gx-0">
-                            <div class="col-5 gx-0">
-                                <img src="{{ film.Poster_Link }}" class="card-img-top" alt="{{ film.Series_Title }} Poster">
-                            </div>
-                            <div class="col-7 gx-0 card-info">
-                                <div class="card-body">
-                                    <h5>{{ film.Series_Title }}</h5>
-                                    <p class="card-text">
-                                        <table>
-                                            <thead>
-                                                <th>Format</th>
-                                                <th>Price Each</th>
-                                                <th>Quantity</th>
-                                                <th>Subtotal</th>
-                                            </thead>
-                                            <tr>
-                                                <td><h6>Digital</h6></td>
-                                                <td>£3.99</td>
-                                                <td>{{ item.format_quantity.digital }}</td>
-                                                <td>{{ item.format_total_cost.digital_total }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><h6>DVD</h6></td>
-                                                <td>£5.99</td>
-                                                <td>{{ item.format_quantity.dvd }}</td>
-                                                <td>{{ item.format_total_cost.dvd_total }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><h6>Bluray</h6></td>
-                                                <td>£7.99</td>
-                                                <td>{{ item.format_quantity.bluray }}</td>
-                                                <td>{{ item.format_total_cost.br_total }}</td>
-                                            </tr>
-                                        </table>
-                                    </p>
-                                </div>
-                            </div>
+    {% for item in basket_items %}
+    {% if film.id|add:"0" == item.film_id|add:"0" %}
+    <div class="col-12 col-md-5 col-lg-4 col-xl-3 m-2">
+        <a href="{% url 'filmpage' film.id %}" class="no_underline">
+            <div class="card card-block grad_bg_invert">
+                <div class="row gx-0">
+                    <div class="col-5 gx-0">
+                        <img src="{{ film.Poster_Link }}" class="card-img-top" alt="{{ film.Series_Title }} Poster">
+                    </div>
+                    <div class="col-7 gx-0 card-info">
+                        <div class="card-body">
+                            <h5>{{ film.Series_Title }}</h5>
+                            <p class="card-text">
+                                <table>
+                                    <thead>
+                                        <th>Format</th>
+                                        <th>Price Each</th>
+                                        <th>Quantity</th>
+                                        <th>Subtotal</th>
+                                    </thead>
+                                    <tr>
+                                        <td>
+                                            <h6>Digital</h6>
+                                        </td>
+                                        <td>£3.99</td>
+                                        <td>{{ item.format_quantity.digital }}</td>
+                                        <td>{{ item.format_total_cost.digital_total }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h6>DVD</h6>
+                                        </td>
+                                        <td>£5.99</td>
+                                        <td>{{ item.format_quantity.dvd }}</td>
+                                        <td>{{ item.format_total_cost.dvd_total }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h6>Bluray</h6>
+                                        </td>
+                                        <td>£7.99</td>
+                                        <td>{{ item.format_quantity.bluray }}</td>
+                                        <td>{{ item.format_total_cost.br_total }}</td>
+                                    </tr>
+                                </table>
+                            </p>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
-            {% endif %}
-        {% endfor %}
+        </a>
+    </div>
+    {% endif %}
+    {% endfor %}
     {% endfor %}
 </div>
 {% else %}
