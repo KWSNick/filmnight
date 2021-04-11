@@ -8,9 +8,6 @@
 <div class="row gx-0">
     <div class="col text-end mt-auto">
         {% include 'basket/checkout_btns.html' %}
-        {% for price in prices %}
-        {{ price.cost_name }}
-        {% endfor %}
     </div>
     <div class="col-5 col-md-2 col-lg-1 text-end me-3 me-md-5">
         <h4 class="sec_text_clr">Subtotals</h4>
@@ -47,7 +44,11 @@
                                         <td>
                                             <h6>Digital</h6>
                                         </td>
-                                        <td>£3.99</td>
+                                        <td>{% for price in prices %}
+                                            {% if price.cost_name == 'digital' %}
+                                            {{ price.cost_price }}
+                                            {% endif %}
+                                            {% endfor %}</td>
                                         <td>{{ item.format_quantity.digital }}</td>
                                         <td>{{ item.format_total_cost.digital_total }}</td>
                                     </tr>
@@ -55,7 +56,11 @@
                                         <td>
                                             <h6>DVD</h6>
                                         </td>
-                                        <td>£5.99</td>
+                                        <td>{% for price in prices %}
+                                            {% if price.cost_name == 'dvd' %}
+                                            {{ price.cost_price }}
+                                            {% endif %}
+                                            {% endfor %}</td>
                                         <td>{{ item.format_quantity.dvd }}</td>
                                         <td>{{ item.format_total_cost.dvd_total }}</td>
                                     </tr>
@@ -63,7 +68,11 @@
                                         <td>
                                             <h6>Bluray</h6>
                                         </td>
-                                        <td>£7.99</td>
+                                        <td>{% for price in prices %}
+                                            {% if price.cost_name == 'bluray' %}
+                                            {{ price.cost_price }}
+                                            {% endif %}
+                                            {% endfor %}</td>
                                         <td>{{ item.format_quantity.bluray }}</td>
                                         <td>{{ item.format_total_cost.br_total }}</td>
                                     </tr>
