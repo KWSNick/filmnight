@@ -3,6 +3,9 @@
     //Functions to handle enabling/disabling buttons for each format type
     function handleMinMaxBR() {
         let currentValue = parseInt($('#br_quantity').val());
+        if (currentValue == "") {
+            $('#br_quantity').val(0);
+        }
         let minusDisabled = currentValue < 1;
         let plusDisabled = currentValue > 9;
         $('#br_quantity').siblings('.input-group-prepend').children('.dec-qty').prop('disabled', minusDisabled);
