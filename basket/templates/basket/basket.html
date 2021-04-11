@@ -22,8 +22,9 @@
     {% for item in basket_items %}
     {% if film.id|add:"0" == item.film_id|add:"0" %}
     <div class="col-11 col-md-5 col-lg-4 col-xl-3 m-2">
-        <a href="{% url 'filmpage' film.id %}" class="no_underline">
-            <div class="card card-block grad_bg_invert">
+
+        <div class="card card-block grad_bg_invert">
+            <a href="{% url 'filmpage' film.id %}" class="no_underline">
                 <div class="row gx-0">
                     <div class="col-5 gx-0">
                         <img src="{{ film.Poster_Link }}" class="card-img-top" alt="{{ film.Series_Title }} Poster">
@@ -80,8 +81,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </a>
+            </a>
+            <button id="remove_{{ film.id }}" class="remove_film btn btn-danger">Remove</button>
+        </div>
+
     </div>
     {% endif %}
     {% endfor %}
@@ -90,4 +93,8 @@
 {% else %}
 <p>No Items in Basket</p>
 {% endif %}
+{% endblock %}
+
+{% block addPost_js %}
+{% include 'basket/includes/remove.html' %}
 {% endblock %}

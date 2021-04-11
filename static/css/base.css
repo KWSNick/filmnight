@@ -95,7 +95,7 @@ header {
 }
 
 /* Film card body link style control */
-a .card {
+.card a {
     color: #CCCCCC;
 }
 

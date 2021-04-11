@@ -1,0 +1,15 @@
+<script type="text/javascript">
+    $('.remove_film').click(function (e) {
+        let csrfToken = "{{ csrf_token }}";
+        let filmId = $(this).attr('id').split('remove_')[1];
+        let url = `remove/${filmId}/`;
+        let data = {
+            'csrfmiddlewaretoken': csrfToken,
+        }
+
+        $.post(url, data)
+            .done(function () {
+                location.reload();
+            });
+    });
+</script>

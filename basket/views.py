@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from films.models import film
 from .models import price_list
 
@@ -39,3 +39,16 @@ def add_to_basket(request, film_id):
 
     request.session['basket'] = basket
     return redirect(redirect_url)
+
+
+def remove_from(request, film_id):
+    """Remove the item from the basket"""
+
+    try:
+        basket = request.session.get('basket', {})
+        print(basket)
+        basket.pop(film_id)
+        request.session['basket'] = basket
+        return HttpResponse(status=200)
+    except Exception as e:
+        return HttpResponse(status=500)
