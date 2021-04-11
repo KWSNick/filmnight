@@ -44,7 +44,7 @@
                         </button>
                     </div>
                     <input class="qty_input" name="dvd_quantity" id="dvd_quantity" data-item_id="dvd_{{ film.id }}"
-                        value="{% for item in basket_items %}{% if film.id|add:'0' == item.film_id|add:'0' %}{{ item.format_quantity.dvd }}{% endif %}{% if forloop.last %}0{% endif %}{% endfor %}"
+                        value="{% for item in basket_items %}{% if film.id|add:'0' == item.film_id|add:'0' %}{{ item.format_quantity.dvd }}{% endif %}{% endfor %}"
                         min="0" max="10" type="number">
                     <div class="input-group-append me-auto ms-2">
                         <button class="inc-qty btn btn-secondary" data-item_id="dvd_{{ film.id }}"
@@ -77,7 +77,7 @@
                         </button>
                     </div>
                     <input class="qty_input" data-item_id="bluray_{{ film.id }}" name="br_quantity" id="br_quantity"
-                        value="{% for item in basket_items %}{% if film.id|add:'0' == item.film_id|add:'0' %}{{ item.format_quantity.bluray }}{% endif %}{% if forloop.last %}0{% endif %}{% endfor %}"
+                        value="{% for item in basket_items %}{% if film.id|add:'0' == item.film_id|add:'0' %}{{ item.format_quantity.bluray }}{% endif %}{% endfor %}"
                         min="0" max="10" type="number">
                     <div class="input-group-append me-auto ms-2">
                         <button class="inc-qty btn btn-secondary" data-item_id="bluray_{{ film.id }}"
