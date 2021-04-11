@@ -8,7 +8,15 @@
 {% block content %}
 
 <h1 class="header_font sec_text_clr">{% trans "Sign In" %}</h1>
-
+<div class="rol gx-0">
+  <div class="col">
+    <p>Film Night offers top rated titles with no monthly subscription!</p>
+    <p>Only pay for what you want to watch. Stream films instantly online and purchase hard copies for your collection!
+    </p>
+    <p>Create a <a href="{% url 'account_signup' %}" class="sec_text_clr">FREE ACCOUNT</a> to access Film Night, or Sign
+      In below.</p>
+  </div>
+</div>
 <form class="login mb-2" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
   {{ form|crispy }}
@@ -16,15 +24,16 @@
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
   <button class="primaryAction btn btn-success btn-lg mb-2" type="submit">{% trans "Sign In" %}</button><br>
-  <a class="button secondaryAction sec_text_clr" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+  <a class="button secondaryAction sec_text_clr"
+    href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
 </form>
 
 {% get_providers as socialaccount_providers %}
 
 {% if socialaccount_providers %}
 <p>{% blocktrans with site.name as site_name %}Please sign in with one
-of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+  of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+  for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
 <div class="socialaccount_ballot">
 
@@ -40,7 +49,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
 {% else %}
 <p class="centerAndWidth">{% blocktrans %}If you have not created an account yet, then please
-<a class="sec_text_clr" href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+  <a class="sec_text_clr" href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 {% endif %}
 
 {% endblock %}
