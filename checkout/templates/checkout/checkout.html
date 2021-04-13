@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <form action="#">
+            <fieldset>
+                <legend>Recipient Details</legend>
+                {{ order_form.first_name|as_crispy_field }}
+                {{ order_form.last_name|as_crispy_field }}
+                {{ order_form.email|as_crispy_field }}
+                {{ order_form.phone_number|as_crispy_field }}
+            </fieldset>
+            <fieldset>
+                <legend>Delivery Address</legend>
+                {{ order_form.delivery_add1|as_crispy_field }}
+                {{ order_form.delivery_add2|as_crispy_field }}
+                {{ order_form.delivery_town|as_crispy_field }}
+                {{ order_form.delivery_county|as_crispy_field }}
+                {{ order_form.delivery_postcode|as_crispy_field }}
+                {{ order_form.delivery_country|as_crispy_field }}
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% endblock %}
