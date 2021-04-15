@@ -12,8 +12,8 @@ import json
 
 
 def checkout(request):
-    stripe_public_key = settings.STRIPE_PUBLIC_KEY,
-    stripe_secret_key = settings.STRIPE_SECRET_KEY,
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
     basket = request.session.get('basket', {})
     if not basket:
         messages.error(request, 'Your shopping basket is empty')

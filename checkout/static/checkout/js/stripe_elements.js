@@ -5,19 +5,20 @@ let stripe = Stripe(stripePublicKey);
 let elements = stripe.elements();
 
 let cardStyle = {
-    base = {
+    base: {
         color: '#CCCCCC',
         fontFamily: '"Barlow Semi Condensed", sans-serif',
-    }
-    invalid = {
+    },
+    invalid: {
         color: '#ff1919',
     }
-}
+};
 
 let card = elements.create('card', {
     style: cardStyle
 });
 card.mount('#stripe_card');
+$('#stripe_card').addClass('form-control');
 
 // Handle card validation errors
 // Based on Ci Boutique Ado script
