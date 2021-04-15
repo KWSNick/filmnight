@@ -416,6 +416,7 @@ these packages will be installed in advance, however should you wish to duplicat
 - asgiref==3.3.1
 - Django==3.1.7
 - django-allauth==0.44.0
+- django-countries==7.1
 - django-crispy-forms==1.11.2
 - oauthlib==3.1.0
 - PyJWT==2.0.1
@@ -423,6 +424,7 @@ these packages will be installed in advance, however should you wish to duplicat
 - pytz==2021.1
 - requests-oauthlib==1.3.0
 - sqlparse==0.4.1
+- stripe==2.56.0
 
 The majority of these packages are installed as standard when Django is installed using pip. Freeze the requirements into a requirements.txt 
 file if a new instance of the project is create using the terminal command pip3 freeze > requirements.txt.
@@ -435,6 +437,8 @@ The environment variables were stored in the OS of both the development environm
 |---------|------|
 |DEVELOPMENT| True (Development Environment Only)/ False |
 |SECRET_KEY | <YOUR_KEY> |
+|STRIPE_PUBLIC_KEY| pk_test_51ISIjdJKzBnf14eftOwBmvbAcDGXaTHCQwZL5XYPCTRJQMvzNoNgNanwrTqO7Iqo3D86nPJ8sCFPPVfBj47ORQcN00Eg9cwcZ7 |
+|STRIPE_SECRET_KEY| <YOUR_KEY> |
 
 ## Database
 *Requires Content*
