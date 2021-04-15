@@ -14,6 +14,7 @@ class OrderForm(forms.ModelForm):
         """Add placeholders and classes, remove auto labels,
         set autofocus on field 1. BAsed on CI Boutique Ado
         module."""
+        super().__init__(*args, **kwargs)
         placeholders = {
             'first_name': 'First Name',
             'last_name': 'Surname',

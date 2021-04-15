@@ -20,7 +20,27 @@
                 {{ order_form.delivery_county|as_crispy_field }}
                 {{ order_form.delivery_postcode|as_crispy_field }}
                 {{ order_form.delivery_country|as_crispy_field }}
+                <label class="form-check-label" for="id-save-info">Save this delivery address?</label>
+                <input class="form-check-input" type="checkbox" id="save_delivery" name="save_delivery" checked>
             </fieldset>
+            <fieldset>
+                <legend>Card Details</legend>
+                <!--Stripe here-->
+                <div class="sec_text_clr" id="card_messages">
+                    <!--Show card errors here-->
+                </div>
+            </fieldset>
+            <div class="submission">
+                <a href="{% url 'view_basket' %}" class="btn btn-lg btn-secondary"><span class="icon">
+                        <i class="fas fa-chevron-left"></i>
+                    </span> Adjust Basket
+                </a>
+                <button type="submit" class="btn btn-lg btn-success"><span class="icon">
+                        <i class="fas fa-credit-card"></i>
+                    </span> Buy Now!
+                </button>
+                <p>£{{ grand_total }} will be charged to your card.</p>
+            </div>
         </form>
     </div>
 </div>

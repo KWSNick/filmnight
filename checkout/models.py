@@ -1,4 +1,5 @@
 import uuid
+
 from django.db import models
 from django_countries.fields import CountryField
 from profiles.models import users
@@ -20,7 +21,7 @@ class Order(models.Model):
     delivery_county = models.CharField(max_length=80, null=True, blank=True)
     delivery_postcode = models.CharField(max_length=40, null=True, blank=True)
     delivery_country = CountryField(
-        blank_label='Country_*', null=False, blank=False)
+        blank_label='Country*', null=False, blank=False)
     date = models.DateTimeField(auto_now_add=True)
     delivery_charge = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, default=0)
@@ -29,20 +30,17 @@ class Order(models.Model):
     total_charge = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0)
 
+    def order_no(self):
+        """Generates a random unique order no
+        based on CI Boutique Ado project"""
+        return uuid.uuid4().hex.upper()
 
-def order_no(self):
-    """Generates a random unique order no
-    based on CI Boutique Ado project"""
-    return uuid.uuid4().hex.upper()
+    def save(self, *args, **kwargs):
+        """Override the save method so the order
+        number can be set, if it doesn't exist"""
+        if not self.order_number:
+            self.order_number = self.order_no()
+        super().save(*args, **kwargs)
 
-
-def save(self, *args, **kwargs):
-    """Override the save method so the order
-    number can be set, if it doesn't exist"""
-    if not self.order_number:
-        self.order_number = self.order_no()
-    super().save(*args, **kwargs)
-
-
-def __str__(self):
-    return self.order_number
+    def __str__(self):
+        return self.order_number
