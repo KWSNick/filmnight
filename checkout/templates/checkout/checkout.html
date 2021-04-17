@@ -8,7 +8,7 @@
 {% block content %}
 <div class="row">
     <div class="col">
-        <form action="#">
+        <form action="{% url 'checkout' %}" method="POST" id="checkout_form">
             <fieldset>
                 <legend>Recipient Details</legend>
                 {{ order_form.first_name|as_crispy_field }}
@@ -40,7 +40,7 @@
                         <i class="fas fa-chevron-left"></i>
                     </span> Adjust Basket
                 </a>
-                <button type="submit" class="btn btn-lg btn-success"><span class="icon">
+                <button id="submit_checkout" type="submit" class="btn btn-lg btn-success"><span class="icon">
                         <i class="fas fa-credit-card"></i>
                     </span> Buy Now!
                 </button>
