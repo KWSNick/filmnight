@@ -105,6 +105,7 @@ form.submit(function (event) {
                 }
             }
         }).then(function (result) {
+            console.log(result)
             if (result.error) {
                 let errorDiv = $('#card_messages');
                 let html = `

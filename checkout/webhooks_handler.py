@@ -24,7 +24,6 @@ class StripeWH_Handler:
         save_billing = intent.metadata.save_billing
         billing_details = intent.charges.data[0].billing_details
         shipping_details = intent.charges.data[0].shipping
-        print(shipping_details.address)
         grand_total = round(intent.charges.data[0].amount /100, 2)
 
         for key, value in shipping_details.address.items():

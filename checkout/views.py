@@ -25,7 +25,6 @@ def cache_checkout_data(request):
             'save_billing': request.POST.get('save_billing'),
             'username': request.user,
         })
-        messages.success(request, 'cache_checkout_data success')
         return HttpResponse(status=200)
     except Exception as e:
         messages.error(request,
