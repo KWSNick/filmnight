@@ -1,0 +1,29 @@
+[{
+    "pk": 1,
+    "model": "basket.price_list",
+    "fields": {
+        "cost_name": "delivery",
+        "cost_price": 2.99
+    }
+}, {
+    "pk": 2,
+    "model": "basket.price_list",
+    "fields": {
+        "cost_name": "digital",
+        "cost_price": 3.99
+    }
+}, {
+    "pk": 3,
+    "model": "basket.price_list",
+    "fields": {
+        "cost_name": "dvd",
+        "cost_price": 5.99
+    }
+}, {
+    "pk": 4,
+    "model": "basket.price_list",
+    "fields": {
+        "cost_name": "bluray",
+        "cost_price": 7.99
+    }
+}]
