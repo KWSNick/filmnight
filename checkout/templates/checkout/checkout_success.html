@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h2 class="header_font sec_text_clr">Order Summary</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <p>{{ order.order_number }}</p>
+        <p>{{ order.date }}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <p>{{ order.basket }}</p>
+    </div>
+</div>
+{% endblock %}

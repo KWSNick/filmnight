@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 
@@ -13,10 +14,31 @@ import json
 # Create your views here.
 
 
+def cache_checkout_data(request):
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata={
+            'basket': json.dumps(request.session.get('basket', {})),
+            'save_delivery': request.POST.get('save_delivery'),
+            'save_billing': request.POST.get('save_billing'),
+            'username': request.user,
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'Your payment cannot be processed, please try again later.')
+        return HttpResponse(content=e, status=400)
+
+
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     basket = request.session.get('basket', {})
+    
+    current_basket = basket_contents(request)
+    delivery = current_basket['delivery']
+    order_total = current_basket['total']
+    total = current_basket['grand_total']
 
     if not basket:
         messages.error(request, 'Your shopping basket is empty')
@@ -50,11 +72,16 @@ def checkout(request):
             'billing_county': request.POST['billing_county'],
             'billing_postcode': request.POST['billing_postcode'],
             'billing_country': request.POST['billing_country'],
-            'basket': basket,
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order_form.save()
+            order_form.save(commit=False)
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.basket = json.dumps(basket)
+            order.delivery_charge = delivery
+            order.order_charge = order_total
+            order.total_charge = total
             request.session['save_delivery'] = 'save_delivery' in request.POST
             request.session['save_billing'] = 'save_billing' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
@@ -62,8 +89,6 @@ def checkout(request):
             messages.error(request, "Error detected in your details.\
                 correct to process your order.")
 
-    current_basket = basket_contents(request)
-    total = current_basket['grand_total']
     stripe_total = round(total * 100)  # stripe req. integer
     stripe.api_key = stripe_secret_key
     intent = stripe.PaymentIntent.create(
@@ -71,7 +96,6 @@ def checkout(request):
         currency=settings.STRIPE_CURRENCY,
     )
     order_form = OrderForm()
-    print(order_form)
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,

@@ -39,6 +39,7 @@ class Order(models.Model):
         max_digits=10, decimal_places=2, null=False, default=0)
     total_charge = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0)
+    stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
 
     def order_no(self):
         """Generates a random unique order no
