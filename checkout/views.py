@@ -40,6 +40,8 @@ def checkout(request):
             'billing_country': request.POST['billing_country'],
         }
 
+    order_form = OrderForm(form_data)
+
     current_basket = basket_contents(request)
     total = current_basket['grand_total']
     stripe_total = round(total * 100)  # stripe req. integer

@@ -32,6 +32,7 @@ class Order(models.Model):
     billing_country = CountryField(
         blank_label='Country*', null=False, blank=False, default='GB')
     date = models.DateTimeField(auto_now_add=True)
+    basket = models.TextField(null=False, blank=False, default='')
     delivery_charge = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, default=0)
     order_charge = models.DecimalField(
