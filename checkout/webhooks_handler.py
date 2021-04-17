@@ -1,4 +1,7 @@
 from django.http import HttpResponse
+from .models import Order
+
+import time
 
 class StripeWH_Handler:
     """Handle stripe webhooks"""
@@ -15,21 +18,21 @@ class StripeWH_Handler:
     def handle_payment_intent_succeeded(self, event):
         """Handle an unknown event"""
         intent = event.data.object
-        print(intent)
-        pid = intent.id 
+        pid = intent.id
         basket = intent.metadata.basket
         save_delivery = intent.metadata.save_delivery
         save_billing = intent.metadata.save_billing
         billing_details = intent.charges.data[0].billing_details
-        shipping_details = intent.shipping
+        shipping_details = intent.charges.data[0].shipping
+        print(shipping_details.address)
         grand_total = round(intent.charges.data[0].amount /100, 2)
 
-        for field, value in  shipping_details.address.items:
+        for key, value in shipping_details.address.items():
             if value == "":
-                shipping_details.address[field] = None
-        for field, value in  billing_details.address.items:
+                shipping_details.address[key] = None
+        for key, value in billing_details.address.items():
             if value == "":
-                billing_details.address[field] = None
+                billing_details.address[key] = None
 
         order_exists = False
         attempt = 1
@@ -43,7 +46,7 @@ class StripeWH_Handler:
                     billing_add1__iexact=billing_details.address.line1,
                     billing_add2__iexact=billing_details.address.line2,
                     billing_county__iexact=billing_details.address.state,
-                    grand_total=grand_total,
+                    total_charge=grand_total,
                     basket=basket,
                     stripe_pid=pid,
                 )
@@ -60,14 +63,14 @@ class StripeWH_Handler:
             order = None
             try:
                 order = Order.objects.create(
-                    email__iexact=billing_details.email,
-                    phone_number__iexact=billing_details.phone,
-                    billing_country__iexact=billing_details.address.country,
-                    billing_town__iexact=billing_details.address.city,
-                    billing_add1__iexact=billing_details.address.line1,
-                    billing_add2__iexact=billing_details.address.line2,
-                    billing_county__iexact=billing_details.address.state,
-                    grand_total=grand_total,
+                    email=billing_details.email,
+                    phone_number=billing_details.phone,
+                    billing_country=billing_details.address.country,
+                    billing_town=billing_details.address.city,
+                    billing_add1=billing_details.address.line1,
+                    billing_add2=billing_details.address.line2,
+                    billing_county=billing_details.address.state,
+                    total_charge=grand_total,
                     basket=basket,
                     stripe_pid=pid,
                 )
