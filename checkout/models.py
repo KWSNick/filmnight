@@ -22,6 +22,15 @@ class Order(models.Model):
     delivery_postcode = models.CharField(max_length=40, null=True, blank=True)
     delivery_country = CountryField(
         blank_label='Country*', null=False, blank=False)
+    billing_add1 = models.CharField(
+        max_length=80, null=False, blank=False, default='')
+    billing_add2 = models.CharField(max_length=80, null=True, blank=True)
+    billing_town = models.CharField(
+        max_length=40, null=False, blank=False, default='')
+    billing_county = models.CharField(max_length=80, null=True, blank=True)
+    billing_postcode = models.CharField(max_length=40, null=True, blank=True)
+    billing_country = CountryField(
+        blank_label='Country*', null=False, blank=False, default='GB')
     date = models.DateTimeField(auto_now_add=True)
     delivery_charge = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, default=0)

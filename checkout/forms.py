@@ -8,7 +8,9 @@ class OrderForm(forms.ModelForm):
         fields = ('first_name', 'last_name',
                   'email', 'phone_number', 'delivery_add1', 'delivery_add2',
                   'delivery_town', 'delivery_county', 'delivery_postcode',
-                  'delivery_country',)
+                  'delivery_country', 'billing_add1', 'billing_add2',
+                  'billing_town', 'billing_county', 'billing_postcode',
+                  'billing_country')
 
     def __init__(self, *args, **kwargs):
         """Add placeholders and classes, remove auto labels,
@@ -26,6 +28,12 @@ class OrderForm(forms.ModelForm):
             'delivery_county': 'County',
             'delivery_postcode': 'Zip/Postcode',
             'delivery_country': 'Country',
+            'billing_add1': 'Billing Address 1',
+            'billing_add2': 'Billing Address 2',
+            'billing_town': 'Billing Town or City',
+            'billing_county': 'Billing County',
+            'billing_postcode': 'Billing Zip/Postcode',
+            'billing_country': 'Billing Country',
         }
         self.fields['first_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
