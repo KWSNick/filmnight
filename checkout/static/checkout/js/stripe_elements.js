@@ -37,6 +37,25 @@ card.addEventListener('change', function (event) {
     }
 });
 
+// Handle billing same as delivery address checkbox
+$('#same_as_delivery').change(function () {
+    if ($('#same_as_delivery').prop('checked') == true) {
+        $('#id_billing_add1').val($('#id_delivery_add1').val());
+        $('#id_billing_add2').val($('#id_delivery_add2').val());
+        $('#id_billing_town').val($('#id_delivery_town').val());
+        $('#id_billing_county').val($('#id_delivery_county').val());
+        $('#id_billing_postcode').val($('#id_delivery_postcode').val());
+        $('#id_billing_country').val($('#id_delivery_country').val());
+    } else {
+        $('#id_billing_add1').val('');
+        $('#id_billing_add2').val('');
+        $('#id_billing_town').val('');
+        $('#id_billing_county').val('');
+        $('#id_billing_postcode').val('');
+        $('#id_billing_country').val('');
+    }
+});
+
 // Handle Form Submission
 let form = $('#checkout_form');
 
