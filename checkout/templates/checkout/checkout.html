@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
+<div class="row gx-0">
     <div class="col">
         <form action="{% url 'checkout' %}" method="POST" id="checkout_form">
             {% csrf_token %}
@@ -35,6 +35,7 @@
                 <div class="sec_text_clr" id="card_messages">
                     <!--Show card errors here-->
                 </div>
+                <input type="hidden" value="{{ client_secret }}" name="client_secret">
             </fieldset>
             <fieldset>
                 <legend>Billing Address</legend>
@@ -68,6 +69,6 @@
 {% block addPost_js %}
 {{ block.super }}
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-{{ stripe_public_key|json_script:"id_client_secret" }}
+{{ client_secret|json_script:"id_client_secret" }}
 <script src="{% static 'checkout/js/stripe_elements.js' %}" type="text/javascript"></script>
 {% endblock %}

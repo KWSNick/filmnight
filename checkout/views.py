@@ -14,6 +14,7 @@ import json
 # Create your views here.
 
 
+@require_POST
 def cache_checkout_data(request):
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
@@ -24,9 +25,11 @@ def cache_checkout_data(request):
             'save_billing': request.POST.get('save_billing'),
             'username': request.user,
         })
+        messages.success(request, 'cache_checkout_data success')
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, 'Your payment cannot be processed, please try again later.')
+        messages.error(request,
+                       'Your payment cannot be processed, please try again later.')
         return HttpResponse(content=e, status=400)
 
 
@@ -34,7 +37,7 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     basket = request.session.get('basket', {})
-    
+
     current_basket = basket_contents(request)
     delivery = current_basket['delivery']
     order_total = current_basket['total']
@@ -75,13 +78,14 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order_form.save(commit=False)
+            order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
             order.basket = json.dumps(basket)
             order.delivery_charge = delivery
             order.order_charge = order_total
             order.total_charge = total
+            order.save()
             request.session['save_delivery'] = 'save_delivery' in request.POST
             request.session['save_billing'] = 'save_billing' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
@@ -102,6 +106,8 @@ def checkout(request):
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
     }
+    print(intent)
+    print(context)
 
     return render(request, template, context)
 
