@@ -77,7 +77,8 @@ def basket_contents(request):
                                         Decimal('1.00'), rounding=ROUND_DOWN),
         'total': Decimal(total).quantize(
                                         Decimal('1.00'), rounding=ROUND_DOWN),
-        'delivery': delivery,
+        'delivery': Decimal(delivery).quantize(
+                                        Decimal('1.00'), rounding=ROUND_DOWN),
         'grand_total': grand_total,
     }
 

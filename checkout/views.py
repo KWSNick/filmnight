@@ -117,6 +117,7 @@ def checkout_success(request, order_number):
     save_delivery = request.session.get('save_delivery')
     save_billing = request.session.get('save_billing')
     order = get_object_or_404(Order, order_number=order_number)
+    # Get the basket item out of the order object and format back to JSON
     order_basket = order.basket
     order_basket_doublequotes = order_basket.replace("'", '"')
     order_basket_filmname1 = order_basket_doublequotes.replace("<film:", '"')
