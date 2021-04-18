@@ -94,6 +94,8 @@ def checkout(request):
         else:
             messages.error(request, "Error detected in your details.\
                 correct to process your order.")
+    else:
+        order_form = OrderForm()
 
     stripe_total = round(total * 100)  # stripe req. integer
     stripe.api_key = stripe_secret_key
@@ -101,7 +103,7 @@ def checkout(request):
         amount=stripe_total,
         currency=settings.STRIPE_CURRENCY,
     )
-    order_form = OrderForm()
+   
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,

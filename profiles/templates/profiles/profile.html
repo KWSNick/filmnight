@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h2 class="header_font sec_text_clr">Profile</h2>
+<div class="row gx-0">
+    <div class="col-12">
+        <form action="{% url 'profile' %}" method="POST" id="checkout_form">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="submission">
+                <button id="submit_profile" type="submit" class="btn btn-lg btn-success"> Update Info
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="col-12">
+        <table>
+            <thead>
+                <tr>
+                    <th>Order Number</th>
+                    <th>Order Date</th>
+                    <th>subtotal</th>
+                    <th>Delivery</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td><a href="{% url 'order_history' order.order_number %}"
+                            title="{{ order.order_number }}">{{ order.order_number|truncatechars:6 }}</a>
+                    </td>
+                    <td>{{ order.date }}</td>
+                    <td>£{{ order.order_charge }}</td>
+                    <td>£{{ order.delivery_charge }}</td>
+                    <td>£{{ order.total_charge }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{{ profile }}
+{{ orders }}
+{% endblock %}

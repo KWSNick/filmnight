@@ -18,3 +18,6 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = ('order_number', 'last_name',
                     'date', 'total_charge')
     ordering = ('-date',)
+
+
+admin.site.register(Order)

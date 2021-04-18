@@ -59,27 +59,7 @@ class StripeWH_Handler:
             return HttpResponse(
                 content=f'{event["type"]} | SUCCESS: Order already exists',
                 status=200)
-        else:
-            order = None
-            try:
-                order = Order.objects.create(
-                    email=billing_details.email,
-                    phone_number=billing_details.phone,
-                    billing_country=billing_details.address.country,
-                    billing_town=billing_details.address.city,
-                    billing_add1=billing_details.address.line1,
-                    billing_add2=billing_details.address.line2,
-                    billing_county=billing_details.address.state,
-                    total_charge=grand_total,
-                    basket=basket,
-                    stripe_pid=pid,
-                )
-            except Exception as e:
-                if order:
-                    order.delete()
-                return HttpResponse(
-                    content=f'{event["type"]} | ERROR: {e}',
-                    status=500)
+
         return HttpResponse(
                 content=f'{event["type"]} | SUCCESS: Created order in webhook',
                 status=200)
