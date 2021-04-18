@@ -62,6 +62,14 @@ class StripeWH_Handler:
             order = None
             try:
                 order = Order.objects.create(
+                    first_name= '',
+                    last_name= '',
+                    delivery_add1= '',
+                    delivery_add2= '',
+                    delivery_town= '',
+                    delivery_county= '',
+                    delivery_postcode= '',
+                    delivery_country= '',
                     email=billing_details.email,
                     phone_number=billing_details.phone,
                     billing_country=billing_details.address.country,
@@ -69,6 +77,10 @@ class StripeWH_Handler:
                     billing_add1=billing_details.address.line1,
                     billing_add2=billing_details.address.line2,
                     billing_county=billing_details.address.state,
+                    billing_postcode= '',
+                    date= '',
+                    delivery_charge= '',
+                    order_charge= '',
                     total_charge=grand_total,
                     basket=basket,
                     stripe_pid=pid,
@@ -88,5 +100,5 @@ class StripeWH_Handler:
     def handle_payment_intent_payment_failed(self, event):
         """Handle an unknown event"""
         return HttpResponse(
-            content=f'Stripe Webhook Received {event["type"]}',
+            content=f'Webhook Received {event["type"]}',
             status=200)
