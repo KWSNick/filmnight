@@ -2,20 +2,87 @@
 {% load static %}
 
 {% block content %}
-<div class="row">
+<div class="row gx-0">
     <div class="col">
         <h2 class="header_font sec_text_clr">Order Summary</h2>
     </div>
 </div>
-<div class="row">
-    <div class="col">
-        <p>{{ order.order_number }}</p>
-        <p>{{ order.date }}</p>
+<div class="row gx-0">
+    <div class="col text-end mt-auto me-5">
+        <h5 class="d-inline sec_text_clr">Order No.: </h5><span>{{ order.order_number }}</span><br>
+        <h5 class="d-inline sec_text_clr">Order Date: </h5><span>{{ order.date }}</span>
+    </div>
+    <div class="col-5 col-md-2 col-lg-1 text-end me-3 me-md-5">
+        <h4 class="sec_text_clr">Subtotals</h4>
+        {% for items, values in order_basket_json.items %}
+        {% if items != 'basket_items' %}
+        <h5 class="d-inline sec_text_clr">
+            {% if items == 'digital_subtotal' %}Digital{% elif items == 'dvd_subtotal' %}DVD{% elif items == 'br_subtotal' %}Bluray{% elif items == 'grand_total' %}Order
+            Total{% else %}{{ items }}{% endif %}:
+        </h5>
+        <span>£{{ values }}</span><br>
+        {% endif %}
+        {% endfor %}
     </div>
 </div>
-<div class="row">
-    <div class="col">
-        <p>{{ order.basket }}</p>
+<div class="row gx-0 justify-content-center">
+    {% for items, values in order_basket_json.items %}
+    {% if items == 'basket_items' %}
+    {% for film in films %}
+    {% for value in values %}
+    {% if film.id|add:"0" == value.film_id|add:"0" %}
+    <div class="col-11 col-md-5 col-lg-4 col-xl-3 m-2">
+
+        <div class="card card-block grad_bg_invert">
+            <a href="{% url 'filmpage' film.id %}" class="no_underline">
+                <div class="row gx-0">
+                    <div class="col-5 gx-0">
+                        <img src="{{ film.Poster_Link }}" class="card-img-top" alt="{{ film.Series_Title }} Poster">
+                    </div>
+                    <div class="col-7 gx-0 card-info">
+                        <div class="card-body">
+                            <h5>{{ film.Series_Title }}</h5>
+                            <p class="card-text">
+                                <table>
+                                    <thead>
+                                        <th>Format</th>
+                                        <th>Qty.</th>
+                                        <th>ST.</th>
+                                    </thead>
+                                    <tr>
+                                        <td>
+                                            <h6>Digital</h6>
+                                        </td>
+                                        </td>
+                                        <td>{{ value.format_quantity.digital }}</td>
+                                        <td>£<span>{{ value.format_total_cost.digital_total }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h6>DVD</h6>
+                                        </td>
+                                        <td>{{ value.format_quantity.dvd }}</td>
+                                        <td>£<span>{{ value.format_total_cost.dvd_total }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h6>Bluray</h6>
+                                        </td>
+                                        <td>{{ value.format_quantity.bluray }}</td>
+                                        <td>£<span>{{ value.format_total_cost.br_total }}</span></td>
+                                    </tr>
+                                </table>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
 </div>
 {% endblock %}

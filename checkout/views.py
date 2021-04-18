@@ -83,7 +83,7 @@ def checkout(request):
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
-            order.basket = json.dumps(basket)
+            order.basket = current_basket
             order.delivery_charge = delivery
             order.order_charge = order_total
             order.total_charge = total
@@ -111,19 +111,30 @@ def checkout(request):
 
     return render(request, template, context)
 
+
 def checkout_success(request, order_number):
     """Handle successful checkouts"""
     save_delivery = request.session.get('save_delivery')
     save_billing = request.session.get('save_billing')
     order = get_object_or_404(Order, order_number=order_number)
+    order_basket = order.basket
+    order_basket_doublequotes = order_basket.replace("'", '"')
+    order_basket_filmname1 = order_basket_doublequotes.replace("<film:", '"')
+    order_basket_filmname2 = order_basket_filmname1.replace(">", '"')
+    order_basket_decimal = order_basket_filmname2.replace("Decimal(", '')
+    order_basket_bracket = order_basket_decimal.replace(")", '')
+    order_basket_json = json.loads(order_basket_bracket)
     messages.success(request, f'Order {order_number} successfully processed.')
 
     if 'basket' in request.session:
         del request.session['basket']
     
+    films = film.objects.all()
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
+        'order_basket_json': order_basket_json,
+        'films': films,
     }
 
     return render(request, template, context)
