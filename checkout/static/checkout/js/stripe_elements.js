@@ -58,7 +58,7 @@ $('#same_as_delivery').change(function () {
 
 // Handle Form Submission
 let form = $('#checkout_form');
-form.submit(function (event) {
+form[0].addEventListener('submit', function (event) {
     event.preventDefault();
     card.update({
         'disabled': true

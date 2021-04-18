@@ -3,12 +3,13 @@ from .models import Order
 
 import time
 
+
 class StripeWH_Handler:
     """Handle stripe webhooks"""
 
     def __init__(self, request):
         self.request = request
-    
+
     def handle_event(self, event):
         """Handle an unknown event"""
         return HttpResponse(
@@ -24,7 +25,7 @@ class StripeWH_Handler:
         save_billing = intent.metadata.save_billing
         billing_details = intent.charges.data[0].billing_details
         shipping_details = intent.charges.data[0].shipping
-        grand_total = round(intent.charges.data[0].amount /100, 2)
+        grand_total = round(intent.charges.data[0].amount / 100, 2)
 
         for key, value in shipping_details.address.items():
             if value == "":
@@ -62,14 +63,6 @@ class StripeWH_Handler:
             order = None
             try:
                 order = Order.objects.create(
-                    first_name='',
-                    last_name='',
-                    delivery_add1='',
-                    delivery_add2='',
-                    delivery_town='',
-                    delivery_county='',
-                    delivery_postcode='',
-                    delivery_country='',
                     email=billing_details.email,
                     phone_number=billing_details.phone,
                     billing_country=billing_details.address.country,
@@ -77,10 +70,6 @@ class StripeWH_Handler:
                     billing_add1=billing_details.address.line1,
                     billing_add2=billing_details.address.line2,
                     billing_county=billing_details.address.state,
-                    billing_postcode='',
-                    date='',
-                    delivery_charge='',
-                    order_charge='',
                     total_charge=grand_total,
                     basket=basket,
                     stripe_pid=pid,
@@ -95,8 +84,6 @@ class StripeWH_Handler:
                 content=f'{event["type"]} | SUCCESS: Created order in webhook',
                 status=200)
 
-            
-    
     def handle_payment_intent_payment_failed(self, event):
         """Handle an unknown event"""
         return HttpResponse(

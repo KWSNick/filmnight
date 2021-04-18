@@ -47,15 +47,18 @@ def checkout(request):
         return redirect(reverse('films/index.html'))
 
     if request.method == 'POST':
-        for item_id in basket.items:
-            try:
-                Film = film.objects.get(id=item_id)
-                messages.success(request, (f'{Film} Added to your collection.'))
-            except film.DoesNotExist:
-                messages.error(request, (
-                    "An item in your basket was not found in our database.\
-                    Please try again."
-                ))
+        for basket_item, basket_value in current_basket.items():
+            if basket_item == 'basket_items':
+                try:
+                    for film_purchase in basket_value:
+                        film_id = film_purchase['film_id']
+                        Film = film.objects.get(id=film_id)
+                        messages.success(request, (f'{Film} Added to your collection.'))
+                except Film.DoesNotExist:
+                    messages.error(request, (
+                        "An item in your basket was not found in our database.\
+                        Please try again."
+                    ))
 
         form_data = {
             'first_name': request.POST['first_name'],
@@ -115,7 +118,7 @@ def checkout_success(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(request, f'Order {order_number} successfully processed.')
 
-    if basket in request.session:
+    if 'basket' in request.session:
         del request.session['basket']
     
     template = 'checkout/checkout_success.html'
