@@ -3,6 +3,9 @@ from django.contrib import messages
 from .models import users
 from .forms import usersForm
 from checkout.models import Order
+from films.models import film
+
+import json
 
 # Create your views here.
 

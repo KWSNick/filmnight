@@ -6,6 +6,7 @@ from django.conf import settings
 from .forms import OrderForm
 from basket.contexts import basket_contents
 from films.models import film
+from profiles.models import users
 from .models import Order
 
 import stripe
@@ -128,6 +129,10 @@ def checkout_success(request, order_number):
     order_basket_bracket = order_basket_decimal.replace(")", '')
     order_basket_json = json.loads(order_basket_bracket)
     messages.success(request, f'Order {order_number} successfully processed.')
+
+    profile = users.objects.get(user=request.user)
+    order.user_profile = profile
+    order.save()
 
     if 'basket' in request.session:
         del request.session['basket']
