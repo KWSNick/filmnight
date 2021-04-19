@@ -28,7 +28,7 @@ def profile(request):
         'form': form,
         'orders': orders,
     }
-
+    
     return render(request, template, context)
 
 
@@ -50,6 +50,7 @@ def orderHistory(request, order_number):
         'order': order,
         'order_basket_json': order_basket_json,
         'films': films,
+        'from_profile': True,
     }
 
     return render(request, template, context)

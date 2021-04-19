@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.contrib import messages
 from films.models import film
 from .models import price_list
@@ -17,7 +17,10 @@ def view_basket(request):
         'prices': prices,
     }
 
-    return render(request, 'basket/basket.html', context)
+    if request.user.is_authenticated:
+        return render(request, 'basket/basket.html', context)
+    else:
+        return redirect(reverse('films'))
 
 
 def add_to_basket(request, film_id):

@@ -4,7 +4,8 @@
 {% block content %}
 <h2 class="header_font sec_text_clr">Profile</h2>
 <div class="row gx-0">
-    <div class="col-12">
+    <div class="col-12 mt-5">
+        <h3 class="header_font sec_text_clr">Update My Details</h3>
         <form action="{% url 'profile' %}" method="POST" id="checkout_form">
             {% csrf_token %}
             {{ form|crispy }}
@@ -14,21 +15,24 @@
             </div>
         </form>
     </div>
-    <div class="col-12">
-        <table>
+</div>
+<div class="row gx-0">
+    <div class="col-12 mt-5">
+        <h3 class="header_font sec_text_clr">Order History</h3>
+        <table class="table table-dark table-striped centerAndWidth pri_text_clr">
             <thead>
                 <tr>
-                    <th>Order Number</th>
-                    <th>Order Date</th>
-                    <th>subtotal</th>
-                    <th>Delivery</th>
-                    <th>Total</th>
+                    <th scope="col">Order Number</th>
+                    <th scope="col">Order Date</th>
+                    <th scope="col">subtotal</th>
+                    <th scope="col">Delivery</th>
+                    <th scope="col">Total</th>
                 </tr>
             </thead>
             <tbody>
                 {% for order in orders %}
                 <tr>
-                    <td><a href="{% url 'order_history' order.order_number %}"
+                    <td scope="row"><a href="{% url 'order_history' order.order_number %}"
                             title="{{ order.order_number }}">{{ order.order_number|truncatechars:6 }}</a>
                     </td>
                     <td>{{ order.date }}</td>

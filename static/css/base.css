@@ -140,6 +140,11 @@ a .card {
     float: none !important;
 }
 
+/* Bootstrap table overrides */
+.table a {
+    color: #ff1919;
+}
+
 /* Bootstrap Overrides */
 .navbar-toggler-icon {
     width: 100%;

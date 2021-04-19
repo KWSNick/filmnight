@@ -4,7 +4,8 @@
 {% block content %}
 <div class="row gx-0">
     <div class="col">
-        <h2 class="header_font sec_text_clr">Order Summary</h2>
+        <h2 class="header_font sec_text_clr">{% if from_profile %}Historic {% endif %}Order Summary</h2>
+        {% if from_profile %}You are viewing an historic order.{% endif %}
     </div>
 </div>
 <div class="row gx-0">
