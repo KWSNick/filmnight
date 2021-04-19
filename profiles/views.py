@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from .models import users
 from .forms import usersForm
@@ -28,7 +28,7 @@ def profile(request):
         'form': form,
         'orders': orders,
     }
-    
+
     return render(request, template, context)
 
 

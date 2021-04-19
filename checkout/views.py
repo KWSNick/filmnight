@@ -160,10 +160,20 @@ def checkout_success(request, order_number):
     order_basket_bracket = order_basket_decimal.replace(")", '')
     order_basket_json = json.loads(order_basket_bracket)
     messages.success(request, f'Order {order_number} successfully processed.')
-
     profile = users.objects.get(user=request.user)
     order.user_profile = profile
     order.save()
+
+    # Sends the film_id to the profile purchased_titles ManyToMany field
+    for items, values in order_basket_json.items():
+        if items == 'basket_items':
+            for value in values:
+                format_quantity = value['format_quantity']
+                for format in format_quantity:
+                    if format == 'digital':
+                        profile.purchased_titles.add(value['film_id'])
+                        messages.success(request, (f'{value["film"]} Added to\
+                             your digital collection.'))
 
     if save_delivery:
         delivery_data = {
