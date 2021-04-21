@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.conf import settings
 
 from .forms import OrderForm
@@ -232,6 +234,29 @@ def checkout_success(request, order_number):
 
     if 'basket' in request.session:
         del request.session['basket']
+  
+    def _send_conf_email(order):
+        """Send an order confirmation via email
+        to the user"""
+        cust_email = order.email
+        subject = render_to_string(
+                                  'checkout/checkout_emails/order_email_subject.txt',
+                                  {'order': order})
+        body = render_to_string(
+                                'checkout/checkout_emails/order_email_body.txt',
+                                {'order': order,
+                                    'contact_email': settings.DEFAULT_FROM_EMAIL})
+        send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [cust_email]
+        )
+
+    if order:
+        _send_conf_email(order)
+        messages.success(request, f'Confirmation Email Sent to {order.email}.')
+
 
     films = film.objects.all()
     template = 'checkout/checkout_success.html'

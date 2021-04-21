@@ -1,0 +1,27 @@
+Dear {{ order.first_name }} {{ order.last_name }}
+
+Thank you for your purchase!
+
+Your order number is: {{ order.order_number }}
+You made this order on: {{ order.date }}
+
+You can start streaming any digital copies you purchased straight away!
+
+Any DVD or Bluray Disks will be shipped to:
+{{ order.delivery_add1 }}
+{{ order.delivery_add2 }}
+{{ order.delivery_town }}
+{{ order.delivery_county }}
+{{ order.delivery_postcode }}
+
+Delivery takes 3-5 days. 
+
+Sub-Total: {{ order.order_charge }}
+Delivery: {{ order.delivery_charge }}
+Order Total: {{ order.total_charge }}
+
+Contact us at {{ contact_email }} if you have any questions or queries regarding your order!
+
+Kind Regards
+
+Film Night!
