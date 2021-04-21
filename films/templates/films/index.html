@@ -4,6 +4,58 @@
 {% block content %}
 <h2 class="header_font sec_text_clr">Available Films</h2>
 <p class="pri_text_clr">Browse the films within the categories below and click the film card for more info!</p>
+<!--My Films-->
+<div class="row gx-0">
+    <div class="col">
+        <h3 class="header_font sec_text_clr text-start">My Films</h3>
+    </div>
+    <div class="col d-none d-lg-block col-lg-9 text-end">
+        <button type="button" class="btn btn-secondary home"><i class="fas fa-home"></i></button>
+        <button type="button" class="btn btn-secondary left"><i class="fas fa-chevron-circle-left"></i></button>
+        <button type="button" class="btn btn-secondary right me-4"><i class="fas fa-chevron-circle-right"></i></button>
+    </div>
+    <div class="row flex-row flex-nowrap horz_scroll gx-0">
+        {% for film in films %}
+        {% for title in profile.purchased_titles.all %}
+        {% if title == film %}
+        <div class="col-10 col-md-5 col-lg-4 col-xl-3 m-2">
+            <a href="{% url 'filmpage' film.id %}" class="no_underline">
+                <div class="card card-block grad_bg_invert">
+                    <div class="row gx-0">
+                        <div class="col-5 gx-0">
+                            <img src="{{ film.Poster_Link }}" class="card-img-top" alt="{{ film.Series_Title }} Poster">
+                        </div>
+                        <div class="col-7 gx-0 card-info vert_flow">
+                            <div class="card-body">
+                                <h5>{{ film.Series_Title }}</h5>
+                                <p class="card-text">
+                                    IMDB Rating: {{ film.IMDB_Rating }}
+                                </p>
+                                <p class="card-text">
+                                    {{ film.Genre }}
+                                </p>
+                                <p class="card-text">
+                                    <span>{{ film.Star1 }}</span>, <span>{{ film.Star2 }}</span>
+                                </p>
+                                <p class="card-text d-none d-lg-block">
+                                    Year:<span>{{ film.Released_Year }}</span> Runtime:<span>{{ film.Runtime }}</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <hr>
+        </div>
+    </div>
+</div>
 <!--Action-->
 <div class="row gx-0">
     <div class="col">
@@ -516,7 +568,7 @@
     </div>
     <div class="row flex-row flex-nowrap horz_scroll gx-0">
         {% for film in films %}
-        {% if "Western" in film.Genre %}  
+        {% if "Western" in film.Genre %}
         <div class="col-10 col-md-5 col-lg-4 col-xl-3 m-2">
             <a href="{% url 'filmpage' film.id %}" class="no_underline">
                 <div class="card card-block grad_bg_invert">

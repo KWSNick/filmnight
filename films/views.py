@@ -10,9 +10,11 @@ def index(request):
     """ A view which returns the main films page """
 
     films = film.objects.all()
+    profile = users.objects.get(user=request.user)
 
     context = {
         'films': films,
+        'profile': profile,
     }
 
     if request.user.is_authenticated:
