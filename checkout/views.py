@@ -169,11 +169,13 @@ def checkout_success(request, order_number):
         if items == 'basket_items':
             for value in values:
                 format_quantity = value['format_quantity']
-                for format in format_quantity:
-                    if format == 'digital':
-                        profile.purchased_titles.add(value['film_id'])
-                        messages.success(request, (f'{value["film"]} Added to\
-                             your digital collection.'))
+                digital = format_quantity['digital']
+                if digital == 1:
+                    profile.purchased_titles.add(value['film_id'])
+                    messages.success(request, (f'{value["film"]} Added to\
+                            your digital collection.'))
+                else:
+                    messages.info(request, (f'{value["film"]} is already in your collection.'))
 
     if save_delivery:
         delivery_data = {
