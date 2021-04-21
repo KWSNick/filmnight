@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h2 class="header_font sec_text_clr">Coming Soon</h2>
+<p>Digital media content coming soon, thank you for your patience!</p>
+<div class="row gx-0">
+    <div class="col mt-5">
+        <a href="{% url 'filmpage' film.id %}" class="btn btn-lg btn-success mt-2"><span class="icon">
+                <i class="fas fa-chevron-left"></i>
+            </span> Back to {{ film.Series_Title }}
+        </a>
+        <a href="{% url 'films' %}" class="btn btn-lg btn-secondary mt-2"><span class="icon">
+                <i class="fas fa-chevron-left"></i>
+            </span> Back to Homepage
+        </a>
+    </div>
+</div>
+{% endblock %}

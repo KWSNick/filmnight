@@ -175,7 +175,8 @@ def checkout_success(request, order_number):
                     messages.success(request, (f'{value["film"]} Added to\
                             your digital collection.'))
                 else:
-                    messages.info(request, (f'{value["film"]} is already in your collection.'))
+                    messages.success(request, (f'{value["film"]} is already in\
+                            your collection.'))
 
     if save_delivery:
         delivery_data = {

@@ -44,3 +44,18 @@ def filmpage(request, film_id):
         return render(request, 'films/filmpage.html', context)
     else:
         return redirect('accounts/login/')
+
+
+def watch(request, film_id):
+    """ A view which would host the digital streaming media """
+
+    Film = get_object_or_404(film, pk=film_id)
+
+    context = {
+        'film': Film,
+    }
+
+    if request.user.is_authenticated:
+        return render(request, 'films/comingsoon.html', context)
+    else:
+        return redirect('accounts/login/')

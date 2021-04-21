@@ -29,6 +29,16 @@
         </p>
     </div>
 </div>
+{% if digital_value == 0 %}
+<div class="row gx-0">
+    <div class="col mt-5">
+        <a href="{% url 'watch' film.id %}" class="btn btn-lg btn-success play_button"><span class="icon">
+                <i class="fas fa-play"></i>
+            </span> Watch Now
+        </a>
+    </div>
+</div>
+{% endif %}
 <div class="row gx-0 mt-5">
     <div class="col mx-3">
         <p>{{ film.Overview }}</p>
