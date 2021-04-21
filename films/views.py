@@ -10,7 +10,10 @@ def index(request):
     """ A view which returns the main films page """
 
     films = film.objects.all()
-    profile = users.objects.get(user=request.user)
+    if request.user.is_authenticated:
+        profile = users.objects.get(user=request.user)
+    else:
+        profile = {}
 
     context = {
         'films': films,
@@ -29,6 +32,7 @@ def filmpage(request, film_id):
     Film = get_object_or_404(film, pk=film_id)
     prices = price_list.objects.all()
     profile = users.objects.get(user=request.user)
+    digital_value = 1
     for title in profile.purchased_titles.all():
         if title == Film:
             digital_value = 0
