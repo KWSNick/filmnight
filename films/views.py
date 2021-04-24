@@ -148,3 +148,22 @@ def add_film(request):
     else:
         messages.error(request, 'You are not authorised to access this area.')
         return redirect('films/index.html')
+
+
+def edit_film(request, film_id):
+    """Edit a films details"""
+    Film = get_object_or_404(film, pk=film_id)
+    form = filmForm(instance=Film)
+    
+    template = 'films/edit_film.html'
+
+    context = {
+        'form': form,
+        'film': Film,
+    }
+
+    if request.user.is_superuser:
+        return render(request, template, context)
+    else:
+        messages.error(request, 'You are not authorised to access this area.')
+        return redirect('films/index.html')

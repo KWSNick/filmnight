@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2 class="header_font sec_text_clr">Update {{ film.Series_Title}}</h2>
+<form action="{% url 'edit_film' film.id %}" method="POST" id="edit_film_form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <div class="submission">
+        <button id="submit_price" type="submit" class="btn btn-lg btn-success">Update Film
+        </button>
+    </div>
+</form>
+{% endblock %}

@@ -115,7 +115,8 @@ a .card {
 
 /* Crispy Forms Bootstrap4 Overrides */
 
-.form-control {
+.form-control,
+.clearablefileinput {
     background-color: #000;
     color: #ff1919;
     border: 0px;
@@ -125,7 +126,8 @@ a .card {
     margin-bottom: 0.75rem;
 }
 
-.form-control:focus {
+.form-control:focus,
+.clearablefileinput:focus {
     color: #000;
     background-color: #555555;
     border-color: #ff1919;
@@ -192,7 +194,8 @@ a .card {
         margin-right: 2rem;
     }
 
-    .form-control {
+    .form-control,
+    .clearablefileinput {
         width: 60%;
     }
 
@@ -209,7 +212,8 @@ a .card {
         margin-left: auto !important;
     }
 
-    .form-control {
+    .form-control,
+    .clearablefileinput {
         width: 50%;
     }
 
@@ -225,7 +229,8 @@ a .card {
 
 @media (min-width: 1200px) {
 
-    .form-control {
+    .form-control,
+    .clearablefileinput {
         width: 30%;
     }
 

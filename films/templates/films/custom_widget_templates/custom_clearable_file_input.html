@@ -1,0 +1,20 @@
+{% if widget.is_initial %}
+<p>{{ widget.initial_text }}:</p>
+<a href="{{ widget.value.url }}">
+    <img src="{{ widget.value.url }}">
+</a>
+{% if not widget.required %}
+<div class="mt-2">
+    <input type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}">
+    <label for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
+</div>
+{% endif %}<br>
+{{ widget.input_text }}
+{% endif %}
+<span class="btn btn-file mb-2">
+    Select Poster <input id="new-image" type="{{ widget.type }}" name="{{ widget.name }}"
+        {% include "django/forms/widgets/attrs.html" %}>
+</span>
+<strong>
+    <p class="sec_text_clr" id="filename"></p>
+</strong>

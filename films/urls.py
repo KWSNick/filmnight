@@ -11,4 +11,6 @@ urlpatterns = [
          views.edit_price, name='edit_price'),
     path('admin_area/add_film/',
          views.add_film, name='add_film'),
+     path('admin_area/edit_film/<film_id>/',
+         views.edit_film, name='edit_film'),
 ]
