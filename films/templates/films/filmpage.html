@@ -5,7 +5,11 @@
 <h2 class="header_font sec_text_clr">{{ film.Series_Title }}</h2>
 <div class="row gx-0 mt-5">
     <div class="col-5 col-md-6 text-end">
+        {% if film.Poster_Link %}
         <img src="{{ film.Poster_Link }}" class="height100 width100 me-md-5" alt="{{ film.Series_Title }} Poster">
+        {% else %}
+        <img src="{{ MEDIA_URL }}noimage.png" class="height100 width100 me-md-5" alt="{{ film.Series_Title }} Poster">
+        {% endif %}
     </div>
     <div class="col-7 col-md-6 text-start">
         <p class="ms-3 me-md-3">

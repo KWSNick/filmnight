@@ -323,7 +323,7 @@ this project.
 Bootstrap is used under the [MIT License](https://github.com/twbs/bootstrap/blob/main/LICENSE)
 
 ### [LogoMakr](https://logomakr.com/)
-LogoMakr is an online logo creating environment and was utilised to create the logo for the project. 
+LogoMakr is an online logo creating environment and was utilised to create the logo and no image file for the project. 
 
 #### License
 [LogoMakr is approved for both personal and commercial use.](https://logomakr.com/getstarted/terms-conditions/)

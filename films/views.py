@@ -3,7 +3,7 @@ from django.contrib import messages
 from .models import film
 from basket.models import price_list
 from profiles.models import users
-from .forms import priceForm
+from .forms import priceForm, filmForm
 
 # Create your views here.
 
@@ -84,6 +84,7 @@ def admin_area(request):
     if request.user.is_superuser:
         return render(request, template, context)
     else:
+        messages.error(request, 'You are not authorised to access this area.')
         return redirect('films/index.html')
 
 
@@ -96,7 +97,7 @@ def edit_price(request, price_id):
     if not request.user.is_superuser:
         messages.error(request, 'You are not authorised to access this area.')
         return redirect('films/index.html')
-    
+
     if request.method == "POST":
         form = priceForm(request.POST, instance=price)
         if form.is_valid():
@@ -120,4 +121,30 @@ def edit_price(request, price_id):
     if request.user.is_superuser:
         return render(request, template, context)
     else:
+        messages.error(request, 'You are not authorised to access this area.')
+        return redirect('films/index.html')
+
+
+def add_film(request):
+    """ Add a new film to the site """
+    if request.method == 'POST':
+        form = filmForm(request.POST, request.FILES)
+        if form.is_valid:
+            form.save()
+            messages.success(request, 'Film added successfully!')
+            return redirect(reverse('admin_area'))
+        else:
+            messages.error(request, 'Failed to add film, check your data.')
+    else:
+        form = filmForm()
+
+    template = 'films/add_film.html'
+    context = {
+        'form': form,
+    }
+
+    if request.user.is_superuser:
+        return render(request, template, context)
+    else:
+        messages.error(request, 'You are not authorised to access this area.')
         return redirect('films/index.html')
