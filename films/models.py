@@ -8,7 +8,7 @@ class film(models.Model):
     Poster_Link = models.URLField(max_length=2048, null=True, blank=True)
     Series_Title = models.CharField(max_length=254, null=True, blank=True)
     Released_Year = models.CharField(max_length=4, null=True, blank=True)
-    Certificate = models.CharField(max_length=3, null=True, blank=True)
+    Certificate = models.CharField(max_length=8, null=True, blank=True)
     Runtime = models.CharField(max_length=8, null=True, blank=True)
     Genre = models.CharField(max_length=100, null=True, blank=True)
     IMDB_Rating = models.DecimalField(max_digits=3,
