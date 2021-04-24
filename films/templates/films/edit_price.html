@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2 class="header_font sec_text_clr">Edit {{ price.cost_name|title }} Price</h2>
+<form action="{% url 'edit_price' price.id %}" method="POST" id="edit_price_form">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <div class="submission">
+        <button id="submit_price" type="submit" class="btn btn-lg btn-success">Update Price
+        </button>
+    </div>
+</form>
+{% endblock %}
