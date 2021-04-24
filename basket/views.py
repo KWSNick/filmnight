@@ -25,39 +25,44 @@ def view_basket(request):
 
 def add_to_basket(request, film_id):
     """Add films to the basket in various formats"""
+    if request.user.is_authenticated:
+        Film = get_object_or_404(film, pk=film_id)
+        dig_quantity = int(request.POST.get('dig_quantity'))
+        dvd_quantity = int(request.POST.get('dvd_quantity'))
+        br_quantity = int(request.POST.get('br_quantity'))
+        redirect_url = request.POST.get('redirect_url')
+        basket = request.session.get('basket', {})
 
-    Film = get_object_or_404(film, pk=film_id)
-    dig_quantity = int(request.POST.get('dig_quantity'))
-    dvd_quantity = int(request.POST.get('dvd_quantity'))
-    br_quantity = int(request.POST.get('br_quantity'))
-    redirect_url = request.POST.get('redirect_url')
-    basket = request.session.get('basket', {})
+        if film_id in list(basket.keys()):
+            basket[film_id]['digital'] = 1
+            basket[film_id]['dvd'] = dvd_quantity
+            basket[film_id]['bluray'] = br_quantity
+            messages.success(request, f'{Film.Series_Title} Basket Updated')
+        else:
+            basket[film_id] = {'digital': dig_quantity,
+                            'dvd': dvd_quantity,
+                            'bluray': br_quantity}
+            messages.success(request, f'{Film.Series_Title} Added to Basket')
 
-    if film_id in list(basket.keys()):
-        basket[film_id]['digital'] = 1
-        basket[film_id]['dvd'] = dvd_quantity
-        basket[film_id]['bluray'] = br_quantity
-        messages.success(request, f'{Film.Series_Title} Basket Updated')
+        request.session['basket'] = basket
+        return redirect(redirect_url)
     else:
-        basket[film_id] = {'digital': dig_quantity,
-                           'dvd': dvd_quantity,
-                           'bluray': br_quantity}
-        messages.success(request, f'{Film.Series_Title} Added to Basket')
-
-    request.session['basket'] = basket
-    return redirect(redirect_url)
+        return redirect(reverse('films'))
 
 
 def remove_from(request, film_id):
     """Remove the item from the basket"""
-    Film = get_object_or_404(film, pk=film_id)
-    try:
-        basket = request.session.get('basket', {})
-        basket.pop(film_id)
-        request.session['basket'] = basket
-        messages.success(request, f'{Film.Series_Title} Removed Basket')
-        return HttpResponse(status=200)
-    except Exception as e:
-        messages.error(
-            request, f'Error removing Item {Film.Series_Title}: {e}')
-        return HttpResponse(status=500)
+    if request.user.is_authenticated:
+        Film = get_object_or_404(film, pk=film_id)
+        try:
+            basket = request.session.get('basket', {})
+            basket.pop(film_id)
+            request.session['basket'] = basket
+            messages.success(request, f'{Film.Series_Title} Removed Basket')
+            return HttpResponse(status=200)
+        except Exception as e:
+            messages.error(
+                request, f'Error removing Item {Film.Series_Title}: {e}')
+            return HttpResponse(status=500)
+    else:
+        return redirect(reverse('films'))
