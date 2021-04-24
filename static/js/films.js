@@ -19,4 +19,12 @@ $(document).ready(function () {
          scrollLeft: "=0"
       })
    });
+
+   // Bootstrap Modal JS
+   let delete_modal = document.getElementById('delete_modal{{ film.id }}')
+   let delete_focus = document.getElementById('delete_focus{{ film.id }}')
+
+   delete_modal.addEventListener('shown.bs.modal', function () {
+      delete_focus.focus()
+   })
 });

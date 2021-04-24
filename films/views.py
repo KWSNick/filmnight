@@ -153,8 +153,17 @@ def add_film(request):
 def edit_film(request, film_id):
     """Edit a films details"""
     Film = get_object_or_404(film, pk=film_id)
-    form = filmForm(instance=Film)
-    
+    if request.method == 'POST':
+        form = filmForm(request.POST, request.FILES, instance=Film)
+        if form.is_valid:
+            form.save()
+            messages.success(request, f'{Film.Series_Title} successfully Updated!')
+            return redirect(reverse('admin_area'))
+        else:
+            messages.error(request, 'Failed to add film, check your data.')
+    else:
+        form = filmForm(instance=Film)
+
     template = 'films/edit_film.html'
 
     context = {
@@ -167,3 +176,10 @@ def edit_film(request, film_id):
     else:
         messages.error(request, 'You are not authorised to access this area.')
         return redirect('films/index.html')
+
+
+def delete_film(request, film_id):
+    Film = get_object_or_404(film, pk=film_id)
+    Film.delete()
+    messages.success(request, f'{Film.Series_Title} Deleted!')
+    return redirect(reverse('admin_area'))

@@ -44,17 +44,45 @@
             <h4 class="header_font sec_text_clr">Edit Films</h4>
             {% for film in films %}
             <div class="col-10 col-md-5 col-lg-2 m-2">
-                <a href="{% url 'edit_film' film.id %}" class="no_underline">
-                    <div class="card card-block grad_bg_invert">
-                        <div class="row gx-0">
-                            <div class="col gx-0 card-info vert_flow">
+                <div class="card card-block grad_bg_invert">
+                    <div class="row gx-0">
+                        <div class="col gx-0 card-info vert_flow">
+                            <a href="{% url 'edit_film' film.id %}" class="no_underline">
                                 <div class="card-body">
                                     <h5>{{ film.Series_Title }}</h5>
                                 </div>
-                            </div>
+                            </a>
+                        </div>
+                        <div class="col-2 m-auto">
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#delete_modal{{ film.id }}">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
                         </div>
                     </div>
-                </a>
+                </div>
+            </div>
+            <!--Delete Modal-->
+            <div class="modal" id="delete_modal{{ film.id }}" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content sec_bg_light_clr">
+                        <div class="modal-header pri_bg_clr">
+                            <h5 class="modal-title">Delete {{ film.Series_Title }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to delete {{ film.Series_Title }} permanently for all users?</p>
+                        </div>
+                        <div class="modal-footer sec_bg_clr">
+                            <button type="button" id="delete_focus{{ film.id }}" class="btn btn-secondary"
+                                data-bs-dismiss="modal">Cancel</button>
+                            <a href="{% url 'delete_film' film.id %}" class="btn btn-lg btn-danger"><span class="icon">
+                                    <i class="fas fa-trash-alt"></i>
+                                </span> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
             {% endfor %}
         </div>
