@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (render, redirect, reverse,
+                              get_object_or_404, HttpResponse)
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.core.mail import send_mail
@@ -33,7 +34,8 @@ def cache_checkout_data(request):
             return HttpResponse(status=200)
         except Exception as e:
             messages.error(request,
-                           'Your payment cannot be processed, please try again later.')
+                           'Your payment cannot be processed,\
+                           please try again later.')
             return HttpResponse(content=e, status=400)
     else:
         return redirect(reverse('films'))
@@ -64,7 +66,9 @@ def checkout(request):
                         for film_purchase in basket_value:
                             film_id = film_purchase['film_id']
                             Film = film.objects.get(id=film_id)
-                            messages.success(request, (f'{Film} Added to your collection.'))
+                            messages.success(request,
+                                             (f'{Film} Added to your\
+                                                 collection.'))
                     except Film.DoesNotExist:
                         messages.error(request, (
                             "An item in your basket was not found in our database.\
@@ -101,7 +105,8 @@ def checkout(request):
                 order.save()
                 request.session['save_delivery'] = 'save_delivery' in request.POST
                 request.session['save_billing'] = 'save_billing' in request.POST
-                return redirect(reverse('checkout_success', args=[order.order_number]))
+                return redirect(reverse('checkout_success',
+                                        args=[order.order_number]))
             else:
                 messages.error(request, "Error detected in your details.\
                     correct to process your order.")
@@ -120,7 +125,7 @@ def checkout(request):
             order_form = OrderForm(initial={
                 'first_name': profile.first_name,
                 'last_name': profile.last_name,
-                'email':profile.user.email,
+                'email': profile.user.email,
                 'phone_number': profile.phone_number,
                 'delivery_add1': profile.delivery_add1,
                 'delivery_add2': profile.delivery_add2,
@@ -153,124 +158,126 @@ def checkout(request):
 
 def checkout_success(request, order_number):
     """Handle successful checkouts"""
-    save_delivery = request.session.get('save_delivery')
-    save_billing = request.session.get('save_billing')
-
-    order = get_object_or_404(Order, order_number=order_number)
-    # Get the basket item out of the order object and format back to JSON
-    order_basket = order.basket
-    order_basket_doublequotes = order_basket.replace("'", '"')
-    order_basket_filmname1 = order_basket_doublequotes.replace("<film:", '"')
-    order_basket_filmname2 = order_basket_filmname1.replace(">", '"')
-    order_basket_decimal = order_basket_filmname2.replace("Decimal(", '')
-    order_basket_bracket = order_basket_decimal.replace(")", '')
-    order_basket_json = json.loads(order_basket_bracket)
-    messages.success(request, f'Order {order_number} successfully processed.')
-    profile = users.objects.get(user=request.user)
-    order.user_profile = profile
-    order.save()
-
-    # Sends the film_id to the profile purchased_titles ManyToMany field
-    for items, values in order_basket_json.items():
-        if items == 'basket_items':
-            for value in values:
-                format_quantity = value['format_quantity']
-                digital = format_quantity['digital']
-                if digital == 1:
-                    profile.purchased_titles.add(value['film_id'])
-                    messages.success(request, (f'{value["film"]} Added to\
-                            your digital collection.'))
-                else:
-                    messages.success(request, (f'{value["film"]} is already in\
-                            your collection.'))
-
-    if save_delivery:
-        delivery_data = {
-            'first_name': profile.first_name,
-            'last_name': profile.last_name,
-            'phone_number': profile.phone_number,
-            'delivery_add1': order.delivery_add1,
-            'delivery_add2':  order.delivery_add2,
-            'delivery_town':  order.delivery_town,
-            'delivery_county':  order.delivery_county,
-            'delivery_postcode':  order.delivery_postcode,
-            'delivery_country':  order.delivery_country,
-            'billing_add1': profile.billing_add1,
-            'billing_add2':  profile.billing_add2,
-            'billing_town':  profile.billing_town,
-            'billing_county':  profile.billing_county,
-            'billing_postcode':  profile.billing_postcode,
-            'billing_country':  profile.billing_country,
-            'purchased_titles': profile.purchased_titles,
-        }
-        user_profile_form = usersForm(delivery_data, instance=profile)
-        if user_profile_form.is_valid():
-            user_profile_form.save()
-            messages.success(request, 'Profile delivery details successfully updated!')
-        else:
-            messages.error(request, "Profile delivery details update failed.")
-
-    if save_billing:
-        billing_data = {
-            'first_name': profile.first_name,
-            'last_name': profile.last_name,
-            'phone_number': profile.phone_number,
-            'delivery_add1': profile.delivery_add1,
-            'delivery_add2':  profile.delivery_add2,
-            'delivery_town':  profile.delivery_town,
-            'delivery_county':  profile.delivery_county,
-            'delivery_postcode':  profile.delivery_postcode,
-            'delivery_country':  profile.delivery_country,
-            'billing_add1': order.billing_add1,
-            'billing_add2':  order.billing_add2,
-            'billing_town':  order.billing_town,
-            'billing_county':  order.billing_county,
-            'billing_postcode':  order.billing_postcode,
-            'billing_country':  order.billing_country,
-            'purchased_titles': profile.purchased_titles,
-        }
-        user_profile_form = usersForm(billing_data, instance=profile)
-        if user_profile_form.is_valid():
-            user_profile_form.save()
-            messages.success(request, 'Profile billing details successfully updated!')
-        else:
-            messages.error(request, "Profile billing details update failed.")
-
-    if 'basket' in request.session:
-        del request.session['basket']
-  
-    def _send_conf_email(order):
-        """Send an order confirmation via email
-        to the user"""
-        cust_email = order.email
-        subject = render_to_string(
-                                  'checkout/checkout_emails/order_email_subject.txt',
-                                  {'order': order})
-        body = render_to_string(
-                                'checkout/checkout_emails/order_email_body.txt',
-                                {'order': order,
-                                    'contact_email': settings.DEFAULT_FROM_EMAIL})
-        send_mail(
-            subject,
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            [cust_email]
-        )
-
-    if order:
-        _send_conf_email(order)
-        messages.success(request, f'Confirmation Email Sent to {order.email}.')
-
-
-    films = film.objects.all()
-    template = 'checkout/checkout_success.html'
-    context = {
-        'order': order,
-        'order_basket_json': order_basket_json,
-        'films': films,
-    }
-
     if request.user.is_authenticated:
+        save_delivery = request.session.get('save_delivery')
+        save_billing = request.session.get('save_billing')
+
+        order = get_object_or_404(Order, order_number=order_number)
+        # Get the basket item out of the order object and format back to JSON
+        order_basket = order.basket
+        order_basket_doublequotes = order_basket.replace("'", '"')
+        order_basket_filmname1 = order_basket_doublequotes.replace("<film:", '"')
+        order_basket_filmname2 = order_basket_filmname1.replace(">", '"')
+        order_basket_decimal = order_basket_filmname2.replace("Decimal(", '')
+        order_basket_bracket = order_basket_decimal.replace(")", '')
+        order_basket_json = json.loads(order_basket_bracket)
+        messages.success(request, f'Order {order_number} successfully processed.')
+        profile = users.objects.get(user=request.user)
+        order.user_profile = profile
+        order.save()
+
+        # Sends the film_id to the profile purchased_titles ManyToMany field
+        for items, values in order_basket_json.items():
+            if items == 'basket_items':
+                for value in values:
+                    format_quantity = value['format_quantity']
+                    digital = format_quantity['digital']
+                    if digital == 1:
+                        profile.purchased_titles.add(value['film_id'])
+                        messages.success(request, (f'{value["film"]} Added to\
+                                your digital collection.'))
+                    else:
+                        messages.success(request, (f'{value["film"]} is already in\
+                                your collection.'))
+
+        if save_delivery:
+            delivery_data = {
+                'first_name': profile.first_name,
+                'last_name': profile.last_name,
+                'phone_number': profile.phone_number,
+                'delivery_add1': order.delivery_add1,
+                'delivery_add2':  order.delivery_add2,
+                'delivery_town':  order.delivery_town,
+                'delivery_county':  order.delivery_county,
+                'delivery_postcode':  order.delivery_postcode,
+                'delivery_country':  order.delivery_country,
+                'billing_add1': profile.billing_add1,
+                'billing_add2':  profile.billing_add2,
+                'billing_town':  profile.billing_town,
+                'billing_county':  profile.billing_county,
+                'billing_postcode':  profile.billing_postcode,
+                'billing_country':  profile.billing_country,
+                'purchased_titles': profile.purchased_titles,
+            }
+            user_profile_form = usersForm(delivery_data, instance=profile)
+            if user_profile_form.is_valid():
+                user_profile_form.save()
+                messages.success(request,
+                                'Profile delivery details successfully updated!')
+            else:
+                messages.error(request, "Profile delivery details update failed.")
+
+        if save_billing:
+            billing_data = {
+                'first_name': profile.first_name,
+                'last_name': profile.last_name,
+                'phone_number': profile.phone_number,
+                'delivery_add1': profile.delivery_add1,
+                'delivery_add2':  profile.delivery_add2,
+                'delivery_town':  profile.delivery_town,
+                'delivery_county':  profile.delivery_county,
+                'delivery_postcode':  profile.delivery_postcode,
+                'delivery_country':  profile.delivery_country,
+                'billing_add1': order.billing_add1,
+                'billing_add2':  order.billing_add2,
+                'billing_town':  order.billing_town,
+                'billing_county':  order.billing_county,
+                'billing_postcode':  order.billing_postcode,
+                'billing_country':  order.billing_country,
+                'purchased_titles': profile.purchased_titles,
+            }
+            user_profile_form = usersForm(billing_data, instance=profile)
+            if user_profile_form.is_valid():
+                user_profile_form.save()
+                messages.success(request,
+                                'Profile billing details successfully updated!')
+            else:
+                messages.error(request, "Profile billing details update failed.")
+
+        if 'basket' in request.session:
+            del request.session['basket']
+
+        def _send_conf_email(order):
+            """Send an order confirmation via email
+            to the user"""
+            cust_email = order.email
+            subject = render_to_string(
+                                    'checkout/checkout_emails/order_email_subject.txt',
+                                    {'order': order})
+            body = render_to_string(
+                                    'checkout/checkout_emails/order_email_body.txt',
+                                    {'order': order,
+                                    'contact_email': settings.DEFAULT_FROM_EMAIL})
+            send_mail(
+                subject,
+                body,
+                settings.DEFAULT_FROM_EMAIL,
+                [cust_email]
+            )
+
+        if order:
+            _send_conf_email(order)
+            messages.success(request, f'Confirmation Email Sent to {order.email}.')
+
+        films = film.objects.all()
+        template = 'checkout/checkout_success.html'
+        context = {
+            'order': order,
+            'order_basket_json': order_basket_json,
+            'films': films,
+        }
+
         return render(request, template, context)
+
     else:
         return redirect(reverse('films'))

@@ -129,7 +129,8 @@ def edit_price(request, price_id):
         price = get_object_or_404(price_list, pk=price_id)
 
         if not request.user.is_superuser:
-            messages.error(request, 'You are not authorised to access this area.')
+            messages.error(request,
+                           'You are not authorised to access this area.')
             return redirect('films/index.html')
 
         if request.method == "POST":
@@ -193,7 +194,8 @@ def edit_film(request, film_id):
             form = filmForm(request.POST, request.FILES, instance=Film)
             if form.is_valid:
                 form.save()
-                messages.success(request, f'{Film.Series_Title} successfully Updated!')
+                messages.success(request,
+                                 f'{Film.Series_Title} successfully Updated!')
                 return redirect(reverse('admin_area'))
             else:
                 messages.error(request, 'Failed to add film, check your data.')
