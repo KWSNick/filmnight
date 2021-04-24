@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.db.models import Q
 from .models import film
 from basket.models import price_list
 from profiles.models import users
@@ -12,14 +13,25 @@ def index(request):
     """ A view which returns the main films page """
 
     films = film.objects.all()
+    query = None
     if request.user.is_authenticated:
         profile = users.objects.get(user=request.user)
     else:
         profile = {}
+    
+    if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                return redirect(reverse('films'))
+        
+        Queries = Q(Series_Title__icontains=query)
+        films = films.filter(Queries)
 
     context = {
         'films': films,
         'profile': profile,
+        'search_term': query,
     }
 
     if request.user.is_authenticated:
@@ -74,11 +86,22 @@ def admin_area(request):
 
     prices = price_list.objects.all()
     films = film.objects.all()
+    query = None
     template = 'films/admin.html'
+
+    if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                return redirect(reverse('admin_area'))
+        
+        Queries = Q(Series_Title__icontains=query)
+        films = films.filter(Queries)
 
     context = {
         'prices': prices,
         'films': films,
+        'search_term': query,
     }
 
     if request.user.is_superuser:

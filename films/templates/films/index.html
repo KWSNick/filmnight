@@ -4,6 +4,37 @@
 {% block content %}
 <h2 class="header_font sec_text_clr">Available Films</h2>
 <p class="pri_text_clr">Browse the films within the categories below and click the film card for more info!</p>
+<div class="row gx-0 justify-content-center mt-3">
+    <div class="col-10 col-lg-6">
+        <form method="GET" action="{% url 'films' %}">
+            <div class="row gx-0">
+                <div class="col-9 gx-0">
+                    <div class="input-group">
+                        <input class="form-control" type="text" name="q"
+                            placeholder="{% if search_term %} {{search_term }} {% else %}Search for a title. {% endif %}">
+                    </div>
+                </div>
+                <div class="col-3 gx-0">
+                    <div class="input-group-append">
+                        <button class="btn btn-success" type="submit">
+                            <span class="icon">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </button>
+                        {% if search_term != None %}
+                        <button class="btn btn-secondary" type="submit">
+                            <span class="icon">
+                                <i class="fas fa-undo-alt"></i>
+                            </span>
+                        </button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<p>{{ films|length }} Unique Film{% if films|length > 1 %}s{% endif %} Available:</p>
 <!--My Films-->
 <div class="row gx-0">
     <div class="col">
