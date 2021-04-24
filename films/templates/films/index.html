@@ -15,6 +15,12 @@
         <button type="button" class="btn btn-secondary right me-4"><i class="fas fa-chevron-circle-right"></i></button>
     </div>
     <div class="row flex-row flex-nowrap horz_scroll gx-0">
+        {% if profile.purchased_titles.all|length == 0 %}
+        <div class="col m-2 centerAndWidth">
+            <p>You don't currently own any films! Purchase films from the categories below to add titles to your
+                collection!</p>
+        </div>
+        {% else %}
         {% for film in films %}
         {% for title in profile.purchased_titles.all %}
         {% if title == film %}
@@ -49,6 +55,7 @@
         {% endif %}
         {% endfor %}
         {% endfor %}
+        {% endif %}
     </div>
     <div class="row justify-content-center">
         <div class="col-10">
