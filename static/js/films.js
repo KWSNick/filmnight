@@ -1,7 +1,9 @@
 $(document).ready(function () {
+   // Set card-info div height to the same as the image height
    let imageHeight = $('.card-img-top').first().height();
    $('.card-info').height(imageHeight);
 
+   // Horizontal scroll functions
    $('.right').click(function () {
       $(this).parent().siblings('.horz_scroll').animate({
          scrollLeft: "+=500"
