@@ -378,6 +378,9 @@ Was used to create the wireframes during the planning phase.
 ## Known Bugs
 *Requires Content*
 
+* When a new user is created the profile details update on the checkout page will fail until data is entered via the my profile page.
+
+
 # Deployment
 The Site is stored on GitHub pages and hosted on Heroku. These are linked by connecting the github repository to the 
 Heroku app workspace.
