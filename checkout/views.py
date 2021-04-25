@@ -276,7 +276,8 @@ def checkout_success(request, order_number):
 
         if order:
             _send_conf_email(order)
-            messages.success(request, f'Confirmation Email Sent to {order.email}.')
+            messages.success(request,
+                             f'Confirmation Email Sent to {order.email}.')
 
         films = film.objects.all()
         template = 'checkout/checkout_success.html'
