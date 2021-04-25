@@ -457,6 +457,8 @@ The environment variables were stored in the OS of both the development environm
 |STRIPE_PUBLIC_KEY| pk_test_51ISIjdJKzBnf14eftOwBmvbAcDGXaTHCQwZL5XYPCTRJQMvzNoNgNanwrTqO7Iqo3D86nPJ8sCFPPVfBj47ORQcN00Eg9cwcZ7 |
 |STRIPE_SECRET_KEY| <YOUR_KEY> |
 |STRIPE_WH_SECRET| <YOUR_KEY> |
+|EMAIL_HOST_PASS| <YOUR_APP_PASSWORD> |
+|EMAIL_HOST_USER| <YOUR_EMAIL_HOST_ADDRESS> |
 
 ## Database
 *Requires Content*
