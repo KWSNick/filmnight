@@ -386,8 +386,8 @@ Each page on the site was run through the [W3C Markup Validator](https://validat
 |filmnight.herokuapp.com/|"type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|The entire page (with +1000 films would not load into the validator) a sample was used with only a few cards.
 |accounts/login/|meta element content incorrect (ie-edge not IE=edge), "type" unnecessary for JavaScript resources| "type" unnecessary for JavaScript resources|
 |accounts/signup/|"type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|
-|film/358/| th start tag in table body, "type" unnecessary for JavaScript resources|
-
+|film/358/| th start tag in table body, "type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|
+|basket/| th start tag in table body, No p element in scope but a p end tag seen, "type" unnecessary for JavaScript resources|
 
 ## Chrome Lighthouse
 *Requires Content*
@@ -407,6 +407,14 @@ Each page on the site was run through the [W3C Markup Validator](https://validat
 * When a new user is created the profile details update on the checkout page will fail until data is entered via the my profile page.
 
 * When a new film is created the image size may be different from those specified in the original fixtures, leading to card sizing issues.
+
+* Update basket button on filmpage.html could say "add to basket" if not already in the basket
+
+* Forgot password form is not styled correctly.
+
+* Allauth auto emails are not pulling in all the correct details e.g. email address.
+
+* Minus button allows user to enter -1 into the orderform. However the form validation will not allow this to be submitted. 
 
 * Remember me button on sign in page doesn't perform a function.
 
