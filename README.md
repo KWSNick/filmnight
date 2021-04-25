@@ -268,6 +268,8 @@ through its slightly condensed nature.
 *Requires Content*
 
 ## Future Features
+- Replace the fixture provided image url content with a high resolution poster
+- Create a server error handling view and template
 - Allow users to leave reviews and ratings
 - Create a product purchase wishlist
 - User interactions (direct tags/suggestions to others, view other wish lists)
@@ -426,7 +428,7 @@ Heroku app workspace.
 It consists of 1 Master branch and no other branches. 
 
 ## Live Hosted Site
-*Requires Content*
+The site is hosted on Heroku, and can be accessed via this link https://filmnight.herokuapp.com/
 
 ## GitHub Pages
 The GitHub Repository for containing the source code for this project can be found here: https://github.com/KWSNick/filmnight

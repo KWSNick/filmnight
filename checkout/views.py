@@ -260,12 +260,10 @@ def checkout_success(request, order_number):
             to the user"""
             cust_email = order.email
             subject = render_to_string(
-                                    'checkout/checkout_emails/\
-                                        order_email_subject.txt',
+                                    'checkout/checkout_emails/order_email_subject.txt',
                                     {'order': order})
             body = render_to_string(
-                                    'checkout/checkout_emails/\
-                                        order_email_body.txt',
+                                    'checkout/checkout_emails/ order_email_body.txt',
                                     {'order': order,
                                      'contact_email':
                                         settings.DEFAULT_FROM_EMAIL})
