@@ -381,11 +381,12 @@ Code which was not written directly by the developer i.e. the migrations were no
 ## W3C Validation
 Each page on the site was run through the [W3C Markup Validator](https://validator.w3.org/).
 
-|Page URL|Initial Errors|Residual Errors|
-|--------|--------------|---------------|
-|https://filmnight.herokuapp.com/|
+|Page URL|Initial Errors|Residual Errors|Notes|
+|--------|--------------|---------------|-----|
+|filmnight.herokuapp.com/|"type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|The entire page (with +1000 films would not load into the validator) a sample was used with only a few cards.
 |accounts/login/|meta element content incorrect (ie-edge not IE=edge), "type" unnecessary for JavaScript resources| "type" unnecessary for JavaScript resources|
 |accounts/signup/|"type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|
+|film/358/| th start tag in table body, "type" unnecessary for JavaScript resources|
 
 
 ## Chrome Lighthouse
@@ -406,6 +407,8 @@ Each page on the site was run through the [W3C Markup Validator](https://validat
 * When a new user is created the profile details update on the checkout page will fail until data is entered via the my profile page.
 
 * When a new film is created the image size may be different from those specified in the original fixtures, leading to card sizing issues.
+
+* Remember me button on sign in page doesn't perform a function.
 
 # Deployment
 The Site is stored on GitHub pages and hosted on Heroku. These are linked by connecting the github repository to the 
