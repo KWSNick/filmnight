@@ -22,12 +22,17 @@
         $('#dvd_quantity').siblings('.input-group-prepend').children('.dec-qty').prop('disabled', minusDisabled);
         $('#dvd_quantity').siblings('.input-group-append').children('.inc-qty').prop('disabled', plusDisabled);
     }
+    $(document).ready(function () {
+        let dvdCurrentValue = parseInt($('#dvd_quantity').val());
+        if (dvdCurrentValue < 1) {
+            handleMinMaxDVD();
+        }
+        let brCurrentValue = parseInt($('#br_quantity').val());
+        if (brCurrentValue < 1) {
+            handleMinMaxBR();
+        }
+    })
 
-    let brCurrentValue = parseInt($('#br_quantity').val());
-
-    if (brCurrentValue < 1) {
-        handleMinMaxBR();
-    }
     // If user types a value then the enable diable is triggered, and limits cannot be exceeded
     $('#br_quantity').change(function () {
         handleMinMaxBR();
