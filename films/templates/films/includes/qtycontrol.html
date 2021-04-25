@@ -22,6 +22,12 @@
         $('#dvd_quantity').siblings('.input-group-prepend').children('.dec-qty').prop('disabled', minusDisabled);
         $('#dvd_quantity').siblings('.input-group-append').children('.inc-qty').prop('disabled', plusDisabled);
     }
+
+    let brCurrentValue = parseInt($('#br_quantity').val());
+
+    if (brCurrentValue < 1) {
+        handleMinMaxBR();
+    }
     // If user types a value then the enable diable is triggered, and limits cannot be exceeded
     $('#br_quantity').change(function () {
         handleMinMaxBR();
