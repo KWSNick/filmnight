@@ -65,9 +65,10 @@ class filmForm(forms.ModelForm):
         }
         self.fields['Series_Title'].widget.attrs['autofocus'] = True
         for field in self.fields:
-            if self.fields[field].required:
-                placeholder = f'{placeholders[field]} *'
-            else:
-                placeholder = placeholders[field]
-            self.fields[field].widget.attrs['placeholder'] = placeholder
+            if field != 'Poster' and field != 'available':
+                if self.fields[field].required:
+                    placeholder = f'{placeholders[field]} *'
+                else:
+                    placeholder = placeholders[field]
+                self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].label = False

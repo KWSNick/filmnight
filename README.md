@@ -393,14 +393,17 @@ Each page on the site was run through the [W3C Markup Validator](https://validat
 |checkout/| Attribute placeholder not allowed on element select at this point, The value of the for attribute of the label element must be the ID of a non-hidden form control, "type" unnecessary for JavaScript resources| "type" unnecessary for JavaScript resources|
 |checkout/checkout_success/<order_no>/|th start tag in table body, Stray end tag td, No p element in scope but a p end tag seen, "type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|
 |profile/|Attribute placeholder not allowed on element select at this point, The scope attribute on the td element is obsolete. Use the scope attribute on a th element instead, "type" unnecessary for JavaScript resources| "type" unnecessary for JavaScript resources|
+|admin_area/|"type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|
+|admin_area/edit_price/1/|"type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|
+|admin_area/edit_film/1/| Attribute placeholder is only allowed when the input type is (not file), Attribute placeholder not allowed on element select at this point, "type" unnecessary for JavaScript resources|
 
 ## Chrome Lighthouse
 *Requires Content*
 
-## Browser Compatability
+## Responsiveness
 *Requires Content*
 
-## Responsiveness
+## Browser Compatability
 *Requires Content*
 
 ## User Stories
