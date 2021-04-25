@@ -8,6 +8,9 @@ let cardStyle = {
     base: {
         color: '#CCCCCC',
         fontFamily: '"Barlow Semi Condensed", sans-serif',
+        '::placeholder': {
+            color: '#aab7c4'
+        }
     },
     invalid: {
         color: '#ff1919',

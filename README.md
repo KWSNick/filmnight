@@ -270,6 +270,7 @@ through its slightly condensed nature.
 ## Future Features
 - Replace the fixture provided image url content with a high resolution poster
 - Create a server error handling view and template
+- Set site to handle stock amounts and disable purchases if no longer available to new users using the DVD Stock, Bluray Stock and Available fields pre populated in the database.
 - Allow users to leave reviews and ratings
 - Create a product purchase wishlist
 - User interactions (direct tags/suggestions to others, view other wish lists)
@@ -395,6 +396,7 @@ Each page on the site was run through the [W3C Markup Validator](https://validat
 |profile/|Attribute placeholder not allowed on element select at this point, The scope attribute on the td element is obsolete. Use the scope attribute on a th element instead, "type" unnecessary for JavaScript resources| "type" unnecessary for JavaScript resources|
 |admin_area/|"type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|
 |admin_area/edit_price/1/|"type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|
+|admin_area/add_film/|"type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|
 |admin_area/edit_film/1/| Attribute placeholder is only allowed when the input type is (not file), Attribute placeholder not allowed on element select at this point, "type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|
 |accounts/logout/|"type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|
 
@@ -410,10 +412,43 @@ Each css file was run through the [W3C CSS Validator](https://jigsaw.w3.org/css-
 *Requires Content*
 
 ## Responsiveness
-*Requires Content*
+The following urls were loaded into Google Chrome and inspected with the developer tools to provide responsive layout:
+- accounts/login/
+- accounts/signup/
+- accounts/logout/
+- filmnight.herokuapp.com/
+- film/14/
+- basket/
+- checkout/
+- profile/
+- checkout_success/<order_no>/
+- admin_area/
+- admin_area/edit_price/3/
+- admin_area/add_film/
+- admin_area/edit_film/1/
+
+The urls were rendered in the following pre-defined responsive sizes:
+- iPhone 6/7/8
+- iPad
+- iPad Pro
+- Full Screen Desktop
+
+Minor responsive issues were identified and rectified, resulting in no known issues.
+
+The results of the test can be seen in the document [Responsive Tests](static/docs/responsive.pdf)
 
 ## Browser Compatability
-*Requires Content*
+The site was loaded in several browsers to assess for cross browser compatability.
+
+|Browser|Version|Comments|Applied Fixes|
+|-------|-------|--------|-------------|
+|Google Chrome| 90.0.4430.85|Fully Functional||
+|Mozilla Firefox| 85.0.2|orderform quantity inputs have up and down toggle buttons. the placeholder text in the stripe payment section is not colored legibally.|
+|Microsoft Edge|
+|Microsoft Internet Explorer|
+|Samsung Internet|
+|Opera|
+|Apple Safari|
 
 ## User Stories
 *Requires Content*
@@ -434,6 +469,8 @@ Each css file was run through the [W3C CSS Validator](https://jigsaw.w3.org/css-
 * Minus button allowed user to enter -1 into the orderform when the page first loads. However the form validation will not allow this to be submitted. (Rectified by using JS to check if the value is 0 after the page has loaded.)
 
 * Remember me button on sign in page doesn't perform a function.
+
+* When a film is purchased the "added to your collection appears multiple times and even when the title is already in the collection.
 
 # Deployment
 The Site is stored on GitHub pages and hosted on Heroku. These are linked by connecting the github repository to the 
