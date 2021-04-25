@@ -391,6 +391,7 @@ Each page on the site was run through the [W3C Markup Validator](https://validat
 |film/358/| th start tag in table body, "type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|
 |basket/| th start tag in table body, No p element in scope but a p end tag seen, "type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources| p element was replaced with a div element to suit W3C.|
 |checkout/| Attribute placeholder not allowed on element select at this point, The value of the for attribute of the label element must be the ID of a non-hidden form control, "type" unnecessary for JavaScript resources| "type" unnecessary for JavaScript resources|
+|checkout/checkout_success/<order_no>/|th start tag in table body, Stray end tag td, No p element in scope but a p end tag seen, "type" unnecessary for JavaScript resources|
 
 ## Chrome Lighthouse
 *Requires Content*
@@ -417,7 +418,7 @@ Each page on the site was run through the [W3C Markup Validator](https://validat
 
 * Allauth auto emails are not pulling in all the correct details e.g. email address. (Rectified by manually adding details to base_message.txt).
 
-* Minus button allows user to enter -1 into the orderform. However the form validation will not allow this to be submitted. 
+* Minus button allows user to enter -1 into the orderform when the page first loads. However the form validation will not allow this to be submitted. 
 
 * Remember me button on sign in page doesn't perform a function.
 

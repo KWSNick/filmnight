@@ -51,17 +51,18 @@
                     <div class="col-7 gx-0 card-info">
                         <div class="card-body">
                             <h5>{{ film.Series_Title }}</h5>
-                            <p class="card-text">
+                            <div class="card-text">
                                 <table>
                                     <thead>
-                                        <th>Format</th>
-                                        <th>Qty.</th>
-                                        <th>ST.</th>
+                                        <tr>
+                                            <th>Format</th>
+                                            <th>Qty.</th>
+                                            <th>ST.</th>
+                                        </tr>
                                     </thead>
                                     <tr>
                                         <td>
                                             <h6>Digital</h6>
-                                        </td>
                                         </td>
                                         <td>{{ value.format_quantity.digital }}</td>
                                         <td>£<span>{{ value.format_total_cost.digital_total }}</span></td>
@@ -81,7 +82,7 @@
                                         <td>£<span>{{ value.format_total_cost.br_total }}</span></td>
                                     </tr>
                                 </table>
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </div>
