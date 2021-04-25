@@ -3,93 +3,98 @@
     <div class="row gx-0">
         <table class="mb-5">
             <thead>
-                <th>Format</th>
-                <th>Unit</th>
-                <th>Qty.</th>
-                <th>ST.</th>
+                <tr>
+                    <th>Format</th>
+                    <th>Unit</th>
+                    <th>Qty.</th>
+                    <th>ST.</th>
+                </tr>
             </thead>
-            <!--Digital Order Row-->
-            <tr class="mb-2 {% if digital_value == 0 %}d-none{% endif %}">
-                <td>
-                    <h6><label for="dig_quantity">Digital</label></h6>
-                </td>
-                <td>£<span id="digital_unit_price">{% for price in prices %}
-                        {% if price.cost_name == 'digital' %}
-                        {{ price.cost_price }}
-                        {% endif %}
-                        {% endfor %}</span></td>
-                <td class="input-group">
-                    <input class="qty_input mx-auto" name="dig_quantity" id="dig_quantity" value="{{ digital_value }}"
-                        min="0" max="1" type="number" data-item_id="digital_{{ film.id }}" readonly>
-                </td>
-                <td>£ <span id="digital_subtotal">0</span></td>
-            </tr>
-            <!--DVD Order Row-->
-            <tr>
-                <td>
-                    <h6><label for="dvd_quantity">DVD</label></h6>
-                </td>
-                <td>£<span id="dvd_unit_price">{% for price in prices %}
-                        {% if price.cost_name == 'dvd' %}
-                        {{ price.cost_price }}
-                        {% endif %}
-                        {% endfor %}</span></td>
-                <td class="input-group">
-                    <div class="input-group-prepend ms-auto me-2">
-                        <button class="dec-qty btn btn-secondary" data-item_id="dvd_{{ film.id }}"
-                            id="dec-qty_dvd_{{ film.id }}" disabled>
-                            <span class="icon">
-                                <i class="fas fa-minus"></i>
-                            </span>
-                        </button>
-                    </div>
-                    <input class="qty_input" name="dvd_quantity" id="dvd_quantity" data-item_id="dvd_{{ film.id }}"
-                        value="{% for item in basket_items %}{% if film.id|add:'0' == item.film_id|add:'0' %}{{ item.format_quantity.dvd }}{% endif %}{% endfor %}"
-                        min="0" max="10" type="number">
-                    <div class="input-group-append me-auto ms-2">
-                        <button class="inc-qty btn btn-secondary" data-item_id="dvd_{{ film.id }}"
-                            id="inc-qty_dvd_{{ film.id }}">
-                            <span class="icon">
-                                <i class="fas fa-plus"></i>
-                            </span>
-                        </button>
-                    </div>
-                </td>
-                <td>£ <span id="dvd_subtotal">0</span></td>
-            </tr>
-            <!--Bluray Order Row-->
-            <tr>
-                <td>
-                    <h6><label for="br_quantity">Bluray</label></h6>
-                </td>
-                <td>£<span id="br_unit_price">{% for price in prices %}
-                        {% if price.cost_name == 'bluray' %}
-                        {{ price.cost_price }}
-                        {% endif %}
-                        {% endfor %}</span></td>
-                <td class="input-group">
-                    <div class="input-group-prepend ms-auto me-2">
-                        <button class="dec-qty btn btn-secondary" data-item_id="bluray_{{ film.id }}"
-                            id="dec-qty_bluray_{{ film.id }}" disabled>
-                            <span class="icon">
-                                <i class="fas fa-minus"></i>
-                            </span>
-                        </button>
-                    </div>
-                    <input class="qty_input" data-item_id="bluray_{{ film.id }}" name="br_quantity" id="br_quantity"
-                        value="{% for item in basket_items %}{% if film.id|add:'0' == item.film_id|add:'0' %}{{ item.format_quantity.bluray }}{% endif %}{% endfor %}"
-                        min="0" max="10" type="number">
-                    <div class="input-group-append me-auto ms-2">
-                        <button class="inc-qty btn btn-secondary" data-item_id="bluray_{{ film.id }}"
-                            id="inc-qty_bluray_{{ film.id }}">
-                            <span class="icon">
-                                <i class="fas fa-plus"></i>
-                            </span>
-                        </button>
-                    </div>
-                </td>
-                <td>£ <span id="br_subtotal">0</span></td>
-            </tr>
+            <tbody>
+                <!--Digital Order Row-->
+                <tr class="mb-2 {% if digital_value == 0 %}d-none{% endif %}">
+                    <td>
+                        <h6><label for="dig_quantity">Digital</label></h6>
+                    </td>
+                    <td>£<span id="digital_unit_price">{% for price in prices %}
+                            {% if price.cost_name == 'digital' %}
+                            {{ price.cost_price }}
+                            {% endif %}
+                            {% endfor %}</span></td>
+                    <td class="input-group">
+                        <input class="qty_input mx-auto" name="dig_quantity" id="dig_quantity"
+                            value="{{ digital_value }}" min="0" max="1" type="number"
+                            data-item_id="digital_{{ film.id }}" readonly>
+                    </td>
+                    <td>£ <span id="digital_subtotal">0</span></td>
+                </tr>
+                <!--DVD Order Row-->
+                <tr>
+                    <td>
+                        <h6><label for="dvd_quantity">DVD</label></h6>
+                    </td>
+                    <td>£<span id="dvd_unit_price">{% for price in prices %}
+                            {% if price.cost_name == 'dvd' %}
+                            {{ price.cost_price }}
+                            {% endif %}
+                            {% endfor %}</span></td>
+                    <td class="input-group">
+                        <div class="input-group-prepend ms-auto me-2">
+                            <button class="dec-qty btn btn-secondary" data-item_id="dvd_{{ film.id }}"
+                                id="dec-qty_dvd_{{ film.id }}" disabled>
+                                <span class="icon">
+                                    <i class="fas fa-minus"></i>
+                                </span>
+                            </button>
+                        </div>
+                        <input class="qty_input" name="dvd_quantity" id="dvd_quantity" data-item_id="dvd_{{ film.id }}"
+                            value="{% for item in basket_items %}{% if film.id|add:'0' == item.film_id|add:'0' %}{{ item.format_quantity.dvd }}{% endif %}{% endfor %}"
+                            min="0" max="10" type="number">
+                        <div class="input-group-append me-auto ms-2">
+                            <button class="inc-qty btn btn-secondary" data-item_id="dvd_{{ film.id }}"
+                                id="inc-qty_dvd_{{ film.id }}">
+                                <span class="icon">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </td>
+                    <td>£ <span id="dvd_subtotal">0</span></td>
+                </tr>
+                <!--Bluray Order Row-->
+                <tr>
+                    <td>
+                        <h6><label for="br_quantity">Bluray</label></h6>
+                    </td>
+                    <td>£<span id="br_unit_price">{% for price in prices %}
+                            {% if price.cost_name == 'bluray' %}
+                            {{ price.cost_price }}
+                            {% endif %}
+                            {% endfor %}</span></td>
+                    <td class="input-group">
+                        <div class="input-group-prepend ms-auto me-2">
+                            <button class="dec-qty btn btn-secondary" data-item_id="bluray_{{ film.id }}"
+                                id="dec-qty_bluray_{{ film.id }}" disabled>
+                                <span class="icon">
+                                    <i class="fas fa-minus"></i>
+                                </span>
+                            </button>
+                        </div>
+                        <input class="qty_input" data-item_id="bluray_{{ film.id }}" name="br_quantity" id="br_quantity"
+                            value="{% for item in basket_items %}{% if film.id|add:'0' == item.film_id|add:'0' %}{{ item.format_quantity.bluray }}{% endif %}{% endfor %}"
+                            min="0" max="10" type="number">
+                        <div class="input-group-append me-auto ms-2">
+                            <button class="inc-qty btn btn-secondary" data-item_id="bluray_{{ film.id }}"
+                                id="inc-qty_bluray_{{ film.id }}">
+                                <span class="icon">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </td>
+                    <td>£ <span id="br_subtotal">0</span></td>
+                </tr>
+            </tbody>
         </table>
         <input type="hidden" name="redirect_url" value="{% url 'films' %}">
     </div>

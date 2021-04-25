@@ -383,7 +383,10 @@ Each page on the site was run through the [W3C Markup Validator](https://validat
 
 |Page URL|Initial Errors|Residual Errors|
 |--------|--------------|---------------|
+|https://filmnight.herokuapp.com/|
 |accounts/login/|meta element content incorrect (ie-edge not IE=edge), "type" unnecessary for JavaScript resources| "type" unnecessary for JavaScript resources|
+|accounts/signup/|"type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|
+
 
 ## Chrome Lighthouse
 *Requires Content*
