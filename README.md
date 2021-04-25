@@ -411,7 +411,7 @@ Each page on the site was run through the [W3C Markup Validator](https://validat
 
 * When a new film is created the image size may be different from those specified in the original fixtures, leading to card sizing issues.
 
-* Update basket button on filmpage.html could say "add to basket" if not already in the basket
+* Update basket button on filmpage.html could say "add to basket" if not already in the basket.
 
 * Forgot password form is not styled correctly.
 
