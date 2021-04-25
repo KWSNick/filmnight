@@ -25,7 +25,8 @@ def index(request):
             if not query:
                 return redirect(reverse('films'))
 
-        Queries = Q(Series_Title__icontains=query) | Q(Overview__icontains=query)
+        Queries = Q(Series_Title__icontains=query) | Q(
+            Overview__icontains=query)
         films = films.filter(Queries)
 
     context = {
@@ -106,7 +107,8 @@ def admin_area(request):
                 if not query:
                     return redirect(reverse('admin_area'))
 
-            Queries = Q(Series_Title__icontains=query) | Q(Overview__icontains=query)
+            Queries = Q(Series_Title__icontains=query) | Q(
+                Overview__icontains=query)
             films = films.filter(Queries)
 
         context = {
