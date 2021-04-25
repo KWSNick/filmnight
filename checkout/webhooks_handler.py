@@ -21,8 +21,8 @@ class StripeWH_Handler:
         intent = event.data.object
         pid = intent.id
         basket = intent.metadata.basket
-        save_delivery = intent.metadata.save_delivery
-        save_billing = intent.metadata.save_billing
+        # save_delivery = intent.metadata.save_delivery
+        # save_billing = intent.metadata.save_billing
         billing_details = intent.charges.data[0].billing_details
         shipping_details = intent.charges.data[0].shipping
         grand_total = round(intent.charges.data[0].amount / 100, 2)

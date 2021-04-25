@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import (render, redirect, reverse,
+                              HttpResponse, get_object_or_404)
 from django.contrib import messages
 from films.models import film
 from .models import price_list
@@ -40,8 +41,8 @@ def add_to_basket(request, film_id):
             messages.success(request, f'{Film.Series_Title} Basket Updated')
         else:
             basket[film_id] = {'digital': dig_quantity,
-                            'dvd': dvd_quantity,
-                            'bluray': br_quantity}
+                               'dvd': dvd_quantity,
+                               'bluray': br_quantity}
             messages.success(request, f'{Film.Series_Title} Added to Basket')
 
         request.session['basket'] = basket

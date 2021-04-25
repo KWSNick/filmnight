@@ -47,7 +47,8 @@ def orderHistory(request, order_number):
 
         order_basket = order.basket
         order_basket_doublequotes = order_basket.replace("'", '"')
-        order_basket_filmname1 = order_basket_doublequotes.replace("<film:", '"')
+        order_basket_filmname1 = order_basket_doublequotes.replace(
+            "<film:", '"')
         order_basket_filmname2 = order_basket_filmname1.replace(">", '"')
         order_basket_decimal = order_basket_filmname2.replace("Decimal(", '')
         order_basket_bracket = order_basket_decimal.replace(")", '')

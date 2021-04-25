@@ -12,19 +12,19 @@ class users(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=25, null=False, blank=False)
     last_name = models.CharField(max_length=25, null=False, blank=False)
-    phone_number = models.CharField(max_length=20, null=True, blank=True)
+    phone_number = models.CharField(max_length=20, null=True, blank=True) # noqa
     delivery_add1 = models.CharField(max_length=80, null=False, blank=False)
-    delivery_add2 = models.CharField(max_length=80, null=True, blank=True)
+    delivery_add2 = models.CharField(max_length=80, null=True, blank=True) # noqa
     delivery_town = models.CharField(max_length=40, null=False, blank=False)
-    delivery_county = models.CharField(max_length=80, null=True, blank=True)
-    delivery_postcode = models.CharField(max_length=40, null=True, blank=True)
+    delivery_county = models.CharField(max_length=80, null=True, blank=True) # noqa
+    delivery_postcode = models.CharField(max_length=40, null=True, blank=True) # noqa
     delivery_country = CountryField(
         blank_label='Country_*', null=False, blank=False)
     billing_add1 = models.CharField(max_length=80, null=False, blank=False)
-    billing_add2 = models.CharField(max_length=80, null=True, blank=True)
+    billing_add2 = models.CharField(max_length=80, null=True, blank=True) # noqa
     billing_town = models.CharField(max_length=40, null=False, blank=False)
-    billing_county = models.CharField(max_length=80, null=True, blank=True)
-    billing_postcode = models.CharField(max_length=40, null=True, blank=True)
+    billing_county = models.CharField(max_length=80, null=True, blank=True) # noqa
+    billing_postcode = models.CharField(max_length=40, null=True, blank=True) # noqa
     billing_country = CountryField(
         blank_label='Country_*', null=False, blank=False)
     purchased_titles = models.ManyToManyField(film)
