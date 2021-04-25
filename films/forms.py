@@ -30,10 +30,11 @@ class filmForm(forms.ModelForm):
 
     class Meta:
         model = film
-        fields = ('Poster', 'Poster_Link', 'Series_Title', 'Released_Year', 'Certificate',
-                  'Runtime', 'Genre', 'IMDB_Rating', 'Overview', 'Meta_score',
-                  'Director', 'Star1', 'Star2', 'Star3', 'Star4', 'No_of_Votes',
-                  'Gross', 'dvd_stock', 'bluray_stock', 'available',)
+        fields = ('Poster', 'Poster_Link', 'Series_Title', 'Released_Year',
+                  'Certificate', 'Runtime', 'Genre', 'IMDB_Rating',
+                  'Overview', 'Meta_score', 'Director', 'Star1', 'Star2',
+                  'Star3', 'Star4', 'No_of_Votes', 'Gross', 'dvd_stock',
+                  'bluray_stock', 'available',)
 
         image = forms.ImageField(label='Image', required=False,
                                  widget=CustomClearableFileInput)
