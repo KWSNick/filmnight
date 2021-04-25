@@ -395,7 +395,14 @@ Each page on the site was run through the [W3C Markup Validator](https://validat
 |profile/|Attribute placeholder not allowed on element select at this point, The scope attribute on the td element is obsolete. Use the scope attribute on a th element instead, "type" unnecessary for JavaScript resources| "type" unnecessary for JavaScript resources|
 |admin_area/|"type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|
 |admin_area/edit_price/1/|"type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|
-|admin_area/edit_film/1/| Attribute placeholder is only allowed when the input type is (not file), Attribute placeholder not allowed on element select at this point, "type" unnecessary for JavaScript resources|
+|admin_area/edit_film/1/| Attribute placeholder is only allowed when the input type is (not file), Attribute placeholder not allowed on element select at this point, "type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|
+|accounts/logout/|"type" unnecessary for JavaScript resources|"type" unnecessary for JavaScript resources|
+
+Each css file was run through the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/).
+
+|File|Initial Errors|Initial Warnings|Residual Errors|Residual Warnings|Notes|
+|----|--------------|----------------|---------------|-----------------|-----|
+|base.css|Property scrollbar-width doesn't exist : none|-ms-overflow-style is an unknown vendor extension, ::-webkit-scrollbar is an unknown vendor extended pseudo-element| 
 
 ## Chrome Lighthouse
 *Requires Content*
