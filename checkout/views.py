@@ -103,8 +103,10 @@ def checkout(request):
                 order.order_charge = order_total
                 order.total_charge = total
                 order.save()
-                request.session['save_delivery'] = 'save_delivery' in request.POST
-                request.session['save_billing'] = 'save_billing' in request.POST
+                request.session['save_delivery'] = (
+                    'save_delivery' in request.POST)
+                request.session['save_billing'] = (
+                    'save_billing' in request.POST)
                 return redirect(reverse('checkout_success',
                                         args=[order.order_number]))
             else:
