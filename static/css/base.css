@@ -114,6 +114,16 @@ a .card {
     width: 100%;
 }
 
+/* Footer style */
+
+footer {
+    min-height: 5vh;
+}
+
+footer a {
+    color: #ff1919;
+}
+
 /* Crispy Forms Bootstrap4 Overrides */
 
 .form-control,

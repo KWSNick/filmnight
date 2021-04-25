@@ -443,7 +443,7 @@ The site was loaded in several browsers to assess for cross browser compatabilit
 |Browser|Version|Comments|Applied Fixes|
 |-------|-------|--------|-------------|
 |Google Chrome| 90.0.4430.85|Fully Functional||
-|Mozilla Firefox| 85.0.2|orderform quantity inputs have up and down toggle buttons. the placeholder text in the stripe payment section is not colored legibally.|
+|Mozilla Firefox| 85.0.2|orderform quantity inputs have up and down toggle buttons. the placeholder text in the stripe payment section is not colored legibally.| Applied ::placeholder color style in stripe_elements.js to correct stripe text color.|
 |Microsoft Edge|
 |Microsoft Internet Explorer|
 |Samsung Internet|
