@@ -13,7 +13,7 @@
         <h5 class="d-inline sec_text_clr">Order No.: </h5><span>{{ order.order_number }}</span><br>
         <h5 class="d-inline sec_text_clr">Order Date: </h5><span>{{ order.date }}</span>
     </div>
-    <div class="col-5 col-md-2 col-lg-1 text-end me-3 me-md-5">
+    <div class="col-5 col-md-2 col-xl-1 text-end me-3 me-md-5">
         <h4 class="sec_text_clr">Subtotals</h4>
         {% for items, values in order_basket_json.items %}
         {% if items != 'basket_items' %}
