@@ -119,22 +119,21 @@ viable product can be developed initially which fulfils the core requirements of
 #### Minimum Viable Product
 - A Django project consisting of several apps:
     - Home
-    - Movies (2x models)
-    - Profiles (1x models)
-    - Basket
+    - Films (1x models)
+    - Profiles (1x model)
+    - Basket (1x model)
     - Checkout (1x model)
 - A relational database consisting of several models:
-    - Movies (Movies)
-    - Pricelist (Movies)
-    - Profile (Profiles)
+    - Film (Films)
+    - Price_list (Basket)
+    - Profile (Users)
     - Orders (Checkout)
 - A site consisting of the following pages, generated via a template structure:
     - Home/landing page
         - Intro to site and purpose
-        - Link to sign in
+        - Sign in form
         - Link to register
     - Register page
-    - Sign in page
     - Browse movies page
         - See owned titles (via a quick filter)
         - See wished for titles (via a quick filter)
@@ -146,8 +145,8 @@ viable product can be developed initially which fulfils the core requirements of
         - Update delivery/billing address details
 
 #### Future Development
-- User reviews
-- User ratings
+- Allow users to leave reviews and ratings
+- Create a product purchase wishlist
 - User interactions (direct tags/suggestions to others, view other wish lists)
 - Promoted content/product
 
@@ -269,10 +268,10 @@ through its slightly condensed nature.
 *Requires Content*
 
 ## Future Features
-- User can leave reviews
-- User can rate films
-- User can provide interactions (direct tags/suggestions to others, view other wish lists)
-- Promoted content/product from third party partners
+- Allow users to leave reviews and ratings
+- Create a product purchase wishlist
+- User interactions (direct tags/suggestions to others, view other wish lists)
+- Promoted content/product
 
 # Technologies Used
 ## Languages
@@ -348,6 +347,18 @@ data required for the live project.
 Postgres is open source and released under a bespoke [PostgresSQL license](https://www.postgresql.org/about/licence/) 
 similar to the BSD or MIT licenses.
 
+### [Stripe](https://stripe.com/gb)
+Is a software/API solution for accepting and processing payments to an online store. It was used to accept card payment for Film Night.
+
+#### License
+Stripes Legal use terms can be found here: [Stripe Service Agreement](https://stripe.com/gb/ssa)
+
+### [AWS S3](https://aws.amazon.com/)
+Amazon Web Service s3 is a simple cloud storage service designed to host a users files, allowing film nights static and media files to be hosted here for quicker access and larger storage space. 
+
+#### License
+AWS Legal use terms can be found here: [AWS Legal](https://aws.amazon.com/legal/?nc1=f_cc)
+
 ### [SQLite](https://www.sqlite.org/index.html)
 Is an open source C based relational database engine and was utilised as the data store within the development area.
 
@@ -360,8 +371,19 @@ Was used to create the wireframes during the planning phase.
 # Testing
 *Requires Content*
 
+## Flake8 Validation
+Flake8 was run via the IDE terminal to assess none-compliance issues.
+
+All issues contained within developer written code were addressed by either rectification or the application of # noqa where applicable. An example of this is the null=True attributes assigned to various model fields.
+
+Code which was not written directly by the developer i.e. the migrations were not addressed.
+
 ## W3C Validation
-*Requires Content*
+Each page on the site was run through the [W3C Markup Validator](https://validator.w3.org/).
+
+|Page URL|Initial Errors|Residual Errors|
+|--------|--------------|---------------|
+|accounts/login/|meta element content incorrect (ie-edge not IE=edge), "type" unnecessary for JavaScript resources| "type" unnecessary for JavaScript resources|
 
 ## Chrome Lighthouse
 *Requires Content*
