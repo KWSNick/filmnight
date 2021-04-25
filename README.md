@@ -380,6 +380,8 @@ Was used to create the wireframes during the planning phase.
 
 * When a new user is created the profile details update on the checkout page will fail until data is entered via the my profile page.
 
+* When a new film is created the image size may be different from those specified in the original fixtures, leading to card sizing issues.
+
 # Deployment
 The Site is stored on GitHub pages and hosted on Heroku. These are linked by connecting the github repository to the 
 Heroku app workspace.
@@ -416,15 +418,24 @@ The site utilises server-side python script and relies on a number of pre-built 
 these packages will be installed in advance, however should you wish to duplicate the site the following will be required:
 
 - asgiref==3.3.1
+- boto3==1.17.57
+- botocore==1.20.57
+- dj-database-url==0.5.0
 - Django==3.1.7
 - django-allauth==0.44.0
 - django-countries==7.1
 - django-crispy-forms==1.11.2
+- django-storages==1.11.1
+- gunicorn==20.1.0
+- jmespath==0.10.0
 - oauthlib==3.1.0
+- Pillow==8.2.0
+- psycopg2-binary==2.8.6
 - PyJWT==2.0.1
 - python3-openid==3.2.0
 - pytz==2021.1
 - requests-oauthlib==1.3.0
+- s3transfer==0.4.2
 - sqlparse==0.4.1
 - stripe==2.56.0
 
@@ -437,7 +448,11 @@ The environment variables were stored in the OS of both the development environm
 
 |Variable |Value |
 |---------|------|
-|DEVELOPMENT| True (Development Environment Only)/ False |
+|DEVELOPMENT| True (Development Environment Only)|
+|USE_AWS| True (Deployed Environment Only)|
+|AWS_ACCESS_KEY_ID| <YOUR__IAM_USER_KEY> |
+|AWS_SECRET_ACCESS_KEY| <YOUR__IAM_USER_SECRET_KEY> |
+|DATABASE_URL| (Deployed Environment Only) postgres://mnxrqpxcrrtfog:bc74ed37a2d1d99f00b090aa9a980be06d6edd05fa30f01e20c02f036fdf81c1@ec2-63-34-97-163.eu-west-1.compute.amazonaws.com:5432/d7hmo132hqc9e5 |
 |SECRET_KEY | <YOUR_KEY> |
 |STRIPE_PUBLIC_KEY| pk_test_51ISIjdJKzBnf14eftOwBmvbAcDGXaTHCQwZL5XYPCTRJQMvzNoNgNanwrTqO7Iqo3D86nPJ8sCFPPVfBj47ORQcN00Eg9cwcZ7 |
 |STRIPE_SECRET_KEY| <YOUR_KEY> |
