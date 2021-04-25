@@ -405,7 +405,7 @@ Each page on the site was run through the [W3C Markup Validator](https://validat
 ## Known Bugs
 *Requires Content*
 
-* When a new user is created the profile details update on the checkout page will fail until data is entered via the my profile page.
+* When a new user is created the profile details update on the checkout page will fail until data is entered via the my profile page. This is possibly due to the user not being created in the database until the profile form has been submitted.
 
 * When a new film is created the image size may be different from those specified in the original fixtures, leading to card sizing issues.
 
@@ -413,7 +413,7 @@ Each page on the site was run through the [W3C Markup Validator](https://validat
 
 * Forgot password form is not styled correctly.
 
-* Allauth auto emails are not pulling in all the correct details e.g. email address.
+* Allauth auto emails are not pulling in all the correct details e.g. email address. (Rectified by manually adding details to base_message.txt).
 
 * Minus button allows user to enter -1 into the orderform. However the form validation will not allow this to be submitted. 
 
