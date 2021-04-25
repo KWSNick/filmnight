@@ -25,7 +25,7 @@
                 {{ order_form.delivery_county|as_crispy_field }}
                 {{ order_form.delivery_postcode|as_crispy_field }}
                 {{ order_form.delivery_country|as_crispy_field }}
-                <label class="form-check-label" for="id-save_delivery">Save this delivery address?</label>
+                <label class="form-check-label" for="save_delivery">Save this delivery address?</label>
                 <input class="form-check-input" type="checkbox" id="save_delivery" name="save_delivery" checked>
             </fieldset>
             <fieldset>
@@ -39,7 +39,7 @@
             </fieldset>
             <fieldset>
                 <legend>Billing Address</legend>
-                <label class="form-check-label" for="id-same_as_delivery">Same as delivery address?</label>
+                <label class="form-check-label" for="same_as_delivery">Same as delivery address?</label>
                 <input class="form-check-input" type="checkbox" id="same_as_delivery" name="same_as_delivery">
                 {{ order_form.billing_add1|as_crispy_field }}
                 {{ order_form.billing_add2|as_crispy_field }}
@@ -47,7 +47,7 @@
                 {{ order_form.billing_county|as_crispy_field }}
                 {{ order_form.billing_postcode|as_crispy_field }}
                 {{ order_form.billing_country|as_crispy_field }}
-                <label class="form-check-label" for="id-save_billing">Save this billing address?</label>
+                <label class="form-check-label" for="save_billing">Save this billing address?</label>
                 <input class="form-check-input" type="checkbox" id="save_billing" name="save_billing" checked>
             </fieldset>
             <div class="submission">
