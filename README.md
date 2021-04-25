@@ -449,8 +449,27 @@ The site was loaded in several browsers to assess for cross browser compatabilit
 |Opera|75.0.3969.218|Fully Functional||
 |Apple Safari|14.4.2|Fully Functional||
 
+
 ## User Stories
-*Requires Content*
+|Story ID |User Type |I want to … |So that I can … |Site Functionality|
+|---------|----------|------------|----------------|------------------|
+A1|Store Admin|Amend pricing|Maximise revenue|A superuser can access an admin section, and amend the prices in the price list.|
+A2|Store Admin|Add a new title|Attract new and existing custom with new purchase choices|A superuser can access an admin section, and enter details into all the fields in the film model.|
+A3|Store Admin|Delete a title|If its no longer available to prevent re-funds|A superuser can access an admin section and select individual titles to delete. Titles can be searched.|
+A4|Store Admin|Amend stock levels|To reduce risk of out of stock purchases|Stock levels are not used in the site currently, but they can be amended for each film in the admin section.|
+A5|Store Admin|Have an automated stock reduction on successful order|Minimise manual stock management|Stock levels have not been automated in this version of the site.|
+S1|Shopper|See all titles|Make a choice on what to purchase|All available titles are available when a user is logged in.|
+S2|Shopper|Filter and sort titles|So I can focus my attention on titles I will be interested in|Titles are pre-organised into rows and can be serached for title and overview content.|
+S3|Shopper|See more detail on a title|So I can make an informed decision on whether to purchase|Each title can be opened into an individual page showing more title detail.|
+S4|Shopper|Identify the titles I already own|So I don’t purchase them twice by accident|A row exists with all the users purchased titles. Purchased titles do not show the digital option in the orderform and the value is zero'd|
+S5|Shopper|Add a title to my basket|So I can review before purchase and purchase multiple titles|Titles can be added for each format|
+S6|Shopper|Edit my basket|So I can amend before purchase|In the basket the user can quickly access the titles they have added to amend quantities or remove completely.|
+S7|Shopper|Checkout securely|To make a purchase with confidence|Stripe provides secure checkout.|
+S8|Shopper|Store my delivery/billing details for future purchases|To make it quicker to checkout next time|The profile app can store this information, and it can be updated in the checkout.|
+S9|Shopper|Access the digital copies of my purchased items|To consume content immediately|A watch now button appears if the user has purchased the title. This cannot be accessed if the user hasn't purchased the title.|
+S10|Shopper|Save titles on a shortlist for potential future purchases|Make quick purchases on my return visits|This feature has not been rolled out in this release version.|
+S11|Shopper|See my previous orders|For personal financial administration|Previous orders are stored and presented to the user in a table on the my profile page. They can be clicked on for more detail.|
+S12|Shopper|Logout securely|Prevent unauthorised use of my account|Allauth provides secure register, login and logout.|
 
 ## Known Bugs
 *Requires Content*
