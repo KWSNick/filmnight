@@ -372,7 +372,6 @@ SqLite is [public domain](https://www.sqlite.org/copyright.html)
 Was used to create the wireframes during the planning phase. 
 
 # Testing
-*Requires Content*
 
 ## Flake8 Validation
 Flake8 was run via the IDE terminal to assess none-compliance issues.
@@ -444,11 +443,11 @@ The site was loaded in several browsers to assess for cross browser compatabilit
 |-------|-------|--------|-------------|
 |Google Chrome| 90.0.4430.85|Fully Functional||
 |Mozilla Firefox| 85.0.2|orderform quantity inputs have up and down toggle buttons. the placeholder text in the stripe payment section is not colored legibally.| Applied ::placeholder color style in stripe_elements.js to correct stripe text color.|
-|Microsoft Edge|
-|Microsoft Internet Explorer|
-|Samsung Internet|
-|Opera|
-|Apple Safari|
+|Microsoft Edge|90.0.818.46|Fully Functional||
+|Microsoft Internet Explorer|19041.928| Header text font differs from other browsers. Scrollbars are present in horizontal scroll. page load errors when running scripts (freezes and partial loads), form legends are left aligned not centre. Stripe element doesn't load, clearableFileInput doesn't render correctly. Headers left aligned not center, top margins not observed with lots of elements.|None - Depreciated browser.|
+|Samsung Internet|14.0.1.62|Fully Functional||
+|Opera|75.0.3969.218|Fully Functional||
+|Apple Safari|14.4.2|Fully Functional||
 
 ## User Stories
 *Requires Content*
@@ -558,8 +557,6 @@ The environment variables were stored in the OS of both the development environm
 
 # Credits
 ## Code
-*Requires Content*
-
 The parallax background code was inspired by W3Schools tutorial https://www.w3schools.com/howto/howto_css_parallax.asp
 
 The manipulation of the json data file within fixtures was aided with tutorials found [Kite](https://www.kite.com/python/answers/how-to-append-to-a-json-file-in-python)
