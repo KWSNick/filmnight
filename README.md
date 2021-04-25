@@ -402,7 +402,9 @@ Each css file was run through the [W3C CSS Validator](https://jigsaw.w3.org/css-
 
 |File|Initial Errors|Initial Warnings|Residual Errors|Residual Warnings|Notes|
 |----|--------------|----------------|---------------|-----------------|-----|
-|base.css|Property scrollbar-width doesn't exist : none|-ms-overflow-style is an unknown vendor extension, ::-webkit-scrollbar is an unknown vendor extended pseudo-element| 
+|base.css|Property scrollbar-width doesn't exist : none|-ms-overflow-style is an unknown vendor extension, ::-webkit-scrollbar is an unknown vendor extended pseudo-element| Property scrollbar-width doesn't exist : none |::-webkit-scrollbar is an unknown vendor extended pseudo-element|Cannot remove error as this is a common method for removing scrollbars from Firefox.|
+|profiles.css| | | | |No Errors Found|
+|checkout.css| | | | |No Errors Found|
 
 ## Chrome Lighthouse
 *Requires Content*
@@ -429,7 +431,7 @@ Each css file was run through the [W3C CSS Validator](https://jigsaw.w3.org/css-
 
 * Allauth auto emails are not pulling in all the correct details e.g. email address. (Rectified by manually adding details to base_message.txt).
 
-* Minus button allows user to enter -1 into the orderform when the page first loads. However the form validation will not allow this to be submitted. 
+* Minus button allowed user to enter -1 into the orderform when the page first loads. However the form validation will not allow this to be submitted. (Rectified by using JS to check if the value is 0 after the page has loaded.)
 
 * Remember me button on sign in page doesn't perform a function.
 
@@ -527,6 +529,9 @@ The manipulation of the json data file within fixtures was aided with tutorials 
 and also [Real Python](https://realpython.com/python-json/)
 
 The use of python decimal was aided by Jackie Kazil's [GistHub Readme]https://gist.github.com/jackiekazil/6201722
+
+The horizontal scrolling functionality was led by [Colin Lord at codeburst.io](https://codeburst.io/how-to-create-horizontal-scrolling-containers-d8069651e9c6) and [MDN Webdocs](https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width)
+
 
 ## Content
 ### [Kaggle IMDB Movies Dataset](https://www.kaggle.com/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows)

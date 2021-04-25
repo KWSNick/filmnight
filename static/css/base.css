@@ -21,6 +21,7 @@ header {
     font-family: 'Zilla Slab Highlight', cursive;
 }
 
+/* Colors and backgrounds */
 .pri_bg_clr {
     background: #000;
 }
@@ -49,6 +50,7 @@ header {
     color: #ff1919;
 }
 
+/* Positions and heights */
 .full_height {
     min-height: 100vh;
     height: 100%;
@@ -177,7 +179,9 @@ a .card {
 
 /* Bootstrap Breakpoints */
 
-@media (min-width: 576px) {}
+@media (min-width: 576px) {
+    /*Currently not in use*/
+}
 
 @media (max-width: 767px) {
 
@@ -235,4 +239,6 @@ a .card {
 
 }
 
-@media (min-width: 1400px) {}
+@media (min-width: 1400px) {
+    /*Currently not in use*/
+}
