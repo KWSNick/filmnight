@@ -168,12 +168,14 @@ def checkout_success(request, order_number):
         # Get the basket item out of the order object and format back to JSON
         order_basket = order.basket
         order_basket_doublequotes = order_basket.replace("'", '"')
-        order_basket_filmname1 = order_basket_doublequotes.replace("<film:", '"')
+        order_basket_filmname1 = order_basket_doublequotes.replace(
+            "<film:", '"')
         order_basket_filmname2 = order_basket_filmname1.replace(">", '"')
         order_basket_decimal = order_basket_filmname2.replace("Decimal(", '')
         order_basket_bracket = order_basket_decimal.replace(")", '')
         order_basket_json = json.loads(order_basket_bracket)
-        messages.success(request, f'Order {order_number} successfully processed.')
+        messages.success(request,
+                         f'Order {order_number} successfully processed.')
         profile = users.objects.get(user=request.user)
         order.user_profile = profile
         order.save()
@@ -215,9 +217,11 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
                 messages.success(request,
-                                'Profile delivery details successfully updated!')
+                                 'Profile delivery details\
+                                 successfully updated!')
             else:
-                messages.error(request, "Profile delivery details update failed.")
+                messages.error(request, "Profile delivery details\
+                                        update failed.")
 
         if save_billing:
             billing_data = {
@@ -242,9 +246,11 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
                 messages.success(request,
-                                'Profile billing details successfully updated!')
+                                 'Profile billing details\
+                                 successfully updated!')
             else:
-                messages.error(request, "Profile billing details update failed.")
+                messages.error(request, "Profile billing details\
+                                        update failed.")
 
         if 'basket' in request.session:
             del request.session['basket']
@@ -259,7 +265,8 @@ def checkout_success(request, order_number):
             body = render_to_string(
                                     'checkout/checkout_emails/order_email_body.txt',
                                     {'order': order,
-                                    'contact_email': settings.DEFAULT_FROM_EMAIL})
+                                     'contact_email':
+                                        settings.DEFAULT_FROM_EMAIL})
             send_mail(
                 subject,
                 body,
