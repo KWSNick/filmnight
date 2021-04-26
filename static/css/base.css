@@ -108,6 +108,12 @@ a .card {
     text-decoration: none;
 }
 
+/* Film card image restriction */
+
+.card img {
+    max-height: 240px;
+}
+
 /* Card body table styling */
 
 .card-body table {
