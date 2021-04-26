@@ -67,6 +67,7 @@ form[0].addEventListener('submit', function (event) {
         'disabled': true
     });
     $('#submit_checkout').attr('disabled', true);
+    $('#loading_checkout').fadeToggle(100);
     let saveDelivery = Boolean($('#save_delivery').attr('checked'));
     let saveBilling = Boolean($('#save_billing').attr('checked'));
     let csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
@@ -117,6 +118,7 @@ form[0].addEventListener('submit', function (event) {
                 <span>${result.error.message}</span>`
 
                 $(errorDiv).html(html);
+                $('#loading_checkout').fadeToggle(100);
                 card.update({
                     'disabled': false
                 });
