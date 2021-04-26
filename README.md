@@ -510,7 +510,7 @@ S12|Shopper|Logout securely|Prevent unauthorised use of my account|Allauth provi
 
 * When a new user is created the profile details update on the checkout page will fail until data is entered via the my profile page. This is possibly due to the user not being created in the database until the profile form has been submitted.
 
-* When a new film is created the image size may be different from those specified in the original fixtures, leading to card sizing issues.
+* When a new film is created the image size may be different from those specified in the original fixtures, leading to card sizing issues. (Rectified with some max-height css applied to card images and the filmpage image.)
 
 * Update basket button on filmpage.html could say "add to basket" if not already in the basket.
 
