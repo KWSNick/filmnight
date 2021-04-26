@@ -34,7 +34,7 @@ a real service.
 |---------|----------|------------|----------------|
 A1|Store Admin|Amend pricing|Maximise revenue|
 A2|Store Admin|Add a new title|Attract new and existing custom with new purchase choices|
-A3|Store Admin|Delete a title|If its no longer available to prevent re-funds|
+A3|Store Admin|Delete a title|If it's no longer available to prevent re-funds|
 A4|Store Admin|Amend stock levels|To reduce risk of out of stock purchases|
 A5|Store Admin|Have an automated stock reduction on successful order|Minimise manual stock management|
 S1|Shopper|See all titles|Make a choice on what to purchase|
@@ -242,7 +242,7 @@ to provide the user with the expected feel of a movie streaming and purchase sit
 Buttons will utilise expected colour conventions, Green for positive call to actions such as sign in, sign up and add to 
 basket, grey for less favourable options such as return to browsing and red for delete and remove functions. 
 
-![Planned Colour Pallette](media/plannedColorPallette.jpg)
+![Planned Colour Palette](media/plannedColorPalette.jpg)
 Colour palettes were collated using material designs colour tool https://material.io/resources/color 
 
 Where icons are used they will be suitable to describe the function, heading or label they are associated with.
@@ -441,9 +441,6 @@ Each css file was run through the [W3C CSS Validator](https://jigsaw.w3.org/css-
 |profiles.css| | | | |No Errors Found|
 |checkout.css| | | | |No Errors Found|
 
-## Chrome Lighthouse
-*Requires Content*
-
 ## Responsiveness
 The following urls were loaded into Google Chrome and inspected with the developer tools to provide responsive layout:
 - accounts/login/
@@ -470,13 +467,13 @@ Minor responsive issues were identified and rectified, resulting in no known iss
 
 The results of the test can be seen in the document [Responsive Tests](static/docs/responsive.pdf)
 
-## Browser Compatability
-The site was loaded in several browsers to assess for cross browser compatability.
+## Browser Compatibility
+The site was loaded in several browsers to assess for cross browser compatibility.
 
 |Browser|Version|Comments|Applied Fixes|
 |-------|-------|--------|-------------|
 |Google Chrome| 90.0.4430.85|Fully Functional||
-|Mozilla Firefox| 85.0.2|orderform quantity inputs have up and down toggle buttons. the placeholder text in the stripe payment section is not colored legibally.| Applied ::placeholder color style in stripe_elements.js to correct stripe text color.|
+|Mozilla Firefox| 85.0.2|orderform quantity inputs have up and down toggle buttons. the placeholder text in the stripe payment section is not coloured legibly.| Applied ::placeholder color style in stripe_elements.js to correct stripe text color.|
 |Microsoft Edge|90.0.818.46|Fully Functional||
 |Microsoft Internet Explorer|19041.928| Header text font differs from other browsers. Scrollbars are present in horizontal scroll. page load errors when running scripts (freezes and partial loads), form legends are left aligned not centre. Stripe element doesn't load, clearableFileInput doesn't render correctly. Headers left aligned not center, top margins not observed with lots of elements.|None - Depreciated browser.|
 |Samsung Internet|14.0.1.62|Fully Functional||
@@ -493,7 +490,7 @@ A3|Store Admin|Delete a title|If its no longer available to prevent re-funds|A s
 A4|Store Admin|Amend stock levels|To reduce risk of out of stock purchases|Stock levels are not used in the site currently, but they can be amended for each film in the admin section.|
 A5|Store Admin|Have an automated stock reduction on successful order|Minimise manual stock management|Stock levels have not been automated in this version of the site.|
 S1|Shopper|See all titles|Make a choice on what to purchase|All available titles are available when a user is logged in.|
-S2|Shopper|Filter and sort titles|So I can focus my attention on titles I will be interested in|Titles are pre-organised into rows and can be serached for title and overview content.|
+S2|Shopper|Filter and sort titles|So I can focus my attention on titles I will be interested in|Titles are pre-organised into rows and can be searched for title and overview content.|
 S3|Shopper|See more detail on a title|So I can make an informed decision on whether to purchase|Each title can be opened into an individual page showing more title detail.|
 S4|Shopper|Identify the titles I already own|So I don’t purchase them twice by accident|A row exists with all the users purchased titles. Purchased titles do not show the digital option in the orderform and the value is zero'd|
 S5|Shopper|Add a title to my basket|So I can review before purchase and purchase multiple titles|Titles can be added for each format|
@@ -507,7 +504,7 @@ S12|Shopper|Logout securely|Prevent unauthorised use of my account|Allauth provi
 
 ## Known Bugs
 
-* When a new user is created the profile details update on the checkout page will fail until data is entered via the my profile page. This is possibly due to the user not being created in the database until the profile form has been submitted.
+* When a new user is created the profile details update on the checkout page will fail until data is entered via the my profile page.
 
 * When a new film is created the image size may be different from those specified in the original fixtures, leading to card sizing issues. (Rectified with some max-height css applied to card images and the filmpage image on 26th April 2021)
 
@@ -531,6 +528,13 @@ It consists of 1 Master branch and no other branches.
 
 ## Live Hosted Site
 The site is hosted on Heroku, and can be accessed via this link https://filmnight.herokuapp.com/
+
+### Purpose
+The hosted site provides a demonstration of the use of Full Stack Development techniques based around the Django framework and a relational database for educational purposes of a fictional media content streaming service and hard-copy e-commerce store. 
+
+The site allows a user to create an account, login and browse a large number of titles with search functionality, before selecting a titles and optional hard-copy formats and adding them to a basket. The user can checkout using stripe and is able to identify titles they own digitally easily. A user can go into owned titles and purchase further hard copies, see their order history and add in default delivery and billing addresses. 
+
+A superuser can access a restricted area to amend pricing, which is common to all titles, add a new title and edit titles details.
 
 ## GitHub Pages
 The GitHub Repository for containing the source code for this project can be found here: https://github.com/KWSNick/filmnight
@@ -609,12 +613,44 @@ The final database structure varied slightly from the planned structure but larg
 # User Guide
 *Requires Content*
 
+1. Enter the site URL https://filmnight.herokuapp.com/ into your browser. Google Chrome is recommended (see Testing --> Browser Compatibility for more information.)
+
+2. If you already have an account login using the sign in page. Use the forgot password function if you cannot remember your details.
+
+3. If you haven't registered an account yet then head to the sign up page and enter your details as requested. You'll need to verify your email address.
+
+4. When you have logged in you'll arrive at the main page, which will load all the titles available into several categories. When the page has loaded you can scroll through each category horizontally using either the provided buttons, including a return to start button, or via swiping right or left on touch screen devices. 
+
+5. To narrow the titles displayed use the search bar at the top of the page. Search for key words in the title and plot overview. A reset button will return all the titles available again. 
+
+6. Any titles you have already purchased are presented in a row at the top, and are affected by the search bar entries.
+
+7. When you have found a title you are interested in, click on the card its presented in to view more detail and an order form. If you don't already own the digital version of the title on the site this will be pre-populated with a 1, otherwise this row will be excluded (and populated with a 0 to prevent re-ordering). If you own the title a "Watch Now" button will be present to take you to a streaming page.
+
+8. To add a title to your basket enter the number of DVD and Bluray copies you would like (min 0, max 10) and click "Update basket". You will be returned to the main page to continue browsing. You can add as many titles as you like to your basket.
+
+9. When you are happy with your choices you can access your basket from the main menu, where you can remove titles completely, or click on each card to edit the quantity of hard-copy formats.
+
+10. To purchase the titles go to the Basket and click the "Buy Now" button. This will take you to a checkout page where you can enter delivery and billing details. You must enter both even if no delivery is required. Delivery charges are only applied if a hard-copy format is selected. 
+
+11. When the details are completed correctly you can submit your checkout form, at which point the payment will be processed and you will be presented with an order confirmation. A confirmation email will also be sent to your orders email address. A bug currently exists where your details will fail to save from the checkout view until you have entered details into your profile, at which point the checkout will update them each time if the save buttons are checked. 
+
+12. Return to the main page via the "Home" button in the nav bar or the logo and your purchased titles will now appear in the top row. 
+
+13. To review your orders head over the "My Profile" page. Here you can see a list of all your orders, and also provide some default delivery and billing address details which will pre-populate in the checkout form. Once these have been completed in the My Profile page they can be updated from the Checkout page in future purchases. 
+
+14. If you are an administrator you will also have access to an administration area. Here you can alter the price list, which is common to all titles, add a new title or search for and edit a title. A title can also be deleted from the site.  
+
+
 # Credits
 ## Code
 The parallax background code was inspired by W3Schools tutorial https://www.w3schools.com/howto/howto_css_parallax.asp
 
 The manipulation of the json data file within fixtures was aided with tutorials found [Kite](https://www.kite.com/python/answers/how-to-append-to-a-json-file-in-python)
 and also [Real Python](https://realpython.com/python-json/)
+
+The following code was used in the IDE terminal:
+![json Update](media/jsonUpdate.jpg)
 
 The use of python decimal was aided by Jackie Kazil's [GistHub Readme]https://gist.github.com/jackiekazil/6201722
 
@@ -636,10 +672,12 @@ License.
 ### Database Images
 The poster images were provided via URL link contained within the Kaggle dataset. These are hosted on Amazon Web Services.
 
-*Requires Content*
+No other external media was used to produced this site.
 
 ## Acknowledgements
-*Requires Content*
+I would like to thank the Code Institute Tutor team for providing lots of guidance during the development of this site. Without their dedication to solving some complex issues such as a database corruption and a development environment failure (both late at night) I'd have had a much more stressful time! They were also very patient in answering some of my more simple/silly questions and really good at encouraging me if I figured things out before they responded. 
+
+A special mention should also be made of my better half, who has put up with my absence for every weekend in 2021 and on many evenings throughout the year. Without her support I would never have been able to complete this project or the course. 
 
 # Contributing
 This project is a closed example for educational and ability demonstration purposes. Contribution is not permitted at 
