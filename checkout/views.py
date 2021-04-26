@@ -67,8 +67,7 @@ def checkout(request):
                             film_id = film_purchase['film_id']
                             Film = film.objects.get(id=film_id)
                             messages.success(request,
-                                             (f'{Film} Added to your\
-                                                 collection.'))
+                                             (f'{Film} Added to Order'))
                     except Film.DoesNotExist:
                         messages.error(request, (
                             "An item in your basket was not found in our database.\

@@ -302,7 +302,7 @@ Superusers can:
 
 ## Future Features
 - Replace the fixture provided image url content with a high resolution poster
-- Create a loading overlay for the main page and checkout page
+- Create a loading overlay for the main page and checkout page (Added in on 26th April 2021 during testing)
 - Create a server error handling view and template
 - Set site to handle stock amounts and disable purchases if no longer available to new users using the DVD Stock, Bluray Stock and Available fields pre populated in the database.
 - Allow users to leave reviews and ratings
@@ -506,23 +506,22 @@ S11|Shopper|See my previous orders|For personal financial administration|Previou
 S12|Shopper|Logout securely|Prevent unauthorised use of my account|Allauth provides secure register, login and logout.|
 
 ## Known Bugs
-*Requires Content*
 
 * When a new user is created the profile details update on the checkout page will fail until data is entered via the my profile page. This is possibly due to the user not being created in the database until the profile form has been submitted.
 
-* When a new film is created the image size may be different from those specified in the original fixtures, leading to card sizing issues. (Rectified with some max-height css applied to card images and the filmpage image.)
+* When a new film is created the image size may be different from those specified in the original fixtures, leading to card sizing issues. (Rectified with some max-height css applied to card images and the filmpage image on 26th April 2021)
 
 * Update basket button on filmpage.html could say "add to basket" if not already in the basket.
 
-* Forgot password form is not styled correctly.
+* Forgot password form is not styled correctly.(Rectified by applying crispy form styling and bootstrap btn-success on 25th April 2021)
 
-* Allauth auto emails are not pulling in all the correct details e.g. email address. (Rectified by manually adding details to base_message.txt).
+* Allauth auto emails are not pulling in all the correct details e.g. email address. (Rectified by manually adding details to base_message.txt on 25th April 2021).
 
-* Minus button allowed user to enter -1 into the orderform when the page first loads. However the form validation will not allow this to be submitted. (Rectified by using JS to check if the value is 0 after the page has loaded.)
+* Minus button allowed user to enter -1 into the orderform when the page first loads. However the form validation will not allow this to be submitted. (Rectified by using JS to check if the value is 0 after the page has loaded on 25th April 2021)
 
 * Remember me button on sign in page doesn't perform a function.
 
-* When a film is purchased the "added to your collection appears multiple times and even when the title is already in the collection.
+* When a film is purchased the "added to your collection" appears multiple times and even when the title is already in the collection. (Rectified by altering a message to say "added to order" which better describes the view process at the trigger stage on 26th April 2021)
 
 # Deployment
 The Site is stored on GitHub pages and hosted on Heroku. These are linked by connecting the github repository to the 
