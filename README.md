@@ -611,7 +611,6 @@ The final database structure varied slightly from the planned structure but larg
 ![Final Database Structure](media/finalDatabaseStructure.jpg)
 
 # User Guide
-*Requires Content*
 
 1. Enter the site URL https://filmnight.herokuapp.com/ into your browser. Google Chrome is recommended (see Testing --> Browser Compatibility for more information.)
 
