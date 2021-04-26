@@ -130,6 +130,12 @@ footer a {
     color: #ff1919;
 }
 
+/* Filmpage image restriction */
+
+.maxImg {
+    max-height: 270;
+}
+
 /* Crispy Forms Bootstrap4 Overrides */
 
 .form-control,

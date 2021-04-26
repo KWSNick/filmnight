@@ -11,7 +11,8 @@
         <img src="{{ MEDIA_URL }}{{ film.Poster }}" class="height100 width100 me-md-5"
             alt="{{ film.Series_Title }} Poster">
         {% else %}
-        <img src="{{ MEDIA_URL }}noimage.png" class="height100 width100 me-md-5" alt="{{ film.Series_Title }} Poster">
+        <img src="{{ MEDIA_URL }}noimage.png" class="height100 width100 maxImg me-md-5"
+            alt="{{ film.Series_Title }} Poster">
         {% endif %}
     </div>
     <div class="col-7 col-md-6 text-start">
