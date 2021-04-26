@@ -265,16 +265,50 @@ through its slightly condensed nature.
 
 # Features
 ## Existing Features
-*Requires Content*
+Users can currently:
+* Create and account
+* Login
+* Logout
+* Reset their password
+* Save delivery and billing addresses to their profile
+* View past orders
+* Browse all titles on the site when logged in
+* Search the titles using keywords in the titles name or overview
+* View titles in predefined categories
+* See titles they own
+* View more information about a specific title
+* Enter a streaming space if they own the title digitally
+* Add titles in various formats to their basket
+* Remove titles from their basket
+* Amend the basket quantities
+* Are prevented from ordering the title digitally more than once
+* Checkout securely using stripe
+* View the order summary
+
+Users are prevented from:
+* Accessing the site if not logged in
+* Accessing the streaming page if the title isn't purchased
+* Accessing the admin area and subpages if they are not a super user
+* Maliciously altering the quantities in the order form
+
+Superusers can:
+* Access an admin area
+* Amend individual prices in the price list
+* Amend film details
+* Search for a specific film to amend based on title or overview content
+* Add a new film
+* Delete a film
+
 
 ## Future Features
 - Replace the fixture provided image url content with a high resolution poster
+- Create a loading overlay for the main page and checkout page
 - Create a server error handling view and template
 - Set site to handle stock amounts and disable purchases if no longer available to new users using the DVD Stock, Bluray Stock and Available fields pre populated in the database.
 - Allow users to leave reviews and ratings
 - Create a product purchase wishlist
-- User interactions (direct tags/suggestions to others, view other wish lists)
-- Promoted content/product
+- User interactions such as send direct tags/suggestions to others and view other wish lists.
+- Promoted content/product from 3rd party partners
 
 # Technologies Used
 ## Languages
@@ -569,7 +603,9 @@ The environment variables were stored in the OS of both the development environm
 |EMAIL_HOST_USER| <YOUR_EMAIL_HOST_ADDRESS> |
 
 ## Database
-*Requires Content*
+The final database structure varied slightly from the planned structure but largely followed the planned schema. An addition field for Images was added to the film model, and the names of various fields were tweaked. The wished_titles field was omitted from the user model as this feature was omitted from the entire site in this release.
+
+![Final Database Structure](media/finalDatabaseStructure.jpg)
 
 # User Guide
 *Requires Content*
