@@ -111,7 +111,7 @@ a .card {
 /* Film card image restriction */
 
 .card img {
-    max-height: 240px;
+    max-height: 191px;
 }
 
 /* Card body table styling */
@@ -226,10 +226,7 @@ footer a {
 
 /* Bootstrap Breakpoints */
 
-@media (min-width: 576px) {
-    /*Currently not in use*/
-}
-
+/* small and below */
 @media (max-width: 767px) {
 
     .width100 {
@@ -238,6 +235,7 @@ footer a {
 
 }
 
+/* medium and above */
 @media (min-width: 768px) {
 
     .navbar-toggler {
@@ -253,8 +251,13 @@ footer a {
         height: 100%;
     }
 
+    .card img {
+        max-height: 194px;
+    }
+
 }
 
+/* large and above */
 @media (min-width: 992px) {
 
     .navbar-nav {
@@ -267,8 +270,13 @@ footer a {
         width: 50%;
     }
 
+    .card img {
+        max-height: 207px;
+    }
+
 }
 
+/* below extra large */
 @media (max-width: 1199px) {
 
     .card-body {
@@ -277,6 +285,7 @@ footer a {
 
 }
 
+/* extra large and above */
 @media (min-width: 1200px) {
 
     .form-control,
@@ -284,8 +293,13 @@ footer a {
         width: 30%;
     }
 
+    .card img {
+        max-height: 240px;
+    }
+
 }
 
+/* extra extra large and above */
 @media (min-width: 1400px) {
     /*Currently not in use*/
 }
