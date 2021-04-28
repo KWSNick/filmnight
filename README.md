@@ -463,7 +463,11 @@ The urls were rendered in the following pre-defined responsive sizes:
 - iPad Pro (1024 x 1366)
 - Full Screen Desktop (1600 x 900)
 
-A further breakpoint was identified beyond Bootstraps XXL sizing. At screen sizes in excess of 
+Minor responsive issues were identified and rectified, resulting in no known issues.
+
+The results of the test can be seen in the document [Responsive Tests](static/docs/responsive.pdf)
+
+A further breakpoint was identified beyond Bootstraps XXL sizing on 28/04/2021. At screen sizes in excess of 
 2560px width the card elements become warped. A custom breakpoint was created in base.css to 
 deal with this issue.
 
@@ -473,10 +477,6 @@ The urls were rendered in a final size:
 |Breakpoint	|Class infix |Dimensions |
 |-----------|------------|-----------|
 |Extra extra extra large|xxxl| ≥2560px|
-
-Minor responsive issues were identified and rectified, resulting in no known issues.
-
-The results of the test can be seen in the document [Responsive Tests](static/docs/responsive.pdf)
 
 ## Browser Compatibility
 The site was loaded in several browsers to assess for cross browser compatibility.
@@ -513,6 +513,32 @@ S10|Shopper|Save titles on a shortlist for potential future purchases|Make quick
 S11|Shopper|See my previous orders|For personal financial administration|Previous orders are stored and presented to the user in a table on the my profile page. They can be clicked on for more detail.|
 S12|Shopper|Logout securely|Prevent unauthorised use of my account|Allauth provides secure register, login and logout.|
 
+## Security
+To ensure site and user data is protected from malicious use, and only authorised users can access specified sections of the site each url was subjected to access requests via the browser address bar. The user type was varied between no user, a standard user and a super user.
+Google Chrome was used to perform these tests.
+
+|URL attempted|No user|Standard user|Super user|
+|-------------|-------|-------------|----------|
+|accounts/login/|Accessed|Returned to main page|Returned to main page|
+|accounts/signup/|Accessed|Returned to main page|Returned to main page|
+|accounts/logout/|Returned to accounts/login/|Accessed|Accessed|
+|filmnight.herokuapp.com/|Returned to accounts/login/|Accessed|Accessed|
+|film/14/|Returned to accounts/login/|Accessed|Accessed|
+|watch/14/ (not purchased)|Returned to accounts/login/|Returned to main page|Returned to main page|
+|watch/14/ (purchased)|N/A|Accessed|Accessed|
+|basket/|Returned to accounts/login/|Accessed|Accessed|
+|checkout/ (with basket in session)|Returned to accounts/login/|Accessed|Accessed|
+|profile/|Returned to accounts/login/|Accessed|Accessed|
+|profile/order_history/<order_no>/ (own order)|N/A|Accessed|Accessed|
+|profile/order_history/<order_no>/ (anothers order)|Returned to accounts/login/|**Accessed**|**Accessed**|
+|admin_area/|Returned to accounts/login/|Returned to main page|Accessed|
+|admin_area/edit_price/3/|Returned to accounts/login/|Returned to main page|Accessed|
+|admin_area/add_film/|Returned to accounts/login/|Returned to main page|Accessed|
+|admin_area/edit_film/1/|Returned to accounts/login/|Returned to main page|Accessed|
+|admin_area/delete_film/1003/|Returned to accounts/login/|Returned to main page|Accessed|
+
+Only 1x issue was identified in that any user can access any order history if the know the 32 character alphanumeric order number, but as this is extremely difficult to guess the order number is seen as the security feature in this instance.
+
 ## Known Bugs
 
 * When a new user is created the profile details update on the checkout page will fail until data is entered via the my profile page.
@@ -531,7 +557,11 @@ S12|Shopper|Logout securely|Prevent unauthorised use of my account|Allauth provi
 
 * When a film is purchased the "added to your collection" appears multiple times and even when the title is already in the collection. (Rectified by altering a message to say "added to order" which better describes the view process at the trigger stage on 26th April 2021)
 
-* An item can be added to the basket with no quantities in any format. However the user will not be charged.
+* An item can be added to the basket with no quantities in any format. However the user will not be charged. (Rectified 28th April 2021
+by adding an if and check on all 3 quantity variables in the add_to_basket views and throwing and error before the item is added to the
+basket, and returning them to the main page.)
+
+* Any user can theoretically access any order history, however this requires the user to have an account and know, guess or compute the 32 character alphanumeric code which is randomly generated during order creation.
 
 # Deployment
 The Site is stored on GitHub pages and hosted on Heroku. These are linked by connecting the github repository to the 
