@@ -1,14 +1,14 @@
 <!--A form which is added to the filmpage.html page which allows users to add items to the basket-->
 <form action="{% url 'add_to_basket' film.id %}" method="POST">
     {% csrf_token %}
-    <div class="row gx-0">
-        <table class="mb-5">
+    <div class="row gx-0 justify-content-center">
+        <table class="col col-md-8 col-lg-6 col-xl-5 col-xxl-3 mb-5">
             <thead>
                 <tr>
-                    <th>Format</th>
-                    <th>Unit</th>
-                    <th>Qty.</th>
-                    <th>ST.</th>
+                    <th class="col-2">Format</th>
+                    <th class="col-2">Unit</th>
+                    <th class="col">Qty.</th>
+                    <th class="col-2">ST.</th>
                 </tr>
             </thead>
             <tbody>
