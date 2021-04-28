@@ -43,8 +43,8 @@
                     <tr>
                         <th scope="col">Order Number</th>
                         <th scope="col">Order Date</th>
-                        <th scope="col">subtotal</th>
-                        <th scope="col">Delivery</th>
+                        <th class="d-none d-md-table-cell" scope="col">subtotal</th>
+                        <th class="d-none d-md-table-cell" scope="col">Delivery</th>
                         <th scope="col">Total</th>
                     </tr>
                 </thead>
@@ -55,8 +55,8 @@
                                 title="{{ order.order_number }}">{{ order.order_number|truncatechars:6 }}</a>
                         </td>
                         <td>{{ order.date }}</td>
-                        <td>£{{ order.order_charge }}</td>
-                        <td>£{{ order.delivery_charge }}</td>
+                        <td class="d-none d-md-table-cell">£{{ order.order_charge }}</td>
+                        <td class="d-none d-md-table-cell">£{{ order.delivery_charge }}</td>
                         <td>£{{ order.total_charge }}</td>
                     </tr>
                     {% endfor %}

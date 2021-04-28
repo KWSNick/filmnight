@@ -306,4 +306,9 @@ footer a {
 /* extra extra large and above */
 @media (min-width: 1400px) {
     /*Currently not in use*/
+
+    .historic_orders>.centerAndWidth {
+        width: 50%;
+    }
+
 }
