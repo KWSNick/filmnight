@@ -2,3 +2,7 @@
     max-height: 80vh;
     overflow-y: auto;
 }
+
+h5 a {
+    color: #ff1919;
+}

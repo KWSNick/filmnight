@@ -14,6 +14,14 @@
 <h2 class="header_font sec_text_clr">Profile</h2>
 <div class="row gx-0">
     <div class="col-12 mt-5">
+        <h5><strong>Username: </strong>{{ profile.user }}</h5>
+        <h5><strong>Email: </strong>{{ profile.user.email }} <span><a class="no_underline"
+                    href="{% url 'account_email' %}">Change</a></span>
+        </h5>
+    </div>
+</div>
+<div class="row gx-0">
+    <div class="col-12 mt-5">
         <h4>My Details</h4>
         <form action="{% url 'profile' %}" method="POST" id="checkout_form">
             {% csrf_token %}
