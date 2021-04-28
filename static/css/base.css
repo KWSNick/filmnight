@@ -111,6 +111,7 @@ a .card {
 /* Film card image restriction */
 
 .card img {
+    min-height: 190px;
     max-height: 191px;
 }
 
@@ -252,6 +253,7 @@ footer a {
     }
 
     .card img {
+        min-height: 193px;
         max-height: 194px;
     }
 
@@ -271,6 +273,7 @@ footer a {
     }
 
     .card img {
+        min-height: 206px;
         max-height: 207px;
     }
 
@@ -294,6 +297,7 @@ footer a {
     }
 
     .card img {
+        min-height: 239px;
         max-height: 240px;
     }
 
