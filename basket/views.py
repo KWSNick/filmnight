@@ -37,20 +37,25 @@ def add_to_basket(request, film_id):
         redirect_url = request.POST.get('redirect_url')
         basket = request.session.get('basket', {})
 
-        # Update or create a basket item
-        if film_id in list(basket.keys()):
-            basket[film_id]['digital'] = 1
-            basket[film_id]['dvd'] = dvd_quantity
-            basket[film_id]['bluray'] = br_quantity
-            messages.success(request, f'{Film.Series_Title} Basket Updated')
+        if dig_quantity < 1 and dvd_quantity < 1 and br_quantity < 1:
+            messages.error(request, f'No format quantity added\
+                 to basket for {Film.Series_Title}')
+            return redirect(reverse('films'))
         else:
-            basket[film_id] = {'digital': dig_quantity,
-                               'dvd': dvd_quantity,
-                               'bluray': br_quantity}
-            messages.success(request, f'{Film.Series_Title} Added to Basket')
+            # Update or create a basket item
+            if film_id in list(basket.keys()):
+                basket[film_id]['digital'] = 1
+                basket[film_id]['dvd'] = dvd_quantity
+                basket[film_id]['bluray'] = br_quantity
+                messages.success(request, f'{Film.Series_Title} Basket Updated')
+            else:
+                basket[film_id] = {'digital': dig_quantity,
+                                'dvd': dvd_quantity,
+                                'bluray': br_quantity}
+                messages.success(request, f'{Film.Series_Title} Added to Basket')
 
-        request.session['basket'] = basket
-        return redirect(redirect_url)
+            request.session['basket'] = basket
+            return redirect(redirect_url)
     else:
         return redirect(reverse('films'))
 

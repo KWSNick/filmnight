@@ -520,7 +520,7 @@ S12|Shopper|Logout securely|Prevent unauthorised use of my account|Allauth provi
 
 * When a film is purchased the "added to your collection" appears multiple times and even when the title is already in the collection. (Rectified by altering a message to say "added to order" which better describes the view process at the trigger stage on 26th April 2021)
 
-* An item can be added to the basket with no quantities in any format.
+* An item can be added to the basket with no quantities in any format. However the user will not be charged.
 
 # Deployment
 The Site is stored on GitHub pages and hosted on Heroku. These are linked by connecting the github repository to the 
