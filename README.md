@@ -458,10 +458,21 @@ The following urls were loaded into Google Chrome and inspected with the develop
 - admin_area/edit_film/1/
 
 The urls were rendered in the following pre-defined responsive sizes:
-- iPhone 6/7/8
-- iPad
-- iPad Pro
-- Full Screen Desktop
+- iPhone 6/7/8 (375 x 667)
+- iPad (768 x 1024)
+- iPad Pro (1024 x 1366)
+- Full Screen Desktop (1600 x 900)
+
+A further breakpoint was identified beyond Bootstraps XXL sizing. At screen sizes in excess of 
+2560px width the card elements become warped. A custom breakpoint was created in base.css to 
+deal with this issue.
+
+The urls were rendered in a final size:
+- 4k screen (2560 x 1600)
+
+|Breakpoint	|Class infix |Dimensions |
+|-----------|------------|-----------|
+|Extra extra extra large|xxxl| ≥2560px|
 
 Minor responsive issues were identified and rectified, resulting in no known issues.
 

@@ -24,7 +24,7 @@
     {% for film in films %}
     {% for item in basket_items %}
     {% if film.id|add:"0" == item.film_id|add:"0" %}
-    <div class="col-11 col-md-5 col-lg-4 col-xl-3 col-xxl-2 m-2">
+    <div class="col-11 col-md-5 col-lg-4 col-xl-3 col-xxxl-2 m-2">
 
         <div class="card card-block grad_bg_invert">
             <a href="{% url 'filmpage' film.id %}" class="no_underline">

@@ -35,7 +35,7 @@
     {% for value in values %}
     {% if film.id|add:"0" == value.film_id|add:"0" %}
     <!--Creates a card item for each item in the order basket-->
-    <div class="col-11 col-md-5 col-lg-4 col-xl-3 col-xxl-2 m-2">
+    <div class="col-11 col-md-5 col-lg-4 col-xl-3 col-xxxl-2 m-2">
         <div class="card card-block grad_bg_invert">
             <a href="{% url 'filmpage' film.id %}" class="no_underline">
                 <div class="row gx-0">

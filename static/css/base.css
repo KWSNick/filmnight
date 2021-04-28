@@ -303,12 +303,21 @@ footer a {
 
 }
 
-/* extra extra large and above */
+/* extra extra large to extra extra extra large custom breakpoint */
 @media (min-width: 1400px) {
-    /*Currently not in use*/
 
     .historic_orders>.centerAndWidth {
         width: 50%;
+    }
+
+}
+
+/* extra extra extra large custom breakpoint and above*/
+@media (min-width: 2560px) {
+
+    .col-xxxl-2 {
+        flex: 0 0 auto;
+        width: 16.6666666667%;
     }
 
 }
