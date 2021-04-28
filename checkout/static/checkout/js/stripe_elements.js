@@ -79,6 +79,7 @@ form[0].addEventListener('submit', function (event) {
     }
     let url = '/checkout/cache_checkout_data/';
 
+    // Send key information to be stored in stripe
     $.post(url, postData).done(function () {
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
@@ -130,9 +131,7 @@ form[0].addEventListener('submit', function (event) {
             }
         });
     }).fail(function () {
-        // If this fails reload the page so the django messages can show us the issue.
+        // If this function fails reload the page so the django messages can show us the issue.
         location.reload();
     })
-
-
 });

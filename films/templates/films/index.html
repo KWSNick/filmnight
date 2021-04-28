@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+<!--A loading spinner initializes on page load and is turned off via JS when the page is ready-->
 <div id="loading">
     <h1 class="loading_spinner">
         <p>
@@ -13,6 +14,7 @@
 <p class="pri_text_clr">Browse the films within the categories below and click the film card for more info!</p>
 <div class="row gx-0 justify-content-center mt-3">
     <div class="col-10 col-lg-6">
+        <!--Search bar for existing films to allow admin to quickly locate a specific title-->
         <form method="GET" action="{% url 'films' %}">
             <div class="row gx-0">
                 <div class="col-9 gx-0">
@@ -41,17 +43,20 @@
         </form>
     </div>
 </div>
+<!--Text updates depending on number of unique films displayed as result of search -->
 <p>{{ films|length }} Unique Film{% if films|length > 1 %}s{% endif %} Available:</p>
 <!--My Films-->
 <div class="row gx-0">
     <div class="col">
         <h3 class="header_font sec_text_clr text-start">My Films</h3>
     </div>
+    <!--Scroll buttons for use on desktop devices. These work via JS-->
     <div class="col d-none d-lg-block col-lg-9 text-end">
         <button type="button" class="btn btn-secondary home"><i class="fas fa-home"></i></button>
         <button type="button" class="btn btn-secondary left"><i class="fas fa-chevron-circle-left"></i></button>
         <button type="button" class="btn btn-secondary right me-4"><i class="fas fa-chevron-circle-right"></i></button>
     </div>
+    <!--If the user doesn't have any titles in their purchased_titles a message appears instead-->
     <div class="row flex-row flex-nowrap horz_scroll gx-0">
         {% if profile.purchased_titles.all|length == 0 %}
         <div class="col m-2 centerAndWidth">
@@ -59,6 +64,7 @@
                 collection!</p>
         </div>
         {% else %}
+        <!--Checks purchased_titles against the film database and if they match creates a card object-->
         {% for film in films %}
         {% for title in profile.purchased_titles.all %}
         {% if title == film %}
@@ -103,6 +109,7 @@
         {% endfor %}
         {% endif %}
     </div>
+    <!--A horizontal rule between categories-->
     <div class="row justify-content-center">
         <div class="col-10">
             <hr>
@@ -161,6 +168,7 @@
         {% endif %}
         {% endfor %}
     </div>
+    <!--A horizontal rule between categories-->
     <div class="row justify-content-center">
         <div class="col-10">
             <hr>
@@ -219,6 +227,7 @@
         {% endif %}
         {% endfor %}
     </div>
+    <!--A horizontal rule between categories-->
     <div class="row justify-content-center">
         <div class="col-10">
             <hr>
@@ -277,6 +286,7 @@
         {% endif %}
         {% endfor %}
     </div>
+    <!--A horizontal rule between categories-->
     <div class="row justify-content-center">
         <div class="col-10">
             <hr>
@@ -335,6 +345,7 @@
         {% endif %}
         {% endfor %}
     </div>
+    <!--A horizontal rule between categories-->
     <div class="row justify-content-center">
         <div class="col-10">
             <hr>
@@ -393,6 +404,7 @@
         {% endif %}
         {% endfor %}
     </div>
+    <!--A horizontal rule between categories-->
     <div class="row justify-content-center">
         <div class="col-10">
             <hr>
@@ -451,6 +463,7 @@
         {% endif %}
         {% endfor %}
     </div>
+    <!--A horizontal rule between categories-->
     <div class="row justify-content-center">
         <div class="col-10">
             <hr>
@@ -509,6 +522,7 @@
         {% endif %}
         {% endfor %}
     </div>
+    <!--A horizontal rule between categories-->
     <div class="row justify-content-center">
         <div class="col-10">
             <hr>
@@ -567,6 +581,7 @@
         {% endif %}
         {% endfor %}
     </div>
+    <!--A horizontal rule between categories-->
     <div class="row justify-content-center">
         <div class="col-10">
             <hr>
@@ -625,6 +640,7 @@
         {% endif %}
         {% endfor %}
     </div>
+    <!--A horizontal rule between categories-->
     <div class="row justify-content-center">
         <div class="col-10">
             <hr>
@@ -683,6 +699,7 @@
         {% endif %}
         {% endfor %}
     </div>
+    <!--A horizontal rule between categories-->
     <div class="row justify-content-center">
         <div class="col-10">
             <hr>
@@ -741,6 +758,7 @@
         {% endif %}
         {% endfor %}
     </div>
+    <!--A horizontal rule between categories-->
     <div class="row justify-content-center">
         <div class="col-10">
             <hr>

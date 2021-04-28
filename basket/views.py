@@ -13,13 +13,15 @@ def view_basket(request):
     films = film.objects.all()
     prices = price_list.objects.all()
 
+    template = 'basket/basket.html'
+
     context = {
         'films': films,
         'prices': prices,
     }
 
     if request.user.is_authenticated:
-        return render(request, 'basket/basket.html', context)
+        return render(request, template, context)
     else:
         return redirect(reverse('films'))
 
@@ -31,9 +33,11 @@ def add_to_basket(request, film_id):
         dig_quantity = int(request.POST.get('dig_quantity'))
         dvd_quantity = int(request.POST.get('dvd_quantity'))
         br_quantity = int(request.POST.get('br_quantity'))
+        # redirect_url comes from hidden orderform.html input
         redirect_url = request.POST.get('redirect_url')
         basket = request.session.get('basket', {})
 
+        # Update or create a basket item
         if film_id in list(basket.keys()):
             basket[film_id]['digital'] = 1
             basket[film_id]['dvd'] = dvd_quantity

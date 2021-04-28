@@ -46,8 +46,8 @@ class Order(models.Model):
                                   null=False, blank=False, default='')
 
     def order_no(self):
-        """Generates a random unique order no
-        based on CI Boutique Ado project"""
+        """Generates a random unique order no.
+        Based on CI Boutique Ado project code"""
         return uuid.uuid4().hex.upper()
 
     def save(self, *args, **kwargs):

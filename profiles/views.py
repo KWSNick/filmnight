@@ -45,6 +45,7 @@ def orderHistory(request, order_number):
 
         messages.info(request, (f'Opened historic order { order_number }.'))
 
+        # Converts an order objects basket text field in json for iteration
         order_basket = order.basket
         order_basket_doublequotes = order_basket.replace("'", '"')
         order_basket_filmname1 = order_basket_doublequotes.replace(
@@ -59,6 +60,7 @@ def orderHistory(request, order_number):
             'order': order,
             'order_basket_json': order_basket_json,
             'films': films,
+            # from_profile signals to the site that its an historic order
             'from_profile': True,
         }
 

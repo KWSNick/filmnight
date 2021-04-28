@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
+<!--An admin area only accessible to superusers-->
 {% block content %}
+<!--A loading spinner initializes on page load and is turned off via JS when the page is ready-->
 <div id="loading">
     <h1 class="loading_spinner">
         <p>
@@ -12,6 +14,7 @@
 <h2 class="header_font sec_text_clr">Admin Area</h2>
 <p class="pri_text_clr">Edit prices, modify existing titles and add new titles to the site.</p>
 <div class="row gx-0 justify-content-center">
+    <!--Price editing section holds card with links to a form-->
     <div class="col centerAndWidth">
         <h3 class="header_font sec_text_clr">Edit Prices</h3>
     </div>
@@ -36,6 +39,7 @@
         {% endfor %}
     </div>
 </div>
+<!--Film management section with a link to an add film form, links to each existing film to edit and to delete a film-->
 <div class="row gx-0 justify-content-center mt-5">
     <div class="col centerAndWidth">
         <h3 class="header_font sec_text_clr">Manage Films</h3>
@@ -51,6 +55,7 @@
             <h4 class="header_font sec_text_clr">Edit Films</h4>
             <div class="row gx-0 justify-content-center mt-3">
                 <div class="col-10 col-lg-6">
+                    <!--Search bar for existing films to allow admin to quickly locate a specific title-->
                     <form method="GET" action="{% url 'admin_area' %}">
                         <div class="row gx-0">
                             <div class="col-9 gx-0">
@@ -79,8 +84,10 @@
                     </form>
                 </div>
             </div>
-            <p>Unique Film{% if films|length > 1 %}s{% endif %} Below:</p>
+            <!--Text updates depending on number of films displayed as result of search -->
+            <p>{{ films|length }} Unique Film{% if films|length > 1 %}s{% endif %} Below:</p>
             {% for film in films %}
+            <!--Creates a simple card with a header and a delete button. Also creates a modal for delete verification-->
             <div class="col-10 col-md-5 col-lg-2 m-2">
                 <div class="card card-block grad_bg_invert">
                     <div class="row gx-0">
@@ -100,7 +107,7 @@
                     </div>
                 </div>
             </div>
-            <!--Delete Modal-->
+            <!--Delete Modal to verify user delete intention-->
             <div class="modal" id="delete_modal{{ film.id }}" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content sec_bg_light_clr">

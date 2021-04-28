@@ -5,9 +5,11 @@
 <h2 class="header_font sec_text_clr">Shopping Basket</h2>
 {% if basket_items %}
 <div class="row gx-0">
+    <!--Checkout buttons only appear if there is a session basket item to checkout-->
     <div class="col text-end mt-auto">
         {% include 'basket/checkout_btns.html' %}
     </div>
+    <!--Gets subtotals stored in session basket-->
     <div class="col-5 col-md-2 col-xl-1 text-end me-3 me-md-5">
         <h4 class="sec_text_clr">Subtotals</h4>
         <h5 class="d-inline sec_text_clr">Digtial:</h5> <span>£{{ digital_subtotal }}</span><br>
@@ -18,6 +20,7 @@
     </div>
 </div>
 <div class="row gx-0 justify-content-center">
+    <!--Checks items in the basket against films and generates a card for each basket item to matching film-->
     {% for film in films %}
     {% for item in basket_items %}
     {% if film.id|add:"0" == item.film_id|add:"0" %}
@@ -41,6 +44,7 @@
                         <div class="card-body">
                             <h5>{{ film.Series_Title }}</h5>
                             <div class="card-text">
+                                <!--Table shows order quantity and cost summary per film-->
                                 <table>
                                     <thead>
                                         <tr>
@@ -55,6 +59,7 @@
                                             <td>
                                                 <h6>Digital</h6>
                                             </td>
+                                            <!--Prices taken from the price list database-->
                                             <td>£<span>{% for price in prices %}
                                                     {% if price.cost_name == 'digital' %}
                                                     {{ price.cost_price }}
@@ -67,6 +72,7 @@
                                             <td>
                                                 <h6>DVD</h6>
                                             </td>
+                                            <!--Prices taken from the price list database-->
                                             <td>£<span>{% for price in prices %}
                                                     {% if price.cost_name == 'dvd' %}
                                                     {{ price.cost_price }}
@@ -79,6 +85,7 @@
                                             <td>
                                                 <h6>Bluray</h6>
                                             </td>
+                                            <!--Prices taken from the price list database-->
                                             <td>£<span>{% for price in prices %}
                                                     {% if price.cost_name == 'bluray' %}
                                                     {{ price.cost_price }}

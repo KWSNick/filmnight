@@ -4,6 +4,7 @@
 {% block content %}
 <div class="row gx-0">
     <div class="col">
+        <!--If from_profile variable is true then this page is loading a previous order and the heading for the page will reflect this-->
         <h2 class="header_font sec_text_clr">{% if from_profile %}Historic {% endif %}Order Summary</h2>
         {% if from_profile %}You are viewing an historic order.{% endif %}
     </div>
@@ -27,13 +28,14 @@
     </div>
 </div>
 <div class="row gx-0 justify-content-center">
+    <!--Uses a variable which has been formatted to json to create list items from the order stored in the database-->
     {% for items, values in order_basket_json.items %}
     {% if items == 'basket_items' %}
     {% for film in films %}
     {% for value in values %}
     {% if film.id|add:"0" == value.film_id|add:"0" %}
+    <!--Creates a card item for each item in the order basket-->
     <div class="col-11 col-md-5 col-lg-4 col-xl-3 m-2">
-
         <div class="card card-block grad_bg_invert">
             <a href="{% url 'filmpage' film.id %}" class="no_underline">
                 <div class="row gx-0">

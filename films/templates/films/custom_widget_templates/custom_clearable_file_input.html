@@ -1,3 +1,4 @@
+<!--An insertable widget to allwo a user to clear an image from a database object via a form if an image is present-->
 {% if widget.is_initial %}
 <p>{{ widget.initial_text }}:</p>
 <a href="{{ widget.value.url }}">
@@ -11,6 +12,7 @@
 {% endif %}<br>
 {{ widget.input_text }}
 {% endif %}
+<!--Select new image file form elements-->
 <span class="btn btn-file mb-2">
     Select Poster <input id="new-image" type="{{ widget.type }}" name="{{ widget.name }}"
         {% include "django/forms/widgets/attrs.html" %}>

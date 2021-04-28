@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
+<!--A page to show an individual films details and provide the user with a form to add items to the basket-->
 {% block content %}
+<!--A loading spinner initializes on page load and is turned off via JS when the page is ready-->
 <div id="loading">
     <h1 class="loading_spinner">
         <p>
@@ -44,6 +46,7 @@
         </p>
     </div>
 </div>
+<!--A variable is passed to this page, if the view has found the film in the users purchased_titles profile field then they can access the Watch Now button-->
 {% if digital_value == 0 %}
 <div class="row gx-0">
     <div class="col mt-5">
@@ -59,6 +62,7 @@
         <p>{{ film.Overview }}</p>
     </div>
 </div>
+<!--Orderform is inserted here-->
 <div class="row gx-0">
     {% include 'films/orderform.html' %}
 </div>

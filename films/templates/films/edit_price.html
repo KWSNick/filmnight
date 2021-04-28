@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
+<!--A page for the admin area where a form is pre-populated with current price object information and can be edited and submitted-->
 {% block content %}
 <h2 class="header_font sec_text_clr">Edit {{ price.cost_name|title }} Price</h2>
 <form action="{% url 'edit_price' price.id %}" method="POST" id="edit_price_form">

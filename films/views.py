@@ -29,6 +29,8 @@ def index(request):
             Overview__icontains=query)
         films = films.filter(Queries)
 
+    template = 'films/index.html'
+
     context = {
         'films': films,
         'profile': profile,
@@ -36,7 +38,7 @@ def index(request):
     }
 
     if request.user.is_authenticated:
-        return render(request, 'films/index.html', context)
+        return render(request, template, context)
     else:
         return redirect('accounts/login/')
 
@@ -55,14 +57,15 @@ def filmpage(request, film_id):
             else:
                 digital_value = 1
 
+        template = 'films/filmpage.html'
+
         context = {
             'film': Film,
             'prices': prices,
             'digital_value': digital_value,
         }
 
-        return render(request, 'films/filmpage.html', context)
-
+        return render(request, template, context)
     else:
         return redirect(reverse('films'))
 
@@ -90,6 +93,8 @@ def watch(request, film_id):
             messages.error(request, "You haven't purchased this\
                            title digitally yet.")
             return redirect(reverse('films'))
+    else:
+        return redirect(reverse('films'))
 
 
 def admin_area(request):
@@ -156,7 +161,6 @@ def edit_price(request, price_id):
         }
 
         return render(request, template, context)
-
     else:
         messages.error(request, 'You are not authorised to access this area.')
         return redirect(reverse('films'))
@@ -182,7 +186,6 @@ def add_film(request):
         }
 
         return render(request, template, context)
-
     else:
         messages.error(request, 'You are not authorised to access this area.')
         return redirect(reverse('films'))
@@ -212,7 +215,6 @@ def edit_film(request, film_id):
         }
 
         return render(request, template, context)
-
     else:
         messages.error(request, 'You are not authorised to access this area.')
         return redirect(reverse('films'))

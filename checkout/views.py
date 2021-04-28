@@ -121,6 +121,7 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
+        # Pre-populate the order form with saved profile data
         try:
             profile = users.objects.get(user=request.user)
             order_form = OrderForm(initial={
@@ -164,7 +165,7 @@ def checkout_success(request, order_number):
         save_billing = request.session.get('save_billing')
 
         order = get_object_or_404(Order, order_number=order_number)
-        # Get the basket item out of the order object and format back to JSON
+        # Converts an order objects basket text field in json for iteration
         order_basket = order.basket
         order_basket_doublequotes = order_basket.replace("'", '"')
         order_basket_filmname1 = order_basket_doublequotes.replace(
